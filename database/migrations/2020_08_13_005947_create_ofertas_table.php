@@ -16,17 +16,18 @@ class CreateOfertasTable extends Migration
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
             $table->text('contenido');
-            $table->foreignId('tarea_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->string('imagen')->nullable();
+            $table->foreignId('tarea_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('respuesta_ofertas', function (Blueprint $table) {
             $table->id();
             $table->text('contenido');
-            $table->uuid('uuid');
-            $table->foreignId('oferta_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->string('imagen')->nullable();
+            $table->foreignId('oferta_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

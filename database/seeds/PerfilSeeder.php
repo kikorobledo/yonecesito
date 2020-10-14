@@ -14,7 +14,7 @@ class PerfilSeeder extends Seeder
     public function run()
     {
         DB::table('perfils')->insert([
-            'imagen' => 'asdlkjabksda.jpg',
+            'imagen' => '1600189209.jpeg',
             'titulo' => 'Carpintero',
             'acerca_de_mi' => 'Soy carpintero desde siempre porque asi me gustas y que tiene?!',
             'cv' => 'askjdaksd.pdf',
@@ -30,7 +30,7 @@ class PerfilSeeder extends Seeder
         ]);
 
         DB::table('perfils')->insert([
-            'imagen' => 'asdlkjabksda.jpg',
+            'imagen' => '1600189310.jpeg',
             'titulo' => 'Medico',
             'acerca_de_mi' => 'Medico internista trabajando en el hospital de la mujer',
             'cv' => 'askjdaksd.pdf',
@@ -46,7 +46,7 @@ class PerfilSeeder extends Seeder
         ]);
 
         DB::table('perfils')->insert([
-            'imagen' => 'asdlkjabksda.jpg',
+            'imagen' => '1600189330.jpeg',
             'titulo' => 'Ingeniero Civil',
             'acerca_de_mi' => 'Ingeniero con experiencia en construccion de vialidades',
             'cv' => 'askjdaksd.pdf',

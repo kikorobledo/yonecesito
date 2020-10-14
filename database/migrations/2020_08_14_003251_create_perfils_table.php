@@ -16,7 +16,6 @@ class CreatePerfilsTable extends Migration
         Schema::create('perfils', function (Blueprint $table) {
             $table->id();
             $table->string('imagen')->nullable(true);
-            $table->string('correo')->nullable(true)->unique();
             $table->string('telefono')->nullable(true);
             $table->text('titulo')->nullable(true);
             $table->text('acerca_de_mi')->nullable(true);
@@ -27,7 +26,7 @@ class CreatePerfilsTable extends Migration
             $table->string('trabajo')->nullable(true);
             $table->string('direccion')->nullable(true);
             $table->string('colonia')->nullable(true);
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -35,8 +34,8 @@ class CreatePerfilsTable extends Migration
             $table->id();
             $table->string('tipo');
             $table->text('contenido');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('perfil_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('perfil_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

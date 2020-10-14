@@ -13,19 +13,29 @@ class CreateTareasTable extends Migration
      */
     public function up()
     {
+        Schema::create('estados', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('lat');
+            $table->string('lng');
+            $table->timestamps();
+        });
+
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('direccion');
-            $table->string('colonia');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('direccion')->nullable();
+            $table->string('colonia')->nullable();
+            $table->foreignId('estado_id')->constrained()->onDelete('cascade');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->text('descripcion');
-            $table->time('fecha_de_vencimiento');
-            $table->uuid('uuid');
+            $table->date('fecha_de_vencimiento');
             $table->integer('presupuesto');
-            $table->string('estado');
-            $table->foreignId('user_id')->constrained();
+            $table->string('estatus');
+            $table->string('tipo');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('trabajador')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -37,6 +47,7 @@ class CreateTareasTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('estados');
         Schema::dropIfExists('tareas');
     }
 }

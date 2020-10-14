@@ -1,0 +1,161 @@
+.perfil-imagen img {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    margin-right: 60px;
+}
+
+.datos p{
+    margin: 0;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.datos .datos-nombre{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.iconos-datos i{
+    color: #acacac;
+    margin-right: 10px;
+}
+
+.resenas ul li a{
+    font-size: 14px;
+    color:#008fb4 ;
+}
+
+.tab-div{
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.tab-div p{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.titulo{
+    font-weight: 600;
+    color: #545a77;
+    font-size: 20px;
+}
+
+.acerca-titulo{
+    color: #bbc2dc;
+    font-size: 30px;
+    text-align: center;
+    font-style: italic;
+}
+
+.acerca-descripcion{
+    font-weight: 300;
+}
+
+.btn-editar{
+    background-color: #bbc2dc;
+    border-radius: 50%;
+    color: white;
+}
+
+.btn-editar:hover{
+    color: #bbc2dc;
+    background-color: white;
+    border: 1px solid #bbc2dc;;
+}
+
+.btn-cancelar{
+    color: rgb(0, 143, 180);
+    background-color: rgb(246, 248, 253);
+    border-radius: 160px;
+    padding: 8px 16px;
+    border-color: rgb(231, 235, 251);
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+}
+
+.btn-cancelar:hover{
+    color: rgb(0, 143, 180);
+}
+
+.btn-guardar{
+    background-color: rgb(125, 179, 67);
+    border-radius: 160px;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    padding: 8px 16px;
+    display: inline-block;
+}
+.btn-guardar:hover{
+    color: #fff;
+}
+
+.curriculum-extra p{
+    font-weight: 300;
+}
+
+.btn-cv{
+    background-color: #545a77;
+    color: white;
+    border-radius: 50px;
+}
+
+.btn-cv:hover{
+    color: white;
+}
+
+.drop-file{
+    margin-bottom: 20px;
+    width: 100%;
+    padding:20px;
+    border:  3px dotted  #bbc2dc;
+    text-align: center;
+    opacity: .3;
+}
+
+.drop-file i{
+    font-size: 30px;
+    color: #545a77;
+}
+
+.drop-file:hover{
+    border:  3px dotted  #008fb4;
+    opacity: 1;
+}
+
+.drop-file:hover i{
+     color: #008fb4;
+}
+
+.dropzone{
+    border: 2px dashed #c1c1c1;
+
+    .dz-error{
+        display: none;
+    }
+
+    .dz-message .dz-button{
+        color:#666;
+    }
+}
+
+.habilidades-titulo{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.habilidades-contenido{
+    background-color: rgb(233, 233, 233);
+    border-radius: 15px;
+    padding: 5px 15px 5px 15px;
+    color: #545a77;
+}
+
+.habilidades-actualiza{
+    color: #bbc2dc;
+    text-align: center;
+    font-style: italic;
+}

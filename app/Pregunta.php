@@ -12,4 +12,14 @@ class Pregunta extends Model
     public function tarea(){
         return $this->belongsTo(Tarea::class, 'tarea_id');
     }
+
+    /* Obtiene el autor d e la pregunta */
+    public function autor(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /* Obtiene respuestas de la pregunta */
+    public function respuestas(){
+        return $this->hasMany(RespuestaPregunta::class);
+    }
 }

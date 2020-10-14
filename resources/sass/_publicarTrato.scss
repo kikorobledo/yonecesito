@@ -1,0 +1,62 @@
+/* Modal Publicar Trato */
+
+.modal-publicar-titulo{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#modal-publicar{
+    z-index: 2000;
+}
+
+.publicar-primera img{
+    width: 100%;
+}
+
+.publicar-primera .modal-publicar-titulo{
+    text-align: center;
+    font-weight: 600;
+}
+
+.publicar-primera .modal-publicar-texto{
+    text-align: center;
+    margin-bottom: 25px;;
+}
+
+.hideMe {
+    display: none;
+}
+
+.boton-publicar-oferta{
+    background-color: rgb(125, 179, 67);
+    border-radius: 160px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+}
+
+.boton-publicar-oferta:hover{
+    color: #fff;
+}
+
+.modal-publicar-titulo{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.descripcion-trato{
+    padding: 20px;
+    background-color: #fff;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 140px);
+}
+
+
+.estado-trato{
+    font-size: 16px;
+    margin-bottom: 30px;
+}

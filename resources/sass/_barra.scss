@@ -1,0 +1,139 @@
+body{
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+.logo-barra{
+    width: 45px;
+}
+
+.foto-perfil-barra{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-right: 20px;
+}
+
+.publicar-oferta{
+    background-color: rgba(29, 48, 68, 0.067);
+    border-radius: 50px;
+    padding:10px 0 10px 0;
+}
+
+/* Modal Inisiar Sesión */
+.modal-contraseña-olvidada{
+
+    text-align: right;
+    font-size: 14px;
+
+    font-weight: 300;
+    color:rgb(0, 143, 180) ;
+
+}
+
+.modal-contraseña-olvidada:hover{
+    text-decoration: none;
+}
+
+.boton-principal{
+    background-color: rgb(125, 179, 67);
+    border-radius: 50px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    border: none;
+}
+
+.boton-principal:hover{
+    color: #fff;
+    background-color: rgb(125, 179, 67);
+}
+
+.boton-modal-facebook{
+    background-color: rgb(24, 119, 242);
+    border-radius: 50px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.boton-modal-facebook i{
+    font-size: 25px;
+    vertical-align: top;
+}
+
+.boton-modal-facebook:hover{
+    color: #fff;
+}
+
+.boton-modal-google{
+    background-color: #fff;
+    border-radius: 160px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(231, 235, 251);
+    margin-bottom: 10px;
+}
+
+.boton-modal-google:hover{
+    color: rgb(0, 0, 0);
+}
+
+.boton-modal-apple{
+    background-color: black;
+    border-radius: 160px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.boton-modal-apple:hover{
+    color:#fff;
+}
+
+.boton-modal-apple i{
+    font-size: 25px;
+    vertical-align: top;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+}
+
+
+.modal-footer p{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.modal-footer a{
+    font-size: 14px;
+    font-weight: 400!important;
+    color: rgb(0, 143, 180);
+}
+
+.modal-footer a:hover{
+    text-decoration: none;
+}
+
+.row-principal{
+    background-color: white;
+    padding:30px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: -2px 3px 27px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 3px 27px -15px rgba(0,0,0,0.75);
+    box-shadow: -2px 3px 27px -15px rgba(0,0,0,0.75);
+}

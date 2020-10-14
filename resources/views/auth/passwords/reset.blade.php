@@ -1,65 +1,127 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+    <div class="row justify-content-center row-principal">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+        <div class="col-md-8 col-12">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+            <h3 class="text-center mb-5">{{ __('Reset Password') }}</h3>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+            <form method="POST" action="{{ route('password.update') }}" id="resetEmailPasswordForm">
+                @csrf
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                <input type="hidden" name="token" value="{{ $token }}">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <div class="form-group text-center">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    <label for="email" class="text-md-right">{{ __('E-Mail Address') }}</label>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                    <div class="col-12 col-md-8 m-auto">
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                        <input id="emailInput" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        <span class="invalid-feedback" role="alert" id="emailError">
+                            <strong></strong>
+                        </span>
+
+                    </div>
+
                 </div>
-            </div>
+
+                <div class="form-group text-center">
+
+                    <label for="password" class="text-md-right">{{ __('Password') }}</label>
+
+                    <div class="col-12 col-md-8 m-auto">
+
+                        <input id="passwordInput" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                        <span class="invalid-feedback" role="alert" id="passwordError">
+                            <strong></strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group text-center">
+
+                    <label for="password-confirm" class="text-md-right">{{ __('Confirm Password') }}</label>
+
+                    <div class="col-12 col-md-8 m-auto">
+
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+
+                    </div>
+
+                </div>
+
+                <div class="form-group text-center">
+
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Reset Password') }}
+                    </button>
+
+                </div>
+
+            </form>
+
         </div>
+
     </div>
+
 </div>
+
+@endsection
+
+@section('scripts')
+@parent
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        $('#resetEmailPasswordForm').submit(function (e) {
+
+
+            e.preventDefault();
+
+            let formData = $(this).serializeArray();
+
+            $(".invalid-feedback").children("strong").text("");
+
+            $("#resetEmailPasswordForm input").removeClass("is-invalid");
+
+            $.ajax({
+                method: "POST",
+                headers: {
+                    Accept: "application/json"
+                },
+                url: "{{ route('password.email') }}",
+                data: formData,
+                success: () => window.location.assign("{{ route('home') }}"),
+                error: (response) => {
+                    if(response.status === 422) {
+                        console.log(response)
+                        let errors = response.responseJSON.errors;
+                        Object.keys(errors).forEach(function (key) {
+                            $("#" + key + "Input").addClass("is-invalid");
+                            $("#" + key + "Error").children("strong").text(errors[key][0]);
+                        });
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            })
+
+        });
+
+    });
+
+</script>
+
 @endsection

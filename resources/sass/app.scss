@@ -6,3 +6,24 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Barra
+@import 'barra';
+
+// Modal Publicar Trato
+@import 'publicarTrato';
+
+// Perfil
+@import 'perfil';
+
+// Ofertas
+@import 'tareas';
+
+// Inicio
+@import 'inicio';
+
+// Publicar
+@import 'publicar';
+
+/* FontAwesome */
+@import '~@fortawesome/fontawesome-free/css/all.css';

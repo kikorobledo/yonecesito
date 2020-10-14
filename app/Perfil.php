@@ -18,6 +18,6 @@ class Perfil extends Model
 
     /* Obtiene el Usuario al que pertenece */
     public function usuario(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }

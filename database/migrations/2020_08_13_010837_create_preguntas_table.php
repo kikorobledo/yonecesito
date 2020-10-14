@@ -16,17 +16,18 @@ class CreatePreguntasTable extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->id();
             $table->text('contenido');
-            $table->foreignId('tarea_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->string('imagen')->nullable();
+            $table->foreignId('tarea_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('respuesta_preguntas', function (Blueprint $table) {
             $table->id();
             $table->text('contenido');
-            $table->uuid('uuid');
-            $table->foreignId('pregunta_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->string('imagen')->nullable();
+            $table->foreignId('pregunta_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
