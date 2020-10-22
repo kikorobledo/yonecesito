@@ -159,7 +159,7 @@ class TareaController extends Controller
     /* Mis tareas */
     public function mistareas(Request $request){
 
-        $tareas = Tarea::where('user_id', auth()->user()->id)->with('ofertas','preguntas')->first();
+        $tareas = Tarea::where('user_id', auth()->user()->id)->with('ofertas','preguntas')->get();
 
         return view('tareas.mistareas')->with('tareas', $tareas);
     }

@@ -347,7 +347,7 @@
 
             <div class="text-center">
 
-                <button type="button" class="btn btn-cancelar btn-cancelar-curriculum">Cancelar</button>
+                <button type="button" class="btn btn-cancelar btn-cancelar-acerca">Cancelar</button>
 
                 <button class="btn btn-guardar" type="submit">Guardar</button>
 

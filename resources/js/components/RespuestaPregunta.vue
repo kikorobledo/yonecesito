@@ -98,15 +98,15 @@
 <script>
 
     export default {
-        name:'RespuestaOferta',
-        props:['oferta', 'oferta_principal', 'user_id'],
+        name:'RespuestaPregunta',
+        props:['pregunta', 'pregunta_principal', 'user_id'],
         data(){
             return{
-                imagenAutor:'/storage/perfiles/imagenes/' + this.oferta.autor.perfil.imagen,
-                contenido: this.oferta.contenido,
+                imagenAutor:'/storage/perfiles/imagenes/' + this.pregunta.autor.perfil.imagen,
+                contenido: this.pregunta.contenido,
                 imagenSubida:null,
                 contenidoSubida:'',
-                idmodal:'modal' + this.oferta_principal,
+                idmodal:'modal' + this.pregunta_principal,
                 myModel:false
             }
         },
@@ -139,16 +139,16 @@
 
                 const formData = new FormData();
 
-                formData.append('contenido_respuesta_oferta', this.contenidoSubida);
+                formData.append('contenido_respuesta_pregunta', this.contenidoSubida);
 
-                formData.append('oferta_id', this.oferta_principal);
+                formData.append('pregunta_id', this.pregunta_principal);
 
                 formData.append('user_id', this.user_id);
 
                 if(this.imagenSubida != null)
-                    formData.append('imagen-respuesta-oferta', this.imagenSubida);
+                    formData.append('imagen-respuesta-pregunta', this.imagenSubida);
 
-                axios.post('http://127.0.0.1:8000/respuesta_oferta/store',formData)
+                axios.post('http://127.0.0.1:8000/respuesta_pregunta/store',formData)
                     .then((response =>{
 
                         console.log(response)
@@ -157,8 +157,8 @@
 
                             if(response.data.imagen){
 
-                                $('div[oferta_principal='+ response.data.oferta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
+                                $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
+                                    "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
                                         "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
                                         "<div> "+
@@ -172,15 +172,15 @@
                                             "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
                                                 "<img src='/storage/" + response.data.imagen + "'</img>"+
                                             "</a>"+
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                            "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
                                     "</div>"
                                 );
 
                             }
                             else{
 
-                                $('div[oferta_principal='+ response.data.oferta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
+                                $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
+                                    "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
                                         "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
                                         "<div> "+
@@ -191,13 +191,13 @@
 
                                             "<p class='m-0'>" + response.data.user + "</p>"+
                                             "<p class='parrafo'>" + response.data.contenido  + "</p>" +
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                            "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
                                     "</div>"
                                 );
 
                             }
 
-                            const res = document.querySelector('div[nueva-respuesta-id="'+ response.data.respuesta_oferta_id + '"]');
+                            const res = document.querySelector('div[nueva-respuesta-id="'+ response.data.respuesta_pregunta_id + '"]');
                             res.focus();
 
                             this.myModel = false;

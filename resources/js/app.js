@@ -41,6 +41,12 @@ Vue.component('respuesta-oferta', require('./components/RespuestaOferta.vue').de
 /* Eliminar Respuesta Oferta */
 Vue.component('eliminar-respuesta-oferta', require('./components/EliminarRespuestaOferta.vue').default);
 
+/* Respuesta Pregunta */
+Vue.component('respuesta-pregunta', require('./components/RespuestaPregunta.vue').default);
+
+/* Eliminar Respuesta Pregunta */
+Vue.component('eliminar-respuesta-pregunta', require('./components/EliminarRespuestaPregunta.vue').default);
+
 /* Notificacion */
 Vue.component('notificacion-sweet', require('./components/NotificacionSweet.vue').default);
 

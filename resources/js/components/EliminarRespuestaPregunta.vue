@@ -1,19 +1,19 @@
 <template>
 
-    <button class="btn btn-block btn-danger btn-sm mt-2" v-on:click="eliminarTarea">Borrar Tarea</button>
+    <button class="btn btn-sm " v-on:click="eliminarRespuesta"><i class="fas fa-trash-alt"></i></button>
 
 </template>
 
 <script>
 
     export default {
-        props:['tareaId'],
+        props:['respuestaPreguntaId'],
         methods: {
 
-            eliminarTarea(){
+            eliminarRespuesta(){
 
                 this.$swal.fire({
-                    title: '¿Deseas eliminar esta tarea?',
+                    title: '¿Deseas eliminar esta respuesta?',
                     text: "Una vez eliminada no se podra recuperar.",
                     icon: 'warning',
                     showCancelButton: true,
@@ -24,21 +24,30 @@
                     }).then((result) => {
 
                         if (result.isConfirmed){
+
                             /* Eliminar la tarea con Axios */
                             const params = {
-                                id: this.tareaId
+                                id: this.respuestaPreguntaId
                             };
-                            axios.post(`/tarea/${this.tareaId}`, {params, _method:'delete'})
+
+
+                            axios.post(`/respuesta_pregunta/${this.respuestaPreguntaId}`, {params, _method:'delete'})
                                 .then(respuesta => {
 
                                     this.$swal({
-                                            title:"Tarea eliminada",
+
+                                            title:"Respuesta eliminada",
                                             icon:'success'
+
                                         }).then((result) => {
-                                            window.location.href = "mistareas";
+
+                                            $('div[respuesta_pregunta_id='+ this.respuestaPreguntaId +']').remove();
+
                                         })
                                 }).catch(error => {
+
                                     console.log(error);
+
                                 });
                         }
                     })

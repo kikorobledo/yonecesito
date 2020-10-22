@@ -123,7 +123,11 @@ if(document.querySelector('#mapa')){
 
                             });
                         }else{
-                            alert("No hay resultados para: " + buscador.value + ', ' + document.querySelector('#tarea_estado').value + ', MEX ' + " arrastra el pin a tu ubicación")
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'No hay resultados para:',
+                                text:  buscador.value + ', ' + document.querySelector('#tarea_estado').value + '. ' + 'Arrastra el pin a tu ubicación.',
+                              })
                         }
                     })
                     .catch(error => {

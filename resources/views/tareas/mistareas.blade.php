@@ -22,16 +22,9 @@
 
 @section('content')
 
-
-@foreach($nuevas_tareas->ofertas as $oferta)
-
-    {{ $oferta->respuestas }}
-
-@endforeach
-
     <div class="container">
 
-        <div class="row row-principal @if(count(Auth::user()->tareas) > 0) d-none @endif">
+        <div class="row row-principal @if($tareas) > 0) d-none @endif">
 
             <div class="col-12 text-center mt-5">
 
@@ -43,13 +36,13 @@
 
         </div>
 
-        <div class="row row-principal @if(count(Auth::user()->tareas) == 0) d-none @endif">
+        <div class="row row-principal @if(count($tareas) == 0) d-none @endif">
 
             <div class="col-12 col-md-4 lista-tareas">
 
                 <div class="tareas">
 
-                    @foreach(Auth::user()->tareas as $tarea)
+                    @foreach($tareas as $tarea)
 
                         @if(Request::input('tarea_id'))
 
@@ -149,13 +142,13 @@
 
                     @php
 
-                        $tarea_actual = Auth::user()->tareas->first();
+                        $tarea_actual = $tareas->first();
 
                     @endphp
 
                 @endif
 
-                @if(count(Auth::user()->tareas) > 0)
+                @if(count($tareas) > 0)
 
                     <div class="row">
 
@@ -456,7 +449,7 @@
 
                                 @foreach($tarea_actual->ofertas as $oferta)
 
-                                    <div class="oferta d-flex flex-column">
+                                    <div class="oferta d-flex flex-column" oferta_principal={{ $oferta->id }}>
 
                                         <div class="">
 
@@ -480,17 +473,17 @@
 
                                         </div>
 
-                                        <div class="oferta-descripcion">
+                                        <div class="oferta-descripcion" >
 
                                             <p class="parrafo">{{ $oferta->contenido }}</p>
 
                                             <div class="oferta-footer d-flex justify-content-between w-100">
 
-                                                <p class="m-0">{{$oferta->created_at->diffForHumans()}}</p>
+                                                <p class="">{{$oferta->created_at->diffForHumans()}}</p>
 
                                                 <div>
 
-                                                    {{-- <respuesta-oferta  autor={{ $oferta->autor->name }} oferta-contenido={{ $oferta->contenido }} oferta-id={{ $oferta->id }} imagen={{ $oferta->autor->perfil->imagen }} oferta-id-principal={{ $oferta->id}}></respuesta-oferta> --}}
+                                                    <respuesta-oferta :oferta="{{ json_encode($oferta) }}" oferta_principal={{ $oferta->id }} user_id={{ Auth::user()->id }}></respuesta-oferta>
 
                                                     @if(Auth::user()->id == $oferta->autor->id)
 
@@ -510,7 +503,8 @@
                                             @foreach ($oferta->respuestas as $respuesta)
 
                                                 <div class="oferta mb-0 pb-0 mt-0 pt-0">
-                                                    <div class="oferta-descripcion w-75 float-right  text-left">
+
+                                                    <div class="oferta-descripcion w-75 float-right  text-left" respuesta_oferta_id={{ $respuesta->id }}>
 
                                                         <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
 
@@ -533,10 +527,6 @@
                                                             <p class="m-0">{{$respuesta->created_at->diffForHumans()}}</p>
 
                                                             <div>
-
-                                                                {{-- <button class="btn btn-sm btn-oferta-respuesta" respuesta_id={{ $respuesta->id}} autor="{{ $respuesta->autor->name }}" oferta_contenido="{{ $respuesta->contenido }}" oferta_id="{{ $respuesta->oferta->id }}" imagen="{{ $respuesta->autor->perfil->imagen }}"><i class="fas fa-reply"></i>Responder</button> --}}
-
-                                                                {{-- <respuesta-oferta respuesta-id={{ $respuesta->id}} autor={{ $respuesta->autor->name }} oferta-contenido={{ $respuesta->contenido }} oferta-id={{ $respuesta->oferta->id }} imagen={{ $respuesta->autor->perfil->imagen }}></respuesta-oferta> --}}
 
                                                                 @if(Auth::user()->id == $respuesta->autor->id)
 
@@ -561,7 +551,7 @@
 
                                 @endforeach
 
-                                @include('ui.modalRespuestaOferta')
+
 
                             @else
 
@@ -583,121 +573,107 @@
 
                                 @foreach($tarea_actual->preguntas as $pregunta)
 
-                                    <div class="oferta d-flex flex-column">
+                                <div class="oferta d-flex flex-column" pregunta_principal={{ $pregunta->id }}>
 
-                                        <div class="">
+                                    <div class="">
 
-                                            <img src="/storage/perfiles/imagenes/{{ $pregunta->autor->perfil->imagen }}" alt="Imagen de perfil">
+                                        <img src="/storage/perfiles/imagenes/{{ $pregunta->autor->perfil->imagen }}" alt="Imagen de perfil">
 
-                                            <div class="d-flex flex-column text-left">
+                                        <div class="d-flex flex-column text-left">
 
-                                                <a href="{{ route('perfil.show', ['perfil' => $pregunta->user_id]) }}">{{ $pregunta->autor->name }}</a>
+                                            <a href="{{ route('perfil.show', ['perfil' => $pregunta->user_id]) }}">{{ $pregunta->autor->name }}</a>
+
+                                            <div class="estrellas">
+
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                5.0
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="oferta-descripcion" >
+
+                                        <p class="parrafo">{{ $pregunta->contenido }}</p>
+
+                                        <div class="oferta-footer d-flex justify-content-between w-100">
+
+                                            <p class="">{{$pregunta->created_at->diffForHumans()}}</p>
+
+                                            <div>
+
+                                                <respuesta-pregunta :pregunta="{{ json_encode($pregunta) }}" pregunta_principal={{ $pregunta->id }} user_id={{ Auth::user()->id }}></respuesta-pregunta>
+
+                                                @if(Auth::user()->id == $pregunta->autor->id)
+
+                                                    <button class="btn btn-sm btn-pregunta-respuesta" ><i class="fas fa-trash-alt"></i></button>
+
+                                                @endif
 
                                             </div>
 
                                         </div>
 
-                                        <div class="oferta-descripcion">
+                                    </div>
 
-                                            <p class="parrafo">{{ $pregunta->contenido }}</p>
 
-                                            <div class="oferta-footer d-flex justify-content-between w-100">
+                                    @if($pregunta->respuestas)
 
-                                                <p class="m-0">{{$pregunta->created_at->diffForHumans()}}</p>
+                                        @foreach ($pregunta->respuestas as $respuesta)
 
-                                                <div>
+                                            <div class="oferta mb-0 pb-0 mt-0 pt-0">
 
-                                                    <button
-                                                        class="btn btn-sm btn-pregunta-respuesta"
-                                                        pregunta_id_principal={{ $pregunta->id }}
-                                                        autor="{{ $pregunta->autor->name }}"
-                                                        respuesta_contenido="{{ $pregunta->contenido }}"
-                                                        respuesta_id="{{ $pregunta->id }}"
-                                                        imagen="{{ $pregunta->autor->perfil->imagen }}">
+                                                <div class="oferta-descripcion w-75 float-right  text-left" respuesta_pregunta_id={{ $respuesta->id }}>
 
-                                                        <i class="fas fa-reply"></i>Responder
+                                                    <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
 
-                                                    </button>
+                                                    <a class="" href="{{ route('perfil.show', ['perfil' => $respuesta->autor->id]) }}">{{ $respuesta->autor->name }}</a>
 
-                                                    @if(Auth::user()->id == $pregunta->autor->id)
+                                                    <p class="parrafo">{{ $respuesta->contenido }}</p>
 
-                                                        <button class="btn btn-sm btn-pregunta-respuesta" ><i class="fas fa-trash-alt"></i></button>
+                                                    @if($respuesta->imagen != null)
+
+                                                        <a href="/storage/{{ $respuesta->imagen }}" data-lightbox="{{ $respuesta->imagen }}" data-title="Imagen descriptiva">
+
+                                                            <img src="/storage/{{ $respuesta->imagen }}" alt="" class="img-fluid">
+
+                                                        </a>
 
                                                     @endif
 
-                                                </div>
+                                                    <div class="oferta-footer d-flex justify-content-between w-100">
 
-                                            </div>
+                                                        <p class="m-0">{{$respuesta->created_at->diffForHumans()}}</p>
 
-                                        </div>
+                                                        <div>
 
+                                                            @if(Auth::user()->id == $respuesta->autor->id)
 
-                                        @if($pregunta->respuestas)
+                                                                <eliminar-respuesta-pregunta respuesta-pregunta-id={{ $respuesta->id}}></eliminar-respuesta-pregunta>
 
-                                            @foreach ($pregunta->respuestas as $respuesta)
-
-                                                <div class="oferta mb-0 pb-0 mt-0 pt-0">
-                                                    <div class="oferta-descripcion w-75 float-right  text-left">
-
-                                                        <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
-
-                                                        <a class="" href="{{ route('perfil.show', ['perfil' => $respuesta->autor->id]) }}">{{ $respuesta->autor->name }}</a>
-
-                                                        <p class="parrafo">{{ $respuesta->contenido }}</p>
-
-                                                        @if($respuesta->imagen != null)
-
-                                                            <a href="/storage/{{ $respuesta->imagen }}" data-lightbox="{{ $respuesta->imagen }}" data-title="Imagen descriptiva">
-
-                                                                <img src="/storage/{{ $respuesta->imagen }}" alt="" class="img-fluid">
-
-                                                            </a>
-
-                                                        @endif
-
-                                                        <div class="oferta-footer d-flex justify-content-between w-100">
-
-                                                            <p class="m-0">{{$respuesta->created_at->diffForHumans()}}</p>
-
-                                                            <div>
-                                                                <button
-                                                                    class="btn btn-sm btn-pregunta-respuesta"
-                                                                    respuesta_id={{ $respuesta->id}}
-                                                                    autor="{{ $respuesta->autor->name }}"
-                                                                    respuesta_contenido="{{ $respuesta->contenido }}"
-                                                                    respuesta_id="{{ $respuesta->id }}"
-                                                                    pregunta_id="{{ $respuesta->pregunta->id }}"
-                                                                    imagen="{{ $respuesta->autor->perfil->imagen }}">
-
-
-                                                                    <i class="fas fa-reply"></i>Responder
-
-                                                                </button>
-
-                                                                @if(Auth::user()->id == $respuesta->autor->id)
-
-                                                                   {{--  <eliminar-pregunta-oferta respuesta-pregunta-id={{ $respuesta->id}}></eliminar-pregunta-oferta> --}}
-
-                                                                @endif
-
-                                                            </div>
+                                                            @endif
 
                                                         </div>
 
                                                     </div>
+
                                                 </div>
+                                            </div>
 
-                                            @endforeach
+                                        @endforeach
 
-                                        @endif
+                                    @endif
 
-                                    </div>
+                                </div>
 
-                                    <hr>
+                                <hr>
 
                                 @endforeach
-
-                                @include('ui.modalRespuestaPregunta')
 
                             @else
 
@@ -744,7 +720,7 @@
 
                                                 <input type="text" class="form-control"  placeholder="Pon aquí tu dirección" aria-label="" aria-describedby="basic-addon1" id="formBuscador">
 
-                                                <input type="hidden" id="tarea_estado" value="{{ $tarea_actual->estado }}">
+                                                <input type="hidden" id="tarea_estado" value="{{ $tarea_actual->estado->nombre }}">
 
                                                 <div class="input-group-append">
 
@@ -753,7 +729,6 @@
                                                 </div>
 
                                                 <small class="text-secondary text-center">El asistente colocará una dirección aproximada ó arrasatre el pin en tu ubicación</small>
-                                                <small class="text-secondary mb-3 text-center">Por ejemplo: Madero 456, Centro, Morelia</small>
 
                                             </div>
 
@@ -995,6 +970,7 @@
         crossorigin="anonymous" defer>
     </script>
 
+
     <!-- Load Esri Leaflet from CDN -->
     <script src="https://unpkg.com/esri-leaflet" defer></script>
     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
@@ -1002,6 +978,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js" integrity="sha512-9WciDs0XP20sojTJ9E7mChDXy6pcO0qHpwbEJID1YVavz2H6QBz5eLoDD8lseZOb2yGT8xDNIV7HIe1ZbuiDWg==" crossorigin="anonymous" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     @if ($errors->has('direccion') || $errors->has('colonia') || $errors->has('lat') || $errors->has('lng'))
 
@@ -1085,42 +1064,92 @@
 
             });
 
-            /* Respuesta pregunta */
-            var btnPreguntaRespuesta = document.querySelectorAll('.btn-pregunta-respuesta');
 
-            for(const btn of btnPreguntaRespuesta){
+            /* Borrar Respuesta Oferta */
+            $('body').on('click','.btn-eliminar-respuesta-oferta',function(){
 
-                btn.addEventListener('click', function(){
+                const params = {
+                    id: this.getAttribute('id')
+                };
 
-                    var imagen = this.getAttribute('imagen');
-                    var pregunta_contenido = this.getAttribute('respuesta_contenido');
-                    var pregunta_id = this.getAttribute('pregunta_id_principal');
+                Swal.fire({
+                    title: '¿Deseas eliminar esta respuesta?',
+                    text: "Una vez eliminada no se podra recuperar.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si',
+                    cancelButtonText: 'No'
+                    }).then((result) => {
 
-                    if(pregunta_id == null)
-                        var pregunta_id = this.getAttribute('pregunta_id');
+                        if (result.isConfirmed){
 
-                    var autor = this.getAttribute('autor');
+                            axios.post(`/respuesta_oferta/${this.getAttribute('id')}`, {params, _method:'delete'})
+                                .then(respuesta => {
 
-                    $('#modalRespuestaPregunta').on('show.bs.modal', function(){
+                                    Swal.fire({
 
-                        $(this).find('#imagen-pregunta-respuesta').attr("src", "/storage/perfiles/imagenes/" + imagen);
+                                        title:"Respuesta eliminada",
+                                        icon:'success'
 
+                                        }).then((result) => {
 
-                        $(this).find('#perfil-pregunta-respuesta').text(autor);
-                        $(this).find('#pregunta_id_respuesta').val(pregunta_id);
-                        $(this).find('#contenido-pregunta-respuesta').text(pregunta_contenido);
+                                            $(this).parent().remove();
+
+                                        })
+
+                                }).catch(error => {
+
+                                    console.log(error);
+
+                                });
+                        }
                     });
+            });
 
-                    $('#modalRespuestaPregunta').modal({
+            /* Borrar Respuesta Pregunta */
+            $('body').on('click','.btn-eliminar-respuesta-pregunta',function(){
 
-                        show: true
+                const params = {
+                    id: this.getAttribute('id')
+                };
 
-                    })
+                Swal.fire({
+                    title: '¿Deseas eliminar esta respuesta?',
+                    text: "Una vez eliminada no se podra recuperar.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si',
+                    cancelButtonText: 'No'
+                    }).then((result) => {
 
+                        if (result.isConfirmed){
 
-                })
+                            axios.post(`/respuesta_pregunta/${this.getAttribute('id')}`, {params, _method:'delete'})
+                                .then(respuesta => {
 
-            }
+                                    Swal.fire({
+
+                                        title:"Respuesta eliminada",
+                                        icon:'success'
+
+                                        }).then((result) => {
+
+                                            $(this).parent().remove();
+
+                                        })
+
+                                }).catch(error => {
+
+                                    console.log(error);
+
+                                });
+                        }
+                    });
+            });
 
         });
 

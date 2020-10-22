@@ -29,24 +29,23 @@
                             const params = {
                                 id: this.respuestaOfertaId
                             };
-                            
+
 
                             axios.post(`/respuesta_oferta/${this.respuestaOfertaId}`, {params, _method:'delete'})
                                 .then(respuesta => {
 
                                     this.$swal({
-                                            
+
                                             title:"Respuesta eliminada",
-                                            text:"Se eliminó la respuesta",
                                             icon:'success'
 
                                         }).then((result) => {
 
-                                            $('button[respuesta_id='+ this.respuestaOfertaId +']').parent().parent().parent().parent().remove();
-                                            
+                                            $('div[respuesta_oferta_id='+ this.respuestaOfertaId +']').remove();
+
                                         })
                                 }).catch(error => {
-                                    
+
                                     console.log(error);
 
                                 });
