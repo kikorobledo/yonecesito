@@ -14,51 +14,72 @@ class PerfilSeeder extends Seeder
     public function run()
     {
         DB::table('perfils')->insert([
-            'imagen' => '1600189209.jpeg',
-            'titulo' => 'Carpintero',
-            'acerca_de_mi' => 'Soy carpintero desde siempre porque asi me gustas y que tiene?!',
-            'cv' => 'askjdaksd.pdf',
-            'educacion' => 'Universidad',
-            'idiomas' => 'Ingles',
-            'trabajo' => 'Carpintero',
-            'direccion' => 'Calle vainilla #34',
-            'colonia' => 'Fresnos',
-            'especialidad' => 'Madera fina',
             'user_id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('perfils')->insert([
-            'imagen' => '1600189310.jpeg',
-            'titulo' => 'Medico',
-            'acerca_de_mi' => 'Medico internista trabajando en el hospital de la mujer',
-            'cv' => 'askjdaksd.pdf',
-            'educacion' => 'Doctorado',
-            'idiomas' => 'Ingles,Frances,Italiano',
-            'trabajo' => 'Medico',
-            'direccion' => 'Calle girasoles #34',
-            'colonia' => 'Porvenir',
-            'especialidad' => 'Cardiología',
             'user_id' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('perfils')->insert([
-            'imagen' => '1600189330.jpeg',
-            'titulo' => 'Ingeniero Civil',
-            'acerca_de_mi' => 'Ingeniero con experiencia en construccion de vialidades',
-            'cv' => 'askjdaksd.pdf',
-            'educacion' => 'Universidad',
-            'idiomas' => 'Ingles',
-            'trabajo' => 'Ingeniero Civil',
-            'direccion' => 'Calle Madero #34',
-            'colonia' => 'Centro',
-            'especialidad' => 'Carreteras',
             'user_id' => 3,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 5,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+
+        DB::table('perfils')->insert([
+            'user_id' => 6,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+
+        DB::table('perfils')->insert([
+            'user_id' => 8,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 9,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 10,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('perfils')->insert([
+            'user_id' => 11,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
     }
 }

@@ -27,28 +27,53 @@ Vue.use(VueSweetalert2);
 
 Vue.config.ignoredElements=['trix-editor', 'trix-toolbar'];
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 /* Fechas */
 Vue.component('mostrar-fecha', require('./components/MostrarFecha.vue').default);
 
 /* Eliminar Tarea */
 Vue.component('eliminar-tarea', require('./components/EliminarTarea.vue').default);
 
+/* Principal Tareas */
+Vue.component('principal-tareas', require('./components/PrincipalTareas.vue').default);
+
+/* Principal Tarea */
+Vue.component('principal-tarea', require('./components/PrincipalTarea.vue').default);
+
+/* Principal Mapa */
+Vue.component('principal-mapa', require('./components/PrincipalMapa.vue').default);
+
+/* Mostrar Tarea */
+Vue.component('mostrar-tarea', require('./components/MostrarTarea.vue').default);
+
+/* Hacer Oferta */
+Vue.component('hacer-oferta', require('./components/HacerOferta.vue').default);
+
 /* Respuesta Oferta */
 Vue.component('respuesta-oferta', require('./components/RespuestaOferta.vue').default);
+
+/* Eliminar Oferta */
+Vue.component('eliminar-oferta', require('./components/EliminarOferta.vue').default);
 
 /* Eliminar Respuesta Oferta */
 Vue.component('eliminar-respuesta-oferta', require('./components/EliminarRespuestaOferta.vue').default);
 
+/* Hacer Pregunta */
+Vue.component('hacer-pregunta', require('./components/HacerPregunta.vue').default);
+
 /* Respuesta Pregunta */
 Vue.component('respuesta-pregunta', require('./components/RespuestaPregunta.vue').default);
+
+/* Eliminar Pregunta */
+Vue.component('eliminar-pregunta', require('./components/EliminarPregunta.vue').default);
 
 /* Eliminar Respuesta Pregunta */
 Vue.component('eliminar-respuesta-pregunta', require('./components/EliminarRespuestaPregunta.vue').default);
 
 /* Notificacion */
 Vue.component('notificacion-sweet', require('./components/NotificacionSweet.vue').default);
+
+/* Filtro Tareas */
+Vue.component('filtro-tareas', require('./components/FiltroTareas.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

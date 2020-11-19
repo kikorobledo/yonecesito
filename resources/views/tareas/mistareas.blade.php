@@ -24,7 +24,7 @@
 
     <div class="container">
 
-        <div class="row row-principal @if($tareas) > 0) d-none @endif">
+        <div class="row row-principal @if( count($tareas) > 0) d-none @endif">
 
             <div class="col-12 text-center mt-5">
 
@@ -109,7 +109,7 @@
 
                                 <i class="fas fa-map-marker-alt"></i>
 
-                                <p>{{ $tarea->direccion }} {{ $tarea->colonia }}</p>
+                                <p>{{ $tarea->direccion }}</p>
 
                             </div>
 
@@ -277,15 +277,10 @@
                                     <i class="fas fa-calendar-alt"></i>
 
                                     <div>
+
                                         <p class="tarea-publicado-por">Fecha de vencimiento</p>
 
-                                        @php
-
-                                            $fecha = $tarea_actual->fecha_de_vencimiento;
-
-                                        @endphp
-
-                                        <mostrar-fecha fecha="{{ $fecha }}" class="fecha-vencimiento"></mostrar-fecha>
+                                        <mostrar-fecha fecha="{{ $tarea_actual->fecha_de_vencimiento }}" class="fecha-vencimiento"></mostrar-fecha>
 
                                     </div>
 
@@ -453,7 +448,16 @@
 
                                         <div class="">
 
-                                            <img src="/storage/perfiles/imagenes/{{ $oferta->autor->perfil->imagen }}" alt="Imagen de perfil">
+                                            @if($oferta->autor->perfil->imagen)
+
+                                                <img src="/storage/perfiles/imagenes/{{ $oferta->autor->perfil->imagen }}" alt="Imagen de perfil">
+
+                                            @else
+
+                                                <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                            @endif
+
 
                                             <div class="d-flex flex-column text-left">
 
@@ -475,7 +479,7 @@
 
                                         <div class="oferta-descripcion" >
 
-                                            <p class="parrafo">{{ $oferta->contenido }}</p>
+                                            <p class="parrafo">{{ strip_tags($oferta->contenido) }}</p>
 
                                             <div class="oferta-footer d-flex justify-content-between w-100">
 
@@ -484,12 +488,6 @@
                                                 <div>
 
                                                     <respuesta-oferta :oferta="{{ json_encode($oferta) }}" oferta_principal={{ $oferta->id }} user_id={{ Auth::user()->id }}></respuesta-oferta>
-
-                                                    @if(Auth::user()->id == $oferta->autor->id)
-
-                                                        <button class="btn btn-sm btn-oferta-respuesta" ><i class="fas fa-trash-alt"></i></button>
-
-                                                    @endif
 
                                                 </div>
 
@@ -506,7 +504,15 @@
 
                                                     <div class="oferta-descripcion w-75 float-right  text-left" respuesta_oferta_id={{ $respuesta->id }}>
 
-                                                        <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
+                                                        @if($respuesta->autor->perfil->imagen)
+
+                                                            <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
+
+                                                        @else
+
+                                                            <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                        @endif
 
                                                         <a class="" href="{{ route('perfil.show', ['perfil' => $respuesta->autor->id]) }}">{{ $respuesta->autor->name }}</a>
 
@@ -577,7 +583,15 @@
 
                                     <div class="">
 
-                                        <img src="/storage/perfiles/imagenes/{{ $pregunta->autor->perfil->imagen }}" alt="Imagen de perfil">
+                                        @if($pregunta->autor->perfil->imagen)
+
+                                            <img src="/storage/perfiles/imagenes/{{ $pregunta->autor->perfil->imagen }}" alt="Imagen de perfil">
+
+                                        @else
+
+                                            <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                        @endif
 
                                         <div class="d-flex flex-column text-left">
 
@@ -630,7 +644,15 @@
 
                                                 <div class="oferta-descripcion w-75 float-right  text-left" respuesta_pregunta_id={{ $respuesta->id }}>
 
-                                                    <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
+                                                    @if($respuesta->autor->perfil->imagen)
+
+                                                        <img src="/storage/perfiles/imagenes/{{ $respuesta->autor->perfil->imagen }}" alt="Imagen de perfil">
+
+                                                    @else
+
+                                                        <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                    @endif
 
                                                     <a class="" href="{{ route('perfil.show', ['perfil' => $respuesta->autor->id]) }}">{{ $respuesta->autor->name }}</a>
 
@@ -1038,6 +1060,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            var myParam = location.search.split('tarea_id=')[1]
+
+            if(myParam)
+                $('div[id_tarea="' + myParam + '"]')[0].scrollIntoView()
 
             $('#btn-detalles').on('click', function(){
 

@@ -26,6 +26,7 @@ class CreatePerfilsTable extends Migration
             $table->string('trabajo')->nullable(true);
             $table->string('direccion')->nullable(true);
             $table->string('colonia')->nullable(true);
+            $table->date('fecha_de_nacimiento')->nullable(true);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,8 +35,20 @@ class CreatePerfilsTable extends Migration
             $table->id();
             $table->string('tipo');
             $table->text('contenido');
+            $table->foreignId('autor')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
+            $table->foreignId('receptor')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
+            $table->timestamps();
+        });
+
+        Schema::create('dato_bancarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('direccion')->nullable(true);
+            $table->string('colonia')->nullable(true);
+            $table->integer('codigo_postal')->nullable(true);
+            $table->foreignId('estado_id')->nullable()->constrained();
+            $table->string('propietario_tarjeta')->nullable(true);
+            $table->integer('numero_tarjeta')->nullable(true);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('perfil_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

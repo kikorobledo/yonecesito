@@ -186,7 +186,7 @@
 </div>
 
 
-@section('scripts2')
+@section('scripts')
 
 
     @parent

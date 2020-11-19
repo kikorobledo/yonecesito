@@ -46,7 +46,7 @@ class RespuestaOfertaController extends Controller
 
         if($request['imagen-respuesta-oferta']){
 
-            $ruta_imagen = $request['imagen-respuesta-oferta']->store('respuestas_oferta','public');
+            $ruta_imagen = $request['imagen-respuesta-oferta']->store('ofertas','public');
 
             $respuesta_oferta = new RespuestaOferta([
                 'oferta_id' => $data['oferta_id'],

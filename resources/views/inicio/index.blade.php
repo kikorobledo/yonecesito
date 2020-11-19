@@ -43,8 +43,8 @@
 
                     <div class="menu col-xs-12 col-md-5">
                         <button class=" btn text-white p-3 border publicar-oferta" data-toggle="modal" data-target="#modalPublicar">¿Qué Necesitas?</button>
-                        <a href="#">Categorías</a>
-                        <a href="ofertas.html">Ver Tareas</a>
+                        {{-- <a href="#">Categorías</a> --}}
+                        <a href={{ route('tarea.tareas') }}>Ver Tareas</a>
                     </div>
 
                     @guest

@@ -5,6 +5,7 @@ namespace App;
 use App\Tarea;
 use App\Perfil;
 use Carbon\Carbon;
+use App\DatoBancario;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function perfil()
     {
         return $this->hasOne(Perfil::class);
+    }
+
+    public function datosBancarios()
+    {
+        return $this->hasOne(DatoBancario::class);
     }
 }

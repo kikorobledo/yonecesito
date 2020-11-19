@@ -439,3 +439,24 @@ trix-toolbar [data-trix-button-group="file-tools"] {
 .oferta .oferta-descripcion .parrafo{
     font-weight: 300;
 }
+
+.buscador{
+    border-radius: 160px;
+    color: rgb(84, 90, 119);
+    width: 25%;
+}
+
+.buscador::placeholder{
+    color:rgb(187, 194, 220);
+}
+
+.btn-filtro{
+    color: #fff;
+    border-radius: 160px;
+    background-color:#008fb4 ;
+}
+
+.btn-filtro:hover{
+    background-color:#c7cecf;
+    color:#fff;
+}

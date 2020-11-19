@@ -12,6 +12,14 @@ class RespuestaPregunta extends Model
 
     protected $fillable=['contenido','imagen','pregunta_id','user_id'];
 
+    protected $dates = ['created_at'];
+
+    protected $appends = ['createdAtHumanReadable'];
+
+    public function getCreatedAtHumanReadableAttribute(){
+        return $this->created_at->diffForHumans();
+    }
+
     /* Obtiene la Pregunta a la que pertenece */
     public function pregunta(){
         return $this->belongsTo(Pregunta::class, 'pregunta_id');

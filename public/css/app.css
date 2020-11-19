@@ -150,8 +150,7 @@
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical,
 :root .fa-flip-both {
-  -webkit-filter: none;
-          filter: none; }
+  filter: none; }
 
 .fa-stack {
   display: inline-block;
@@ -6736,11 +6735,6 @@ pre code {
 }
 
 .form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
-.form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
@@ -16275,6 +16269,35 @@ trix-toolbar [data-trix-button-group=file-tools] {
 
 .oferta .oferta-descripcion .parrafo {
   font-weight: 300;
+}
+
+.buscador {
+  border-radius: 160px;
+  color: #545a77;
+  width: 25%;
+}
+
+.buscador::-moz-placeholder {
+  color: #bbc2dc;
+}
+
+.buscador:-ms-input-placeholder {
+  color: #bbc2dc;
+}
+
+.buscador::placeholder {
+  color: #bbc2dc;
+}
+
+.btn-filtro {
+  color: #fff;
+  border-radius: 160px;
+  background-color: #008fb4;
+}
+
+.btn-filtro:hover {
+  background-color: #c7cecf;
+  color: #fff;
 }
 
 header {

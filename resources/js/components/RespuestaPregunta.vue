@@ -18,7 +18,7 @@
 
                                 <div class="modal-header">
 
-                                    <h4 class="modal-title mx-auto">Respuesta Oferta</h4>
+                                    <h4 class="modal-title mx-auto">Respuesta Pregunta</h4>
 
                                     <button type="button" class="close float-right" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
 
@@ -28,22 +28,15 @@
 
                                     <div class="mb-2">
 
-                                        <img :src="imagenAutor" alt="Imagen de perfil" id="imagen-oferta-respuesta">
+                                        <img v-if="this.pregunta.autor.perfil.imagen" :src="imagenAutor" alt="Imagen de perfil" id="imagen-oferta-respuesta">
+
+                                        <img v-else src="/storage/img/usuario.jpg"  alt="Foto Perfil" class="foto-perfil-barra">
 
                                         <div class="d-flex flex-column text-left">
 
-                                            <a id="perfil-oferta-respuesta" href="#"></a>
+                                            <p class="mb-0 nombre-texto">{{ nombreAutor }}</p>
 
-                                            <div class="estrellas">
-
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <p>5.0</p>
-
-                                            </div>
+                                            <p class="contenido-texto">{{ contenido | strippedContent}}</p>
 
                                         </div>
 
@@ -107,7 +100,8 @@
                 imagenSubida:null,
                 contenidoSubida:'',
                 idmodal:'modal' + this.pregunta_principal,
-                myModel:false
+                myModel:false,
+                nombreAutor: this.pregunta.autor.name,
             }
         },
         mounted() {
@@ -148,10 +142,17 @@
                 if(this.imagenSubida != null)
                     formData.append('imagen-respuesta-pregunta', this.imagenSubida);
 
-                axios.post('http://127.0.0.1:8000/respuesta_pregunta/store',formData)
+                axios.post('/respuesta_pregunta/store',formData)
                     .then((response =>{
 
-                        console.log(response)
+                        /* console.log(response) */
+
+                        let foto = '';
+
+                        if(response.data.foto == null)
+                            foto = "/storage/img/usuario.jpg"
+                        else
+                            foto = "/storage/perfiles/imagenes/" + response.data.foto
 
                         $("#idmodal" ).modal('hide');
 
@@ -159,11 +160,11 @@
 
                                 $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
                                     "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
-                                        "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
+                                        "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
                                         "<div> "+
 
-                                            "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>"+
+                                            "<img src='" + foto + "'</img>"+
 
                                         "</div>"+
 
@@ -181,11 +182,11 @@
 
                                 $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
                                     "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
-                                        "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
+                                        "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
                                         "<div> "+
 
-                                            "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>"+
+                                            "<img src='" + foto + "'</img>"+
 
                                         "</div>"+
 
@@ -197,8 +198,8 @@
 
                             }
 
-                            const res = document.querySelector('div[nueva-respuesta-id="'+ response.data.respuesta_pregunta_id + '"]');
-                            res.focus();
+                            const res = $('div[nueva-respuesta-id="'+ response.data.respuesta_pregunta_id + '"]');
+                            res[0].scrollIntoView({behavior:'smooth'})
 
                             this.myModel = false;
 
@@ -215,7 +216,19 @@
                             });
                         }
 
+                        this.$swal({
+
+                            title:"Hubo un error al hacer la respuesta.",
+                            icon:'error'
+
+                        })
+
                     });
+            },
+        },
+        filters: {
+            strippedContent: function(string) {
+                return string.replace(/<\/?[^>]+>/ig, " ");
             }
         }
     }
@@ -264,4 +277,14 @@
         justify-content: center;
         align-items: center;
     }
+
+    .nombre-texto{
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .contenido-texto{
+        font-size: 16px;
+    }
+
 </style>

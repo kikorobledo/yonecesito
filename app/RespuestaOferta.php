@@ -10,7 +10,15 @@ class RespuestaOferta extends Model
     //
     protected $table = "respuesta_ofertas";
 
-    protected $fillable=['contenido','uuid','oferta_id','user_id','imagen'];
+    protected $fillable=['contenido', 'oferta_id','user_id','imagen'];
+
+    protected $dates = ['created_at'];
+
+    protected $appends = ['createdAtHumanReadable'];
+
+    public function getCreatedAtHumanReadableAttribute(){
+        return $this->created_at->diffForHumans();
+    }
 
     /* Obtiene la Oferta a la que pertenece */
     public function oferta(){

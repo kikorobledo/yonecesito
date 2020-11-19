@@ -65,7 +65,6 @@ class TareaController extends Controller
 
         $tarea->save();
 
-        /* return view('tareas.edit')->with('tarea', $tarea); */
         return redirect()->route('tarea.mistareas', ['tarea_id' => $tarea->id]);
     }
 
@@ -77,7 +76,7 @@ class TareaController extends Controller
      */
     public function show(Tarea $tarea)
     {
-        //
+        return view('tareas.tareas');
     }
 
     /**
@@ -162,5 +161,14 @@ class TareaController extends Controller
         $tareas = Tarea::where('user_id', auth()->user()->id)->with('ofertas','preguntas')->get();
 
         return view('tareas.mistareas')->with('tareas', $tareas);
+    }
+
+    /* Todas las tareas */
+    public function tareas(){
+
+        $tareas = Tarea::whereNotNull('colonia')->get();
+
+        return view('tareas.tareas')->with('tareas', $tareas);
+
     }
 }

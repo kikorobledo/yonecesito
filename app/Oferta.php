@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oferta extends Model
 {
-    protected $fillable = ['tarea_id','user_id'];
+    protected $fillable = ['contenido','imagen','tarea_id','user_id'];
+
+    protected $dates = ['created_at'];
+
+    protected $appends = ['createdAtHumanReadable'];
+
+    public function getCreatedAtHumanReadableAttribute(){
+        return $this->created_at->diffForHumans();
+    }
 
     /* Obtiene la tarea a la que pertenece */
     public function tarea(){

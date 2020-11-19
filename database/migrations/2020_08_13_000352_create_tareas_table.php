@@ -21,12 +21,18 @@ class CreateTareasTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->timestamps();
+        });
+
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('direccion')->nullable();
             $table->string('colonia')->nullable();
-            $table->foreignId('estado_id')->constrained()->onDelete('cascade');
+            $table->foreignId('estado_id')->constrained();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->text('descripcion');
@@ -34,6 +40,7 @@ class CreateTareasTable extends Migration
             $table->integer('presupuesto');
             $table->string('estatus');
             $table->string('tipo');
+            /* $table->foreignId('categoria_id')->constrained(); */
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('trabajador')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
             $table->timestamps();
@@ -48,6 +55,7 @@ class CreateTareasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('estados');
+        Schema::dropIfExists('categorias');
         Schema::dropIfExists('tareas');
     }
 }

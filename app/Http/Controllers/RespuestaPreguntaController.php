@@ -10,7 +10,7 @@ class RespuestaPreguntaController extends Controller
 {
     public function store(Request $request)
     {
-        
+
 
         $data = $request->validate([
             'contenido_respuesta_pregunta' => 'required',
@@ -21,7 +21,7 @@ class RespuestaPreguntaController extends Controller
 
         if($request['imagen-respuesta-pregunta']){
 
-            $ruta_imagen = $request['imagen-respuesta-pregunta']->store('respuestas_pregunta','public');
+            $ruta_imagen = $request['imagen-respuesta-pregunta']->store('preguntas','public');
 
             $respuesta_pregunta = new RespuestaPregunta([
                 'pregunta_id' => $data['pregunta_id'],

@@ -1899,6 +1899,156 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['ofertaId'],
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['ofertas', 'cantidadOfertas'])),
+  methods: {
+    eliminarOferta: function eliminarOferta() {
+      var _this = this;
+
+      this.$swal.fire({
+        title: '¿Deseas eliminar esta oferta?',
+        text: "Una vez eliminada no se podra recuperar.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          /* Eliminar la oferta con Axios */
+          var params = {
+            id: _this.ofertaId
+          };
+          axios.post("/api/oferta/".concat(_this.ofertaId), {
+            params: params,
+            _method: 'delete'
+          }).then(function (respuesta) {
+            if (_this.cantidadOfertas === 1) _this.$store.commit("CARGAR_CANTIDAD_OFERTAS", 0);
+
+            _this.$swal({
+              title: "Oferta eliminada",
+              icon: 'success'
+            }).then(function (result) {
+              $('div[oferta_principal=' + _this.ofertaId + ']').remove();
+
+              for (var index = 0; index < _this.ofertas.length; index++) {
+                if (_this.ofertas[index].id == _this.ofertaId) _this.ofertas.splice(index, 1);
+              }
+            });
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
+      });
+    }
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['PreguntaId'],
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['preguntas', 'cantidadPreguntas'])),
+  methods: {
+    eliminarPregunta: function eliminarPregunta() {
+      var _this = this;
+
+      this.$swal.fire({
+        title: '¿Deseas eliminar esta pregunta?',
+        text: "Una vez eliminada no se podra recuperar.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          /* Eliminar la oferta con Axios */
+          var params = {
+            id: _this.PreguntaId
+          };
+          axios.post("/api/pregunta/".concat(_this.PreguntaId), {
+            params: params,
+            _method: 'delete'
+          }).then(function (respuesta) {
+            if (_this.cantidadPreguntas === 1) _this.$store.commit("CARGAR_CANTIDAD_PREGUNTAS", 0);
+
+            _this.$swal({
+              title: "Pregunta eliminada",
+              icon: 'success'
+            }).then(function (result) {
+              $('div[pregunta_principal=' + _this.PreguntaId + ']').remove();
+
+              for (var index = 0; index < _this.preguntas.length; index++) {
+                if (_this.preguntas[index].id == _this.PreguntaId) _this.preguntas.splice(index, 1);
+              }
+            });
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
+      });
+    }
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarRespuestaOferta.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarRespuestaOferta.vue?vue&type=script&lang=js& ***!
@@ -2072,15 +2222,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2097,11 +2255,850 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
+  name: 'FiltroTareas',
+  props: ['estados'],
+  data: function data() {
+    return {
+      estado: null,
+      tipo: null,
+      presupuesto: 0,
+      search: null
+    };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['tareas'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['filtrarTareas'])), {}, {
+    filtrar: function filtrar() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append('search', this.search);
+      formData.append('tipo', this.tipo);
+      formData.append('presupuesto', this.presupuesto);
+      formData.append('estado', this.estado);
+
+      try {
+        axios.post('/api/tareas_filtradas/', formData).then(function (respuesta) {
+          /* console.log(respuesta); */
+          if (respuesta.data.length == 0) {
+            _this.$swal({
+              title: "No hay concidencias para la busqueda.",
+              icon: 'warning'
+            });
+          } else {
+            _this.$store.commit("CARGAR_TAREAS", respuesta.data);
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      this.estado = null;
+      this.tipo = null;
+      this.presupuesto = null;
+      this.search = null;
+      $('.dropdown-ubicacion').hide();
+    },
+    abrir: function abrir(e) {
+      $('.dropdown-ubicacion').show();
+      $('.dropdown-ubicacion').click(function (e) {
+        e.stopPropagation();
+      });
+    },
+    estadoActiva: function estadoActiva(e) {
+      var radio = $('.radio');
+
+      for (var index = 0; index < radio.length; index++) {
+        radio[index].classList.remove('active');
+      }
+
+      e.currentTarget.classList.add('active');
+    }
+  }),
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this2 = this;
+
+    var $valueSpan = $('.valueSpan2');
+    var $value = $('#customRange11');
+    $valueSpan.html($value.val());
+    $value.on('input change', function () {
+      $valueSpan.html("$" + $value.val());
+      _this2.presupuesto = $value.val();
+    });
   }
 });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerOferta.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
+  props: ['tarea_id'],
+  name: 'HacerOferta',
+  data: function data() {
+    return {
+      myModel: false,
+      principal: true,
+      actualizarFoto: false,
+      actualizarTelefono: false,
+      actualizarFechaDeNacimiento: false,
+      actualizarDatosBancarios: false,
+      oferta_ventana: false,
+      oferta: null,
+      imagen: false,
+      imagenSubida: null,
+      imagenOferta: null,
+      propietario_tarjeta: null,
+      numero_tarjeta: null,
+      direccion: null,
+      colonia: null,
+      codigo_postal: null,
+      estado_: null,
+      tel: null,
+      fechaDeNacimiento: null
+    };
+  },
+  mounted: function mounted() {
+    if (this.user_id) {
+      this.usuario(this.user_id);
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['tarea', 'user_id', 'usuarioLogeado', 'estados', 'ofertas', 'cantidadOfertas'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['usuario'])), {}, {
+    abrir: function abrir() {
+      this.actualizarFoto = false;
+      this.actualizarTelefono = false;
+      this.actualizarFechaDeNacimiento = false;
+      this.actualizarDatosBancarios = false;
+
+      if (!this.user_id) {
+        $("#loginModal").modal('show');
+      } else {
+        this.myModel = true;
+      }
+    },
+    cerrar: function cerrar() {
+      this.myModel = false;
+      this.principal = true;
+      this.actualizarFoto = false;
+      this.actualizarDatosBancarios = false;
+      this.oferta_ventana = false;
+    },
+    regresar: function regresar() {
+      this.principal = true;
+      this.actualizarFoto = false;
+      this.actualizarTelefono = false;
+      this.actualizarFechaDeNacimiento = false;
+      this.actualizarDatosBancarios = false;
+      this.oferta_ventana = false;
+    },
+    foto: function foto() {
+      this.principal = false;
+      this.actualizarFoto = true;
+    },
+    datosBancarios: function datosBancarios() {
+      this.principal = false;
+      if (this.usuarioLogeado.datos_bancarios.direccion != null) this.direccion = this.usuarioLogeado.datos_bancarios.direccion;
+      if (this.usuarioLogeado.datos_bancarios.colonia != null) this.colonia = this.usuarioLogeado.datos_bancarios.colonia;
+      if (this.usuarioLogeado.datos_bancarios.codigo_postal != null) this.codigo_postal = this.usuarioLogeado.datos_bancarios.codigo_postal;
+      if (this.usuarioLogeado.datos_bancarios.estado_id != null) this.estado_ = this.usuarioLogeado.datos_bancarios.estado_id;
+      if (this.usuarioLogeado.datos_bancarios.propietario_tarjeta != null) this.propietario_tarjeta = this.usuarioLogeado.datos_bancarios.propietario_tarjeta;
+      if (this.usuarioLogeado.datos_bancarios.numero_tarjeta != null) this.numero_tarjeta = this.usuarioLogeado.datos_bancarios.numero_tarjeta;
+      this.actualizarDatosBancarios = true;
+    },
+    telefono: function telefono() {
+      this.principal = false;
+      if (this.usuarioLogeado.perfil.telefono != null) this.tel = this.usuarioLogeado.perfil.telefono;
+      this.actualizarTelefono = true;
+    },
+    fechaDeNacimiento_: function fechaDeNacimiento_() {
+      this.principal = false;
+      this.actualizarFechaDeNacimiento = true;
+    },
+    tieneFoto: function tieneFoto() {
+      return this.usuarioLogeado.perfil.imagen != null ? "verde" : "flecha";
+    },
+    tieneFechaNacimiento: function tieneFechaNacimiento() {
+      return this.usuarioLogeado.perfil.fecha_de_nacimiento != null ? "verde" : "flecha";
+    },
+    tieneTelefono: function tieneTelefono() {
+      return this.usuarioLogeado.perfil.telefono != null ? "verde" : "flecha";
+    },
+    tieneDatosBancarios: function tieneDatosBancarios() {
+      if (this.usuarioLogeado.datos_bancarios.direccion == null) {
+        return "flecha";
+      } else if (this.usuarioLogeado.datos_bancarios.colonia == null) {
+        return "flecha";
+      } else if (this.usuarioLogeado.datos_bancarios.codigo_postal == null) {
+        return "flecha";
+      } else if (this.usuarioLogeado.datos_bancarios.estado_id == null) {
+        return "flecha";
+      } else if (this.usuarioLogeado.datos_bancarios.propietario_tarjeta == null) {
+        return "flecha";
+      } else if (this.usuarioLogeado.datos_bancarios.numero_tarjeta == null) {
+        return "flecha";
+      } else {
+        return "verde";
+      }
+    },
+    actualizarFotoPerfil: function actualizarFotoPerfil() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append('imagen', this.imagenSubida);
+      formData.append('perfil_id', this.usuarioLogeado.perfil.id);
+      axios.post('/api/actualizar_foto_perfil/', formData).then(function (response) {
+        /* console.log(response) */
+        _this.usuarioLogeado.perfil.imagen = response.data.imagen;
+      })["catch"](function (error) {
+        /* console.log(error) */
+        _this.$swal({
+          title: "Hubo un error al actualizar la información.",
+          icon: 'error'
+        });
+      });
+    },
+    actualizarDatosBancariosPOST: function actualizarDatosBancariosPOST() {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append('direccion', this.direccion);
+      formData.append('colonia', this.colonia);
+      formData.append('codigo_postal', this.codigo_postal);
+      formData.append('direccion', this.direccion);
+      formData.append('estado_id', this.estado_);
+      formData.append('propietario_tarjeta', this.propietario_tarjeta);
+      formData.append('numero_tarjeta', this.numero_tarjeta);
+      formData.append('user_id', this.usuarioLogeado.id);
+      axios.post('/dato_bancario/update', formData).then(function (response) {
+        /* console.log(response); */
+        _this2.usuarioLogeado.datos_bancarios.direccion = response.data.direccion;
+        _this2.usuarioLogeado.datos_bancarios.colonia = response.data.colonia;
+        _this2.usuarioLogeado.datos_bancarios.codigo_postal = response.data.codigo_postal;
+        _this2.usuarioLogeado.datos_bancarios.estado_id = response.data.estado_id;
+        _this2.usuarioLogeado.datos_bancarios.propietario_tarjeta = response.data.propietario_tarjeta;
+        _this2.usuarioLogeado.datos_bancarios.numero_tarjeta = response.data.numero_tarjeta;
+        _this2.principal = true;
+        _this2.actualizarDatosBancarios = false;
+      })["catch"](function (error) {
+        _this2.$swal({
+          title: "Hubo un error al actualizar la información.",
+          icon: 'error'
+        });
+
+        console.log(error);
+      });
+    },
+    actualizarTelefonoPerfil: function actualizarTelefonoPerfil() {
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append('telefono', this.tel);
+      formData.append('perfil_id', this.usuarioLogeado.perfil.id);
+      axios.post('/api/actualizar_telefono_perfil/', formData).then(function (response) {
+        /* console.log(response) */
+        _this3.usuarioLogeado.perfil.telefono = _this3.tel;
+        _this3.principal = true;
+        _this3.actualizarTelefono = false;
+      })["catch"](function (error) {
+        /* console.log(error) */
+        _this3.$swal({
+          title: "Hubo un error al actualizar la información.",
+          icon: 'error'
+        });
+      });
+    },
+    actualizarFechaDeNacimientoPerfil: function actualizarFechaDeNacimientoPerfil() {
+      var _this4 = this;
+
+      var formData = new FormData();
+      formData.append('fecha_de_nacimiento', this.fechaDeNacimiento);
+      formData.append('perfil_id', this.usuarioLogeado.perfil.id);
+      axios.post('/api/actualizar_fecha_de_nacimiento_perfil/', formData).then(function (response) {
+        /* console.log(response) */
+        _this4.usuarioLogeado.perfil.fecha_de_nacimiento = response.data.fecha_de_nacimiento;
+        _this4.principal = true;
+        _this4.actualizarFechaDeNacimiento = false;
+      })["catch"](function (error) {
+        /* console.log(error) */
+        _this4.$swal({
+          title: "Hubo un error al actualizar la información.",
+          icon: 'error'
+        });
+      });
+    },
+    cargarImagen: function cargarImagen(e) {
+      var tipoArchivo = e.target.files[0].type;
+
+      if (tipoArchivo === 'image/jpeg' || tipoArchivo === 'image/png') {
+        this.imagenSubida = e.target.files[0];
+        var show = "<span>" + e.target.files[0].name + "</span>";
+        var output = document.querySelector('.labela');
+        output.innerHTML = show;
+        output.classList.add("active");
+        this.actualizarFotoPerfil();
+      } else {
+        this.$swal({
+          title: "Formato no valido.",
+          icon: 'error'
+        });
+        this.imagenSubida = null;
+        return;
+      }
+    },
+    cargarImagenOferta: function cargarImagenOferta(e) {
+      var tipoArchivo = e.target.files[0].type;
+
+      if (tipoArchivo === 'image/jpeg' || tipoArchivo === 'image/png') {
+        this.imagenOferta = e.target.files[0];
+        var show = "<span>" + e.target.files[0].name + "</span>";
+        var output = document.querySelector('.labela');
+        output.innerHTML = show;
+        output.classList.add("active");
+      } else {
+        this.$swal({
+          title: "Formato no valido.",
+          icon: 'error'
+        });
+        this.imagenOferta = null;
+        return;
+      }
+    },
+    crearOferta: function crearOferta() {
+      var _this5 = this;
+
+      this.oferta = $('#contenido_oferta')[0].value;
+      var formData = new FormData();
+      if (this.imagenOferta != null) formData.append('imagen', this.imagenOferta);
+      formData.append('contenido', this.oferta);
+      formData.append('tarea_id', this.tarea_id);
+      formData.append('usuario_id', this.usuarioLogeado.id);
+      axios.post('/api/oferta', formData).then(function (response) {
+        console.log(response);
+        _this5.oferta = null;
+        _this5.imagenOferta = null;
+        if (_this5.cantidadOfertas === 0) _this5.$store.commit("CARGAR_CANTIDAD_OFERTAS", 1);
+
+        if (response.data.imagen) {
+          $('div[contenedor_oferta=' + _this5.tarea_id + ']').append("<div class='temporal oferta d-flex flex-column' oferta_principal=" + response.data.id + ">" + "<div>" + "<img src=" + "/storage/perfiles/imagenes/".concat(_this5.usuarioLogeado.perfil.imagen) + " alt='Foto del usuario'>" + "<div class='d-flex flex-column text-left'>" + "<a href='#'>" + _this5.usuarioLogeado.name + "</a>" + "<div class='estrellas'>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "5.0" + "</div>" + "</div>" + "</div>" + "<div class='oferta-descripcion'>" + "<p class='parrafo'>" + response.data.contenido + "</p><br>" + "<a class='mt-2' href='/storage/ofertas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/ofertas/" + response.data.imagen + "'</img>" + "</a>" + "<div class='oferta-footer d-flex justify-content-between w-100'>" + "<p>" + response.data.createdAtHumanReadable + "</p>" + "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='" + response.data.id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>" + "</div>" + "</div>");
+        } else {
+          $('div[contenedor_oferta=' + _this5.tarea_id + ']').append("<div class='temporal oferta d-flex flex-column' oferta_principal=" + response.data.id + ">" + "<div>" + "<img src=" + "/storage/perfiles/imagenes/".concat(_this5.usuarioLogeado.perfil.imagen) + " alt='Foto del usuario'>" + "<div class='d-flex flex-column text-left'>" + "<a href='#'>" + _this5.usuarioLogeado.name + "</a>" + "<div class='estrellas'>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "5.0" + "</div>" + "</div>" + "</div>" + "<div class='oferta-descripcion'>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<div class='oferta-footer d-flex justify-content-between w-100'>" + "<p>" + response.data.createdAtHumanReadable + "</p>" + "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='" + response.data.id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>" + "</div>" + "</div>");
+        }
+
+        _this5.cerrar();
+        /* console.log($('div[oferta_principal=' + response.data.id + ']')) */
+
+
+        $('div[oferta_principal=' + response.data.id + ']')[0].firstChild.scrollIntoView({
+          behavior: 'smooth'
+        });
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this5.$swal({
+          title: "Hubo un error al hacer la oferta.",
+          icon: 'error'
+        });
+      });
+    },
+    siguiente: function siguiente() {
+      if (this.usuarioLogeado.datos_bancarios.direccion == null || this.usuarioLogeado.datos_bancarios.colonia == null || this.usuarioLogeado.datos_bancarios.codigo_postal == null || this.usuarioLogeado.datos_bancarios.estado_id == null || this.usuarioLogeado.datos_bancarios.propietario_tarjeta == null || this.usuarioLogeado.datos_bancarios.numero_tarjeta == null || this.usuarioLogeado.perfil.imagen == null || this.usuarioLogeado.perfil.fecha_de_nacimiento == null || this.usuarioLogeado.perfil.telefono == null) {
+        this.$swal({
+          title: "Actualiza los datos faltantes.",
+          icon: 'warning'
+        });
+      } else {
+        this.principal = false;
+        this.oferta_ventana = true;
+      }
+    }
+  })
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
+  name: 'HacerPregunta',
+  data: function data() {
+    return {
+      contenido: null,
+      imagenSubida: null
+    };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['tarea', 'user_id', 'usuarioLogeado', 'cantidadPreguntas'])),
+  methods: {
+    hacerPregunta: function hacerPregunta() {
+      var _this = this;
+
+      if (this.user_id) {
+        var formData = new FormData();
+        formData.append('contenido', this.contenido);
+        formData.append('tarea_id', this.tarea.id);
+        formData.append('user_id', this.user_id);
+        if (this.imagenSubida != null) formData.append('imagen', this.imagenSubida);
+        axios.post('/api/pregunta', formData).then(function (response) {
+          /* console.log(response); */
+          _this.contenido = null;
+          _this.imagenSubida = null;
+          if (_this.cantidadPreguntas === 0) _this.$store.commit("CARGAR_CANTIDAD_PREGUNTAS", 1);
+
+          if (response.data.imagen) {
+            $('div[contenedor_pregunta=' + _this.tarea.id + ']').append("<div class='temporal oferta d-flex flex-column' pregunta_principal=" + response.data.id + ">" + "<div>" + "<img src=" + "/storage/perfiles/imagenes/".concat(_this.usuarioLogeado.perfil.imagen) + " alt='Foto del usuario'>" + "<div class='d-flex flex-column text-left'>" + "<a href='#'>" + _this.usuarioLogeado.name + "</a>" + "<div class='estrellas'>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "5.0" + "</div>" + "</div>" + "</div>" + "<div class='oferta-descripcion'>" + "<p class='parrafo'>" + response.data.contenido + "</p><br>" + "<a class='mt-2' href='/storage/preguntas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/preguntas/" + response.data.imagen + "'</img>" + "</a>" + "<div class='oferta-footer d-flex justify-content-between w-100'>" + "<p>" + response.data.createdAtHumanReadable + "</p>" + "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='" + response.data.id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>" + "</div>" + "</div>");
+          } else {
+            $('div[contenedor_pregunta=' + _this.tarea.id + ']').append("<div class='temporal oferta d-flex flex-column' pregunta_principal=" + response.data.id + ">" + "<div>" + "<img src=" + "/storage/perfiles/imagenes/".concat(_this.usuarioLogeado.perfil.imagen) + " alt='Foto del usuario'>" + "<div class='d-flex flex-column text-left'>" + "<a href='#'>" + _this.usuarioLogeado.name + "</a>" + "<div class='estrellas'>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "<i class='fas fa-star'></i>" + "5.0" + "</div>" + "</div>" + "</div>" + "<div class='oferta-descripcion'>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<div class='oferta-footer d-flex justify-content-between w-100'>" + "<p>" + response.data.createdAtHumanReadable + "</p>" + "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='" + response.data.id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>" + "</div>" + "</div>");
+          }
+          /* console.log($('div[pregunta_principal=' + response.data.id + ']')) */
+
+
+          $('div[pregunta_principal=' + response.data.id + ']')[0].firstChild.scrollIntoView({
+            behavior: 'smooth'
+          });
+        })["catch"](function (error) {
+          /* console.log(error); */
+          _this.contenido = null;
+          _this.imagenSubida = null;
+
+          _this.$swal({
+            title: "Hubo un error al hacer la oferta.",
+            icon: 'error'
+          });
+        });
+      } else {
+        $("#loginModal").modal('show');
+      }
+    },
+    cargarImagenOferta: function cargarImagenOferta(e) {
+      var tipoArchivo = e.target.files[0].type;
+
+      if (tipoArchivo === 'image/jpeg' || tipoArchivo === 'image/png') {
+        this.imagenSubida = e.target.files[0];
+        var show = "<span>" + e.target.files[0].name + "</span>";
+        var output = document.querySelector('.labela');
+        output.innerHTML = show;
+        output.classList.add("active");
+      } else {
+        this.$swal({
+          title: "Formato no valido.",
+          icon: 'error'
+        });
+        this.imagenSubida = null;
+        return;
+      }
+    }
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -2132,6 +3129,459 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var _MostrarFecha__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MostrarFecha */ "./resources/js/components/MostrarFecha.vue");
+/* harmony import */ var _HacerOferta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HacerOferta */ "./resources/js/components/HacerOferta.vue");
+/* harmony import */ var _RespuestaOferta__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RespuestaOferta */ "./resources/js/components/RespuestaOferta.vue");
+/* harmony import */ var _EliminarOferta__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EliminarOferta */ "./resources/js/components/EliminarOferta.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  components: {
+    MostrarFecha: _MostrarFecha__WEBPACK_IMPORTED_MODULE_1__["default"],
+    RespuestaOferta: _RespuestaOferta__WEBPACK_IMPORTED_MODULE_3__["default"],
+    EliminarOferta: _EliminarOferta__WEBPACK_IMPORTED_MODULE_4__["default"],
+    HacerOferta: _HacerOferta__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['tarea', 'ofertas', 'user_id', 'preguntas', 'cantidadOfertas', 'cantidadPreguntas'])),
+  methods: {},
+  filters: {
+    strippedContent: function strippedContent(string) {
+      return string.replace(/<\/?[^>]+>/ig, " ");
+    },
+    uppercase: function uppercase(v) {
+      return v.toUpperCase();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotificacionSweet.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NotificacionSweet.vue?vue&type=script&lang=js& ***!
@@ -2152,6 +3602,298 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  components: {
+    LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMap"],
+    LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTileLayer"],
+    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
+    LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"]
+  },
+  data: function data() {
+    return {
+      zoom: 5,
+      center: Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["latLng"])(20.666332695977, -103.392177745699),
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      currentZoom: 11.5,
+      currentCenter: Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["latLng"])(20.666332695977, -103.392177745699),
+      showParagraph: false,
+      mapOptions: {
+        zoomSnap: 0.5
+      },
+      showMap: true
+    };
+  },
+  computed: {
+    tareas: function tareas() {
+      return this.$store.state.tareas;
+    }
+  },
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['ofertas', 'preguntas'])), {}, {
+    obtenerCoordenadas: function obtenerCoordenadas(tarea) {
+      return {
+        lat: tarea.lat,
+        lng: tarea.lng
+      };
+    },
+    iconoEstablecimiento: function iconoEstablecimiento() {
+      return L.icon({
+        iconUrl: '/storage/img/pin.png',
+        iconSize: [40, 50]
+      });
+    },
+    cargarTarea: function cargarTarea(tarea) {
+      this.$store.commit("CARGAR_TAREA", tarea);
+      this.$store.commit("CAMBIAR_MAPA", false);
+      this.ofertas(tarea.id);
+      this.preguntas(tarea.id);
+    }
+  })
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrincipalMapa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrincipalMapa */ "./resources/js/components/PrincipalMapa.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
+  props: ['user_id', 'estados'],
+  components: {
+    PrincipalMapa: _PrincipalMapa__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    mapa: function mapa() {
+      return this.$store.state.mapa;
+    }
+  },
+  mounted: function mounted() {
+    this.$store.commit("CARGAR_USER_ID", parseInt(this.user_id));
+    this.$store.commit("CARGAR_ESTADOS", this.estados);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var _MostrarFecha__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MostrarFecha */ "./resources/js/components/MostrarFecha.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  components: {
+    MostrarFecha: _MostrarFecha__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/tareas').then(function (respuesta) {
+      /* console.log(respuesta) */
+      _this.$store.commit("CARGAR_TAREAS", respuesta.data);
+    });
+  },
+  computed: {
+    tareas: function tareas() {
+      return this.$store.state.tareas;
+    },
+    tareasFiltradas: function tareasFiltradas() {
+      return this.$store.state.tareasFiltradas;
+    }
+  },
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['ofertas', 'preguntas'])), {}, {
+    tareaActiva: function tareaActiva() {
+      var tareas = this.$el.querySelectorAll('.tarea');
+      tareas.forEach(function (tarea) {
+        if (tarea.classList.contains('borde-activa-completo')) tarea.classList.remove('borde-activa-completo');
+      });
+    },
+    cargarTarea: function cargarTarea(tarea, e) {
+      document.querySelectorAll('.temporal').forEach(function (e) {
+        return e.remove();
+      });
+      $('.descripcion-tarea')[0].firstChild.scroll({
+        top: 0,
+        behavior: 'smooth'
+      });
+      this.tareaActiva();
+      e.path.forEach(function (element) {
+        if (element.className === 'tarea border-activa') element.classList.add('borde-activa-completo');
+      });
+      this.$store.commit("CARGAR_TAREA", tarea);
+      this.$store.commit("CAMBIAR_MAPA", false);
+      this.ofertas(tarea.id);
+      this.preguntas(tarea.id);
+    }
+  }),
+  filters: {
+    strippedContent: function strippedContent(string) {
+      return string.replace(/<\/?[^>]+>/ig, " ").substring(0, 40);
+    }
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -2254,19 +3996,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RespuestaOferta',
   props: ['oferta', 'oferta_principal', 'user_id'],
   data: function data() {
     return {
       imagenAutor: '/storage/perfiles/imagenes/' + this.oferta.autor.perfil.imagen,
+      nombreAutor: this.oferta.autor.name,
       contenido: this.oferta.contenido,
       imagenSubida: null,
       contenidoSubida: '',
@@ -2300,22 +4036,24 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('oferta_id', this.oferta_principal);
       formData.append('user_id', this.user_id);
       if (this.imagenSubida != null) formData.append('imagen-respuesta-oferta', this.imagenSubida);
-      axios.post('http://127.0.0.1:8000/respuesta_oferta/store', formData).then(function (response) {
-        console.log(response);
-        $("#idmodal").modal('hide');
+      axios.post('/respuesta_oferta/store', formData).then(function (response) {
+        /* console.log(response) */
+        var foto = '';
+        if (response.data.foto == null) foto = "/storage/img/usuario.jpg";else foto = "/storage/perfiles/imagenes/" + response.data.foto;
 
         if (response.data.imagen) {
-          $('div[oferta_principal=' + response.data.oferta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_oferta_id + "' class='oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/" + response.data.imagen + "'</img>" + "</a>" + "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_oferta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
+          $('div[oferta_principal=' + response.data.oferta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_oferta_id + "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='" + foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<a class='mt-2' href='/storage/ofertas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/" + response.data.imagen + "'</img>" + "</a>" + "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_oferta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
         } else {
-          $('div[oferta_principal=' + response.data.oferta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_oferta_id + "' class='oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_oferta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
+          $('div[oferta_principal=' + response.data.oferta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_oferta_id + "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='" + foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_oferta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
         }
 
-        var res = document.querySelector('div[nueva-respuesta-id="' + response.data.respuesta_oferta_id + '"]');
-        res.focus();
+        var res = $('div[nueva-respuesta-id="' + response.data.respuesta_oferta_id + '"]');
+        res[0].scrollIntoView({
+          behavior: 'smooth'
+        });
         _this.myModel = false;
       })["catch"](function (response) {
-        console.log(response);
-
+        /* console.log(response) */
         if (response.status === 422) {
           alert();
           var errors = response.responseJSON.errors;
@@ -2324,7 +4062,17 @@ __webpack_require__.r(__webpack_exports__);
             $("#" + key + "Error").children("strong").text(errors[key][0]);
           });
         }
+
+        _this.$swal({
+          title: "Hubo un error al hacer la respuesta.",
+          icon: 'error'
+        });
       });
+    }
+  },
+  filters: {
+    strippedContent: function strippedContent(string) {
+      return string.replace(/<\/?[^>]+>/ig, " ");
     }
   }
 });
@@ -2431,13 +4179,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RespuestaPregunta',
   props: ['pregunta', 'pregunta_principal', 'user_id'],
@@ -2448,7 +4189,8 @@ __webpack_require__.r(__webpack_exports__);
       imagenSubida: null,
       contenidoSubida: '',
       idmodal: 'modal' + this.pregunta_principal,
-      myModel: false
+      myModel: false,
+      nombreAutor: this.pregunta.autor.name
     };
   },
   mounted: function mounted() {},
@@ -2477,18 +4219,22 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('pregunta_id', this.pregunta_principal);
       formData.append('user_id', this.user_id);
       if (this.imagenSubida != null) formData.append('imagen-respuesta-pregunta', this.imagenSubida);
-      axios.post('http://127.0.0.1:8000/respuesta_pregunta/store', formData).then(function (response) {
-        console.log(response);
+      axios.post('/respuesta_pregunta/store', formData).then(function (response) {
+        /* console.log(response) */
+        var foto = '';
+        if (response.data.foto == null) foto = "/storage/img/usuario.jpg";else foto = "/storage/perfiles/imagenes/" + response.data.foto;
         $("#idmodal").modal('hide');
 
         if (response.data.imagen) {
-          $('div[pregunta_principal=' + response.data.pregunta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id + "' class='oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/" + response.data.imagen + "'</img>" + "</a>" + "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_pregunta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
+          $('div[pregunta_principal=' + response.data.pregunta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id + "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='" + foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>" + "<img src='/storage/" + response.data.imagen + "'</img>" + "</a>" + "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_pregunta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
         } else {
-          $('div[pregunta_principal=' + response.data.pregunta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id + "' class='oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_pregunta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
+          $('div[pregunta_principal=' + response.data.pregunta_id + ']').append("<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id + "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>" + "<div> " + "<img src='" + foto + "'</img>" + "</div>" + "<p class='m-0'>" + response.data.user + "</p>" + "<p class='parrafo'>" + response.data.contenido + "</p>" + "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='" + response.data.respuesta_pregunta_id + "'><i class='fas fa-trash-alt'></i></button>" + "</div>");
         }
 
-        var res = document.querySelector('div[nueva-respuesta-id="' + response.data.respuesta_pregunta_id + '"]');
-        res.focus();
+        var res = $('div[nueva-respuesta-id="' + response.data.respuesta_pregunta_id + '"]');
+        res[0].scrollIntoView({
+          behavior: 'smooth'
+        });
         _this.myModel = false;
       })["catch"](function (response) {
         console.log(response);
@@ -2501,7 +4247,17 @@ __webpack_require__.r(__webpack_exports__);
             $("#" + key + "Error").children("strong").text(errors[key][0]);
           });
         }
+
+        _this.$swal({
+          title: "Hubo un error al hacer la respuesta.",
+          icon: 'error'
+        });
       });
+    }
+  },
+  filters: {
+    strippedContent: function strippedContent(string) {
+      return string.replace(/<\/?[^>]+>/ig, " ");
     }
   }
 });
@@ -6941,7 +8697,102 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 
 // module
-exports.push([module.i, ".swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;background:#fff;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row;padding:0}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;padding:0;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;width:auto;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-no-transition{transition:none!important}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center;padding:0 1.8em}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent!important;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;height:.25em;overflow:hidden;border-bottom-right-radius:.3125em;border-bottom-left-radius:.3125em}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;align-items:center;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close::-moz-focus-inner{border:0}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0 1.6em;color:#545454;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder, .swal2-input::-moz-placeholder, .swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder, .swal2-input:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder, .swal2-input::-ms-input-placeholder, .swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent!important}body.swal2-no-backdrop .swal2-container>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-container.swal2-top{top:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-top-left,body.swal2-no-backdrop .swal2-container.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-top-end,body.swal2-no-backdrop .swal2-container.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-container.swal2-center{top:50%;left:50%;transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-left,body.swal2-no-backdrop .swal2-container.swal2-center-start{top:50%;left:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-end,body.swal2-no-backdrop .swal2-container.swal2-center-right{top:50%;right:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom{bottom:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom-left,body.swal2-no-backdrop .swal2-container.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-bottom-end,body.swal2-no-backdrop .swal2-container.swal2-bottom-right{right:0;bottom:0}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}", ""]);
+exports.push([module.i, ".swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;background:#fff;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row;padding:0}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;padding:0;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;width:auto;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-no-transition{transition:none!important}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center;padding:0 1.8em}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent!important;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;height:.25em;overflow:hidden;border-bottom-right-radius:.3125em;border-bottom-left-radius:.3125em}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;align-items:center;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close::-moz-focus-inner{border:0}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0 1.6em;color:#545454;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder, .swal2-input::-moz-placeholder, .swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder, .swal2-input:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent!important}body.swal2-no-backdrop .swal2-container>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-container.swal2-top{top:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-top-left,body.swal2-no-backdrop .swal2-container.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-top-end,body.swal2-no-backdrop .swal2-container.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-container.swal2-center{top:50%;left:50%;transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-left,body.swal2-no-backdrop .swal2-container.swal2-center-start{top:50%;left:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-end,body.swal2-no-backdrop .swal2-container.swal2-center-right{top:50%;right:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom{bottom:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom-left,body.swal2-no-backdrop .swal2-container.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-bottom-end,body.swal2-no-backdrop .swal2-container.swal2-bottom-right{right:0;bottom:0}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dropdown-ubicacion[data-v-bb7a78b6]{\n    padding:30px;\n}\n.btn-siguiente[data-v-bb7a78b6]{\n    color: rgb(0, 143, 180);\n    background-color: rgb(246, 248, 253);\n    border-radius: 160px;\n    padding: 8px 16px;\n    border-color: rgb(231, 235, 251);\n    display: inline-block;\n    text-align: center;\n    font-weight: 600;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-mask[data-v-601d30ad]{\n    position: fixed;\n    z-index: 10;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-601d30ad]{\n    display: table-cell;\n    vertical-align: middle;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 100%;\n    height: 100%;\n}\n.btn-oferta[data-v-601d30ad]{\n    background-color:rgb(125, 179, 67);\n    color:white;\n    font-weight: 600;\n    border-radius: 50px;\n}\n.btn-oferta[data-v-601d30ad]:hover{\n    color:white;\n}\n.subtitulo[data-v-601d30ad]{\n    font-size: 14px;\n}\n.texto[data-v-601d30ad]{\n    font-size:13px;\n    font-weight:400;\n    text-transform: initial;\n}\n.grupo[data-v-601d30ad]{\n    display: flex;\n    justify-content: space-between;\n    border: 1px solid #d6d6d6;\n    border-radius: 5px;\n    text-align: center;\n    padding: 5px 5px;\n    margin-bottom: 20px;\n}\n.grupo[data-v-601d30ad]{\n    align-items: center;\n}\n.grupo[data-v-601d30ad]:hover{\n    cursor: pointer;\n}\n.grupo[data-v-601d30ad]:hover{\n    border: 1px solid #bbc2dc;\n}\n.btn-siguiente[data-v-601d30ad]{\n    color: rgb(0, 143, 180);\n    background-color: rgb(246, 248, 253);\n    border-radius: 160px;\n    padding: 8px 16px;\n    border-color: rgb(231, 235, 251);\n    display: inline-block;\n    text-align: center;\n    font-weight: 600;\n}\n.labela[data-v-601d30ad]{\n    font-size: 0.7875rem;\n    color: white;\n}\n.labela i[data-v-601d30ad]{\n    font-size: 1rem;\n}\n.labela[data-v-601d30ad]:hover {\n    cursor: pointer;\n}\n.btn-guardar[data-v-601d30ad]{\n    color: white;\n}\n.btn-guardar i[data-v-601d30ad]{\n    color: white;\n}\n.verde[data-v-601d30ad]{\n    color: rgb(125, 179, 67);\n}\n.flecha[data-v-601d30ad]{\n    color: #bbc2dc;\n}\ninput[type=number][data-v-601d30ad]::-webkit-inner-spin-button,\ninput[type=number][data-v-601d30ad]::-webkit-outer-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n.swal2-container[data-v-601d30ad] {\n    z-index: 10000;\n}\n.oferta_ventana[data-v-601d30ad]{\n    max-height: calc(100vh - 175px);\n    overflow: scroll;\n    overflow-x: hidden\n}\nhtml[data-v-601d30ad] {\n    overflow: scroll;\n    overflow-y: hidden;\n}\n[data-v-601d30ad]::-webkit-scrollbar {\n    width: 0px;  /* Remove scrollbar space */\n    background: transparent;  /* Optional: just make scrollbar invisible */\n}\n/* Optional: show position indicator in red */\n[data-v-601d30ad]::-webkit-scrollbar-thumb {\n    background: #FF0000;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.push([module.i, "@import url(https://unpkg.com/leaflet@1.7.1/dist/leaflet.css);", ""]);
+
+// module
+exports.push([module.i, "\n.mapa[data-v-4a191df8]{\n    height: 100%;\n    width: 100%;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.lista-tareas[data-v-7a377d1e]{\n    height: calc(100vh - 213px);\n    overflow: scroll;\n    overflow-x: hidden\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.lista-tareas[data-v-5f387076]{\n    height: calc(100vh - 213px);\n    overflow: scroll;\n    overflow-x: hidden\n}\n\n", ""]);
 
 // exports
 
@@ -6960,7 +8811,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.labela[data-v-76eedc14]{\n    font-size: 0.7875rem;\n    color: white;\n}\n.labela i[data-v-76eedc14]{\n    font-size: 1rem;\n}\n.labela[data-v-76eedc14]:hover {\n    cursor: pointer;\n}\n.btn-guardar[data-v-76eedc14]{\n    color: white;\n}\n.btn-guardar i[data-v-76eedc14]{\n    color: white;\n}\n.modal-mask[data-v-76eedc14]{\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-76eedc14]{\n    display: table-cell;\n    vertical-align: middle;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n", ""]);
+exports.push([module.i, "\n.labela[data-v-76eedc14]{\n    font-size: 0.7875rem;\n    color: white;\n}\n.labela i[data-v-76eedc14]{\n    font-size: 1rem;\n}\n.labela[data-v-76eedc14]:hover {\n    cursor: pointer;\n}\n.btn-guardar[data-v-76eedc14]{\n    color: white;\n}\n.btn-guardar i[data-v-76eedc14]{\n    color: white;\n}\n.modal-mask[data-v-76eedc14]{\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-76eedc14]{\n    display: table-cell;\n    vertical-align: middle;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.nombre-texto[data-v-76eedc14]{\n    font-size: 16px;\n    font-weight: 400;\n}\n.contenido-texto[data-v-76eedc14]{\n    font-size: 16px;\n}\n\n", ""]);
 
 // exports
 
@@ -6979,7 +8830,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.labela[data-v-143a9a22]{\n    font-size: 0.7875rem;\n    color: white;\n}\n.labela i[data-v-143a9a22]{\n    font-size: 1rem;\n}\n.labela[data-v-143a9a22]:hover {\n    cursor: pointer;\n}\n.btn-guardar[data-v-143a9a22]{\n    color: white;\n}\n.btn-guardar i[data-v-143a9a22]{\n    color: white;\n}\n.modal-mask[data-v-143a9a22]{\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-143a9a22]{\n    display: table-cell;\n    vertical-align: middle;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n", ""]);
+exports.push([module.i, "\n.labela[data-v-143a9a22]{\n    font-size: 0.7875rem;\n    color: white;\n}\n.labela i[data-v-143a9a22]{\n    font-size: 1rem;\n}\n.labela[data-v-143a9a22]:hover {\n    cursor: pointer;\n}\n.btn-guardar[data-v-143a9a22]{\n    color: white;\n}\n.btn-guardar i[data-v-143a9a22]{\n    color: white;\n}\n.modal-mask[data-v-143a9a22]{\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-143a9a22]{\n    display: table-cell;\n    vertical-align: middle;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.nombre-texto[data-v-143a9a22]{\n    font-size: 16px;\n    font-weight: 400;\n}\n.contenido-texto[data-v-143a9a22]{\n    font-size: 16px;\n}\n\n", ""]);
 
 // exports
 
@@ -73438,6 +75289,156 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RespuestaOferta.vue?vue&type=style&index=0&id=76eedc14&scoped=true&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RespuestaOferta.vue?vue&type=style&index=0&id=76eedc14&scoped=true&lang=css& ***!
@@ -77302,6 +79303,62 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    { staticClass: "btn btn-sm ", on: { click: _vm.eliminarOferta } },
+    [_c("i", { staticClass: "fas fa-trash-alt" })]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    { staticClass: "btn btn-sm ", on: { click: _vm.eliminarPregunta } },
+    [_c("i", { staticClass: "fas fa-trash-alt" })]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarRespuestaOferta.vue?vue&type=template&id=5098dc95&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarRespuestaOferta.vue?vue&type=template&id=5098dc95& ***!
@@ -77389,10 +79446,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -77404,32 +79461,1251 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", {}, [
+    _c(
+      "form",
+      {
+        staticClass: "d-flex justify-content-between mt-3",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.filtrar()
+          }
+        }
+      },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-filtro dropdown-toggle",
+            attrs: {
+              type: "button",
+              "data-toggle": "dropdown",
+              "aria-expanded": "false"
+            },
+            on: {
+              click: function($event) {
+                return _vm.abrir($event)
+              }
+            }
+          },
+          [_vm._v("Filtrar")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "dropdown-menu dropdown-ubicacion" }, [
+          _c("p", [_vm._v("Tipo De Actividad")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "div",
+              {
+                staticClass: "btn-group btn-group-toggle",
+                attrs: { "data-toggle": "buttons" }
+              },
+              [
+                _c(
+                  "label",
+                  {
+                    staticClass: "btn btn-secondary radio",
+                    on: {
+                      change: function($event) {
+                        return _vm.estadoActiva($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tipo,
+                          expression: "tipo"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        id: "radio1",
+                        autocomplete: "off",
+                        value: "presencial"
+                      },
+                      domProps: { checked: _vm._q(_vm.tipo, "presencial") },
+                      on: {
+                        change: function($event) {
+                          _vm.tipo = "presencial"
+                        }
+                      }
+                    }),
+                    _vm._v(" Presencial\n\n                    ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "btn btn-secondary radio",
+                    on: {
+                      change: function($event) {
+                        return _vm.estadoActiva($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tipo,
+                          expression: "tipo"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        id: "radio2",
+                        autocomplete: "off",
+                        value: "remoto"
+                      },
+                      domProps: { checked: _vm._q(_vm.tipo, "remoto") },
+                      on: {
+                        change: function($event) {
+                          _vm.tipo = "remoto"
+                        }
+                      }
+                    }),
+                    _vm._v(" Remoto\n\n                    ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "btn btn-secondary radio",
+                    on: {
+                      change: function($event) {
+                        return _vm.estadoActiva($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tipo,
+                          expression: "tipo"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        id: "radio3",
+                        autocomplete: "off",
+                        value: "todas"
+                      },
+                      domProps: { checked: _vm._q(_vm.tipo, "todas") },
+                      on: {
+                        change: function($event) {
+                          _vm.tipo = "todas"
+                        }
+                      }
+                    }),
+                    _vm._v(" Todas\n\n                    ")
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "dropdown-divider" }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Estado")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group text-left" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.estado,
+                    expression: "estado"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.estado = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.estados, function(estado) {
+                return _c(
+                  "option",
+                  { key: estado.id, domProps: { value: estado.id } },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(estado.nombre) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "dropdown-divider" }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Presupuesto")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "dropdown-divider" }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-siguiente btn-block",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("Aplicar")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          staticClass: "form-control buscador",
+          attrs: { type: "text", id: "buscar", placeholder: "Buscar tarea" },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        })
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+    return _c("div", { staticClass: "form-group text-center" }, [
+      _c("span", {
+        staticClass: "font-weight-bold text-primary ml-2 valueSpan2"
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex justify-content-center my-4" }, [
+        _c("div", { staticClass: "w-100" }, [
+          _c("input", {
+            staticClass: "custom-range",
+            attrs: {
+              type: "range",
+              id: "customRange11",
+              min: "0",
+              max: "100000",
+              value: "0"
+            }
+          })
         ])
       ])
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c(
+      "button",
+      { staticClass: "btn btn-block btn-oferta", on: { click: _vm.abrir } },
+      [_vm._v("Hacer Una Oferta")]
+    ),
+    _vm._v(" "),
+    _vm.myModel
+      ? _c(
+          "div",
+          [
+            _c("transition", { attrs: { name: "modal" } }, [
+              _c("div", { staticClass: "modal-mask w-100" }, [
+                _c("div", { staticClass: "modal-wrapper w-100" }, [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content w-100" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c("h4", { staticClass: "modal-title mx-auto" }, [
+                          _vm._v("Hacer Una Oferta")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close float-right",
+                            attrs: { type: "button" },
+                            on: { click: _vm.cerrar }
+                          },
+                          [
+                            _c("span", { attrs: { "aria-hidden": "true" } }, [
+                              _vm._v("×")
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body w-100" }, [
+                        _vm.principal
+                          ? _c("div", [
+                              _c("p", { staticClass: "subtitulo mb-3" }, [
+                                _vm._v(
+                                  "Para poder continuar actualiza los datos faltantes"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "grupo mb-3",
+                                  on: { click: _vm.foto }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-check-circle ml-2",
+                                    class: _vm.tieneFoto()
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "texto" }, [
+                                    _vm._v("Actualiza tu foto de perfil")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass:
+                                      "fas fa-chevron-right mr-2 flecha"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "grupo mb-3",
+                                  on: { click: _vm.datosBancarios }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-check-circle ml-2",
+                                    class: _vm.tieneDatosBancarios()
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "texto" }, [
+                                    _vm._v("Actualiza tus datos bancarios")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass:
+                                      "fas fa-chevron-right mr-2 flecha"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "grupo mb-3",
+                                  on: { click: _vm.fechaDeNacimiento_ }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-check-circle ml-2",
+                                    class: _vm.tieneFechaNacimiento()
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "texto" }, [
+                                    _vm._v("Fecha de nacimiento")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass:
+                                      "fas fa-chevron-right mr-2 flecha"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "grupo mb-3",
+                                  on: { click: _vm.telefono }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-check-circle ml-2",
+                                    class: _vm.tieneTelefono()
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "texto" }, [
+                                    _vm._v("Actualiza tu número telefonico")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass:
+                                      "fas fa-chevron-right mr-2 flecha"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "errores" }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-block btn-siguiente",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.siguiente }
+                                },
+                                [_vm._v("Siguiente")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.actualizarFoto
+                          ? _c("div", [
+                              _c(
+                                "form",
+                                {
+                                  attrs: { enctype: "multipart/form-data" },
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.actualizarFotoPerfil($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("p", { staticClass: "texto mb-3" }, [
+                                    _vm._v("Actualiza tu foto de perfil")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "w-100 mb-3" }, [
+                                    _vm.usuarioLogeado.perfil.imagen != null
+                                      ? _c("img", {
+                                          staticClass: "foto-perfil-barra",
+                                          attrs: {
+                                            src:
+                                              "/storage/perfiles/imagenes/" +
+                                              _vm.usuarioLogeado.perfil.imagen,
+                                            alt: "Foto Perfil"
+                                          }
+                                        })
+                                      : _c("img", {
+                                          staticClass: "foto-perfil-barra",
+                                          attrs: {
+                                            src: "/storage/img/usuario.jpg",
+                                            alt: "Foto Perfil"
+                                          }
+                                        }),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      ref: "boton",
+                                      staticClass: "d-none",
+                                      attrs: { type: "file" },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.cargarImagen($event)
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-guardar labela text-white",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.$refs.boton.click()
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Sube una foto")]
+                                    )
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-block btn-siguiente",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.regresar }
+                                },
+                                [_vm._v("Regresar")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.actualizarDatosBancarios
+                          ? _c("div", [
+                              _c(
+                                "form",
+                                {
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.actualizarDatosBancariosPOST(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("p", { staticClass: "mb-3 subtitulo" }, [
+                                    _vm._v(
+                                      "Proporcione sus datos bancarios para poder recibir el pago."
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "texto",
+                                          attrs: { for: "propietario_tarjeta" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Nombre del Titular de la Cuenta"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.propietario_tarjeta,
+                                            expression: "propietario_tarjeta"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          name: "propietario_tarjeta",
+                                          type: "text",
+                                          placeholder: this.usuarioLogeado
+                                            .datos_bancarios
+                                            .propietario_tarjeta,
+                                          required: ""
+                                        },
+                                        domProps: {
+                                          value: _vm.propietario_tarjeta
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.propietario_tarjeta =
+                                              $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "texto",
+                                          attrs: { for: "numero_tarjeta" }
+                                        },
+                                        [_vm._v("Número de Tarjeta")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.numero_tarjeta,
+                                            expression: "numero_tarjeta"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          name: "numero_tarjeta",
+                                          type: "text",
+                                          placeholder: this.usuarioLogeado
+                                            .datos_bancarios.numero_tarjeta,
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.numero_tarjeta },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.numero_tarjeta =
+                                              $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "subtitulo" }, [
+                                    _vm._v("Dirección de facturación")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "texto",
+                                          attrs: { for: "direccion" }
+                                        },
+                                        [_vm._v("Calle y Número")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.direccion,
+                                            expression: "direccion"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          name: "direccion",
+                                          type: "text",
+                                          placeholder: this.usuarioLogeado
+                                            .datos_bancarios.direccion,
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.direccion },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.direccion = $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "texto",
+                                          attrs: { for: "colonia" }
+                                        },
+                                        [_vm._v("Colonia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.colonia,
+                                            expression: "colonia"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          name: "colonia",
+                                          type: "text",
+                                          placeholder: this.usuarioLogeado
+                                            .datos_bancarios.colonia,
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.colonia },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.colonia = $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "texto",
+                                          attrs: { for: "codigo_postal" }
+                                        },
+                                        [_vm._v("Código Postal")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.codigo_postal,
+                                            expression: "codigo_postal"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          name: "codigo_postal",
+                                          type: "number",
+                                          min: "0",
+                                          placeholder: this.usuarioLogeado
+                                            .datos_bancarios.codigo_postal,
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.codigo_postal },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.codigo_postal =
+                                              $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group text-left" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "ubicacion-tarea" } },
+                                        [_vm._v("Ingresa tu estado.")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.estado_,
+                                              expression: "estado_"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          attrs: {
+                                            name: "ubicacion-tarea",
+                                            required: ""
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.estado_ = $event.target
+                                                .multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        _vm._l(_vm.estados, function(estado) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: estado.id,
+                                              domProps: { value: estado.id }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(estado.nombre) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-sm btn-oferta mb-3 float-right",
+                                      attrs: { type: "submit" }
+                                    },
+                                    [_vm._v("Actualizar")]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-block btn-siguiente",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.regresar }
+                                },
+                                [_vm._v("Regresar")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.actualizarFechaDeNacimiento
+                          ? _c("div", [
+                              _c(
+                                "form",
+                                {
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.actualizarFechaDeNacimientoPerfil(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("p", { staticClass: "texto mb-3" }, [
+                                    _vm._v("Actualiza tu fecha de nacimiento")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group d-flex" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.fechaDeNacimiento,
+                                            expression: "fechaDeNacimiento"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: { type: "date", required: "" },
+                                        domProps: {
+                                          value: _vm.fechaDeNacimiento
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.fechaDeNacimiento =
+                                              $event.target.value
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-sm btn-siguiente ml-2",
+                                          attrs: { type: "submit" }
+                                        },
+                                        [_vm._v("Actualizar")]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-block btn-siguiente",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.regresar }
+                                },
+                                [_vm._v("Regresar")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.actualizarTelefono
+                          ? _c("div", [
+                              _c(
+                                "form",
+                                {
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.actualizarTelefonoPerfil(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("p", { staticClass: "texto mb-3" }, [
+                                    _vm._v("Actualiza tu número telefonico")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group d-flex" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.tel,
+                                            expression: "tel"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "tel",
+                                          placeholder:
+                                            _vm.usuarioLogeado.perfil.telefono,
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.tel },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.tel = $event.target.value
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-sm btn-siguiente ml-2",
+                                          attrs: { type: "submit" }
+                                        },
+                                        [_vm._v("Actualizar")]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-block btn-siguiente",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.regresar }
+                                },
+                                [_vm._v("Regresar")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.oferta_ventana
+                          ? _c(
+                              "div",
+                              { staticClass: "text-left oferta_ventana" },
+                              [
+                                _c(
+                                  "form",
+                                  {
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.crearOferta($event)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.oferta,
+                                          expression: "oferta"
+                                        }
+                                      ],
+                                      attrs: {
+                                        type: "hidden",
+                                        id: "contenido_oferta",
+                                        name: "descripcion"
+                                      },
+                                      domProps: { value: _vm.oferta },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.oferta = $event.target.value
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("trix-editor", {
+                                      staticStyle: { "min-height": "200px" },
+                                      attrs: { input: "contenido_oferta" }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "d-flex justify-content-between w-100 mt-3"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "form-group mb-0" },
+                                          [
+                                            _c("input", {
+                                              ref: "boton",
+                                              staticClass: "d-none",
+                                              attrs: { type: "file" },
+                                              on: {
+                                                change: function($event) {
+                                                  return _vm.cargarImagenOferta(
+                                                    $event
+                                                  )
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-guardar labela text-white ml-1 mb-1",
+                                                attrs: { type: "button" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.$refs.boton.click()
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "far fa-images"
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "btn btn-guardar btn-sm mr-1 mb-1",
+                                              attrs: { type: "submit" }
+                                            },
+                                            [_vm._v("Hacer Oferta")]
+                                          )
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "mb-3" }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.hacerPregunta($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group ml-1" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.contenido,
+                expression: "contenido"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              rows: "3",
+              placeholder:
+                "Preguntale a " +
+                _vm.tarea.usuario.name +
+                " lo que necesites saber acerca de la oferta.",
+              required: ""
+            },
+            domProps: { value: _vm.contenido },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.contenido = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-between" }, [
+          _c("div", { staticClass: "form-group mb-0" }, [
+            _c("input", {
+              ref: "boton",
+              staticClass: "d-none",
+              attrs: { type: "file" },
+              on: {
+                change: function($event) {
+                  return _vm.cargarImagenOferta($event)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-guardar labela text-white ml-1 mb-1",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$refs.boton.click()
+                  }
+                }
+              },
+              [_c("i", { staticClass: "far fa-images" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn float-right btn-guardar" }, [
+            _vm._v("Enviar")
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -77460,6 +80736,746 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", { staticClass: "row pr-3 ml-1" }, [
+      _c("div", { staticClass: "col-12 col-md-8" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("h3", { staticClass: "tarea-titulo" }, [
+          _vm._v(
+            "\n\n                " +
+              _vm._s(_vm.tarea.nombre) +
+              "\n\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tarea-autor" }, [
+          _c("div", { staticClass: "publicador d-flex" }, [
+            _vm.tarea.usuario.perfil.imagen != null
+              ? _c("img", {
+                  staticClass: "foto-perfil-barra",
+                  attrs: {
+                    src:
+                      "/storage/perfiles/imagenes/" +
+                      _vm.tarea.usuario.perfil.imagen,
+                    alt: "Foto Perfil"
+                  }
+                })
+              : _c("img", {
+                  staticClass: "foto-perfil-barra",
+                  attrs: { src: "/storage/img/usuario.jpg", alt: "Foto Perfil" }
+                }),
+            _vm._v(" "),
+            _c("div", [
+              _c("p", { staticClass: "tarea-publicado-por" }, [
+                _vm._v("Publicado por")
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "tarea-autor-publicado",
+                  attrs: { href: "/perfil/" + _vm.tarea.usuario.id }
+                },
+                [_vm._v(_vm._s(_vm.tarea.usuario.name))]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tarea-tiempo" }, [
+            _c("p", [_vm._v(_vm._s(_vm.tarea.createdAtHumanReadable))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "ubicacion d-flex justify-content-between" }, [
+          _c("div", { staticClass: "publicador d-flex" }, [
+            _c("i", { staticClass: "fas fa-map-marker-alt" }),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c("p", { staticClass: "tarea-publicado-por" }, [
+                _vm._v("Ubicación")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "direccion" }, [
+                _vm._v(_vm._s(_vm.tarea.direccion))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "direccion" }, [
+                _vm._v(
+                  _vm._s(_vm.tarea.colonia) +
+                    " " +
+                    _vm._s(_vm.tarea.estado.nombre) +
+                    " "
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "badge badge-pill badge-secondary" }, [
+                _vm._v(_vm._s(_vm._f("uppercase")(_vm.tarea.tipo)))
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "ubicacion" }, [
+          _c("div", { staticClass: "publicador d-flex" }, [
+            _c("i", { staticClass: "fas fa-calendar-alt" }),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("p", { staticClass: "tarea-publicado-por" }, [
+                  _vm._v("Fecha de vencimiento")
+                ]),
+                _vm._v(" "),
+                _c("mostrar-fecha", {
+                  staticClass: "fecha-vencimiento",
+                  attrs: { fecha: _vm.tarea.fecha_de_vencimiento }
+                })
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-md-4" }, [
+        _c(
+          "div",
+          { staticClass: "presupuesto" },
+          [
+            _c("p", [_vm._v("Presupuesto")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("p", { staticClass: "presupuesto-precio" }, [
+              _vm._v("$" + _vm._s(_vm.tarea.presupuesto))
+            ]),
+            _vm._v(" "),
+            _c("hacer-oferta", { attrs: { tarea_id: _vm.tarea.id } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 detalles" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "detalles-contenido" }, [
+          _c("p", {
+            staticClass: "parrafo",
+            domProps: { innerHTML: _vm._s(_vm.tarea.descripcion) }
+          }),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "row list-unstyled mt-4" },
+            _vm._l(_vm.tarea.imagenes, function(imagen) {
+              return _c("li", { key: imagen.id, staticClass: "col-md-4" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "/storage/" + imagen.ruta_imagen,
+                      "data-lightbox": "imagenes",
+                      "data-title": "Imagen Establecimiento"
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mb-4 img-fluid ",
+                      attrs: {
+                        src: "/storage/" + imagen.ruta_imagen,
+                        alt: "Imagen Previa"
+                      }
+                    })
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col-12 ofertas-trato mt-3",
+          attrs: { contenedor_oferta: _vm.tarea.id }
+        },
+        [
+          _c("p", { staticClass: "detalles-trato" }, [_vm._v("ofertas")]),
+          _vm._v(" "),
+          _vm._l(_vm.ofertas, function(oferta) {
+            return _c("div", { key: oferta.id }, [
+              _c(
+                "div",
+                {
+                  staticClass: "oferta d-flex flex-column",
+                  attrs: { oferta_principal: oferta.id }
+                },
+                [
+                  _c("div", {}, [
+                    oferta.autor.perfil.imagen != null
+                      ? _c("img", {
+                          attrs: {
+                            src:
+                              "/storage/perfiles/imagenes/" +
+                              oferta.autor.perfil.imagen,
+                            alt: "Imagen de perfil"
+                          }
+                        })
+                      : _c("img", {
+                          staticClass: "foto-perfil-barra",
+                          attrs: {
+                            src: "/storage/img/usuario.jpg",
+                            alt: "Foto Perfil"
+                          }
+                        }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex flex-column text-left" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v(_vm._s(oferta.autor.name))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3, true)
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "oferta-descripcion" }, [
+                    _c("p", { staticClass: "parrafo" }, [
+                      _vm._v(
+                        _vm._s(_vm._f("strippedContent")(oferta.contenido))
+                      )
+                    ]),
+                    _vm._v(" "),
+                    oferta.imagen != null
+                      ? _c("img", {
+                          attrs: {
+                            src: "/storage/ofertas/" + oferta.imagen,
+                            alt: "Imagen de perfil"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "oferta-footer d-flex justify-content-between w-100"
+                      },
+                      [
+                        _c("p", {}, [
+                          _vm._v(_vm._s(oferta.createdAtHumanReadable))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _vm.user_id
+                              ? _c("respuesta-oferta", {
+                                  attrs: {
+                                    oferta: oferta,
+                                    oferta_principal: oferta.id,
+                                    user_id: _vm.user_id
+                                  }
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            oferta.autor.id === _vm.user_id
+                              ? _c("eliminar-oferta", {
+                                  attrs: { "oferta-id": oferta.id }
+                                })
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(oferta.respuestas, function(respuesta) {
+                    return _c(
+                      "div",
+                      {
+                        key: respuesta.id,
+                        staticClass: "oferta mb-0 pb-0 mt-0 pt-0"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "oferta-descripcion w-75 float-right  text-left",
+                            attrs: { respuesta_oferta_id: respuesta.id }
+                          },
+                          [
+                            respuesta.autor.perfil.imagen
+                              ? _c("img", {
+                                  attrs: {
+                                    src:
+                                      "/storage/perfiles/imagenes/" +
+                                      respuesta.autor.perfil.imagen,
+                                    alt: "Imagen de respuesta"
+                                  }
+                                })
+                              : _c("img", {
+                                  staticClass: "foto-perfil-barra",
+                                  attrs: {
+                                    src: "/storage/img/usuario.jpg",
+                                    alt: "Foto Perfil"
+                                  }
+                                }),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "/perfil/" + respuesta.autor.id }
+                              },
+                              [_vm._v(_vm._s(respuesta.autor.name))]
+                            ),
+                            _vm._v(" "),
+                            respuesta.contenido
+                              ? _c("p", { staticClass: "parrafo" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("strippedContent")(
+                                        respuesta.contenido
+                                      )
+                                    )
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            respuesta.imagen != null
+                              ? _c("div", [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "/storage/" + respuesta.imagen,
+                                        "data-lightbox": respuesta.imagen,
+                                        "data-title": "Imagen descriptiva"
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass: "img-fluid",
+                                        attrs: {
+                                          src: "/storage/" + respuesta.imagen,
+                                          alt: ""
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "oferta-footer d-flex justify-content-between w-100"
+                              },
+                              [
+                                _c("p", { staticClass: "m-0" }, [
+                                  _vm._v(
+                                    _vm._s(respuesta.createdAtHumanReadable)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    respuesta.autor.id === _vm.user_id
+                                      ? _c("eliminar-respuesta-oferta", {
+                                          attrs: {
+                                            "respuesta-oferta-id": respuesta.id
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ])
+          }),
+          _vm._v(" "),
+          _vm.cantidadOfertas === 0
+            ? _c("div", [
+                _c("img", {
+                  staticClass: "imagen-ofertas",
+                  attrs: {
+                    src: "/storage/img/ofertas.png",
+                    alt: "Imagen de ofertas"
+                  }
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "parrafo text-center" }, [
+                  _vm._v("Aún no hay ofertas para esta tarea.")
+                ])
+              ])
+            : _vm._e()
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col-12 ofertas-trato mt-3",
+          attrs: { contenedor_pregunta: _vm.tarea.id }
+        },
+        [
+          _c("p", { staticClass: "detalles-trato" }, [_vm._v("Preguntas")]),
+          _vm._v(" "),
+          _vm.cantidadPreguntas === 0
+            ? _c("div", [
+                _c("img", {
+                  staticClass: "imagen-ofertas",
+                  attrs: {
+                    src: "/storage/img/pregunta.png",
+                    alt: "Imagen de ofertas"
+                  }
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "parrafo text-center" }, [
+                  _vm._v("Aún no hay preguntas para esta tarea.")
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("hacer-pregunta"),
+          _vm._v(" "),
+          _vm._l(_vm.preguntas, function(pregunta) {
+            return _c("div", { key: pregunta.id }, [
+              _c(
+                "div",
+                {
+                  staticClass: "oferta d-flex flex-column w-100",
+                  attrs: { pregunta_principal: pregunta.id }
+                },
+                [
+                  _c("div", {}, [
+                    pregunta.autor.perfil.imagen != null
+                      ? _c("img", {
+                          attrs: {
+                            src:
+                              "/storage/perfiles/imagenes/" +
+                              pregunta.autor.perfil.imagen,
+                            alt: "Imagen de perfil"
+                          }
+                        })
+                      : _c("img", {
+                          staticClass: "foto-perfil-barra",
+                          attrs: {
+                            src: "/storage/img/usuario.jpg",
+                            alt: "Foto Perfil"
+                          }
+                        }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex flex-column text-left" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v(_vm._s(pregunta.autor.name))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(5, true)
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "oferta-descripcion" }, [
+                    _c("p", { staticClass: "parrafo" }, [
+                      _vm._v(_vm._s(pregunta.contenido))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "oferta-footer d-flex justify-content-between w-100"
+                      },
+                      [
+                        _c("p", {}, [
+                          _vm._v(_vm._s(pregunta.createdAtHumanReadable))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _vm.user_id
+                              ? _c("respuesta-pregunta", {
+                                  attrs: {
+                                    pregunta: pregunta,
+                                    pregunta_principal: pregunta.id,
+                                    user_id: _vm.user_id
+                                  }
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            pregunta.autor.id === _vm.user_id
+                              ? _c("eliminar-pregunta", {
+                                  attrs: { "pregunta-id": pregunta.id }
+                                })
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(pregunta.respuestas, function(respuesta) {
+                    return _c(
+                      "div",
+                      {
+                        key: respuesta.id,
+                        staticClass: "oferta mb-0 pb-0 mt-0 pt-0"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "oferta-descripcion w-75 float-right  text-left",
+                            attrs: { respuesta_pregunta_id: respuesta.id }
+                          },
+                          [
+                            respuesta.autor.perfil.imagen
+                              ? _c("img", {
+                                  attrs: {
+                                    src:
+                                      "/storage/perfiles/imagenes/" +
+                                      respuesta.autor.perfil.imagen,
+                                    alt: "Imagen de respuesta"
+                                  }
+                                })
+                              : _c("img", {
+                                  staticClass: "foto-perfil-barra",
+                                  attrs: {
+                                    src: "/storage/img/usuario.jpg",
+                                    alt: "Foto Perfil"
+                                  }
+                                }),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "/perfil/" + respuesta.autor.id }
+                              },
+                              [_vm._v(_vm._s(respuesta.autor.name))]
+                            ),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "parrafo" }, [
+                              _vm._v(_vm._s(respuesta.contenido))
+                            ]),
+                            _vm._v(" "),
+                            respuesta.imagen != null
+                              ? _c("div", [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "/storage/" + respuesta.imagen,
+                                        "data-lightbox": respuesta.imagen,
+                                        "data-title": "Imagen descriptiva"
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass: "img-fluid",
+                                        attrs: {
+                                          src: "/storage/" + respuesta.imagen,
+                                          alt: ""
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "oferta-footer d-flex justify-content-between w-100"
+                              },
+                              [
+                                _c("p", { staticClass: "m-0" }, [
+                                  _vm._v(
+                                    _vm._s(respuesta.createdAtHumanReadable)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    respuesta.autor.id === _vm.user_id
+                                      ? _c("eliminar-respuesta-pregunta", {
+                                          attrs: {
+                                            "respuesta-pregunta-id":
+                                              respuesta.id
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ])
+          })
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "estado-trato" }, [
+      _c("span", { staticClass: "badge badge-pill badge-success" }, [
+        _vm._v("Disponible")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "badge badge-pill badge-secondary" }, [
+        _vm._v("Asignado")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "badge badge-pill badge-secondary" }, [
+        _vm._v("Concluido")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "compartir-trato" }, [
+      _c("div", { staticClass: "compartir-titulo" }, [
+        _c("p", [_vm._v("Compartir")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "compartir-redes" }, [
+        _c("a", { staticClass: "tweeter", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fab fa-twitter" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "facebook", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fab fa-facebook" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "instagram", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fab fa-instagram" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-between" }, [
+      _c("p", { staticClass: "detalles-trato" }, [_vm._v("Detalles")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "estrellas" }, [
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(
+        "\n                                5.0\n\n                            "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 ml-1" }, [_c("hr")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "estrellas" }, [
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-star" }),
+      _vm._v(
+        "\n                                    5.0\n\n                                "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotificacionSweet.vue?vue&type=template&id=63b004d9&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NotificacionSweet.vue?vue&type=template&id=63b004d9& ***!
@@ -77476,6 +81492,217 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "mapa" },
+    [
+      _c(
+        "l-map",
+        {
+          attrs: { zoom: _vm.zoom, center: _vm.center, options: _vm.mapOptions }
+        },
+        [
+          _c("l-tile-layer", {
+            attrs: { url: _vm.url, attribution: _vm.attribution }
+          }),
+          _vm._v(" "),
+          _vm._l(this.tareas, function(tarea) {
+            return _c(
+              "l-marker",
+              {
+                key: tarea.id,
+                attrs: {
+                  "lat-lng": _vm.obtenerCoordenadas(tarea),
+                  icon: _vm.iconoEstablecimiento()
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.cargarTarea(tarea)
+                  }
+                }
+              },
+              [
+                _c("l-tooltip", [
+                  _c("div", [
+                    _vm._v(
+                      "\n\n                    " +
+                        _vm._s(tarea.nombre) +
+                        "\n\n                "
+                    )
+                  ])
+                ])
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "lista-tareas" },
+    [
+      _vm.mapa ? _c("principal-mapa") : _vm._e(),
+      _vm._v(" "),
+      !_vm.mapa ? _c("mostrar-tarea") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "lista-tareas" },
+    _vm._l(this.tareas.slice().reverse(), function(tarea) {
+      return _c(
+        "div",
+        {
+          key: tarea.id,
+          staticClass: "tarea border-activa",
+          on: {
+            click: function($event) {
+              return _vm.cargarTarea(tarea, $event)
+            }
+          }
+        },
+        [
+          _c("p", { staticClass: "tipo_tarea" }, [
+            _vm._v(_vm._s(tarea.nombre))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row tarea_conjunto" }, [
+            _c("div", { staticClass: "col-3 mr-0 pr-0" }, [
+              tarea.usuario.perfil.imagen != null
+                ? _c("img", {
+                    staticClass: "foto-perfil-barra",
+                    attrs: {
+                      src:
+                        "/storage/perfiles/imagenes/" +
+                        tarea.usuario.perfil.imagen,
+                      alt: "Foto Perfil"
+                    }
+                  })
+                : _c("img", {
+                    staticClass: "foto-perfil-barra",
+                    attrs: {
+                      src: "/storage/img/usuario.jpg",
+                      alt: "Foto Perfil"
+                    }
+                  })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6 mr-0 ml-0 pr-0 pl-0" }, [
+              _c("p", { staticClass: "descripcion" }, [
+                _vm._v(
+                  _vm._s(_vm._f("strippedContent")(tarea.descripcion)) + "..."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-3 mr-0 ml-0 pr-0 pl-0 " }, [
+              _c("p", { staticClass: "precio" }, [
+                _vm._v("$" + _vm._s(tarea.presupuesto))
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "direccion" }, [
+            _c("i", { staticClass: "fas fa-map-marker-alt" }),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                _vm._s(tarea.estado.nombre) + " / " + _vm._s(tarea.direccion)
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "estrellas" },
+            [
+              _c("i", { staticClass: "fas fa-calendar-alt" }),
+              _vm._v(" "),
+              _c("mostrar-fecha", {
+                attrs: { fecha: tarea.fecha_de_vencimiento }
+              })
+            ],
+            1
+          )
+        ]
+      )
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -77545,37 +81772,36 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "mb-2" }, [
-                          _c("img", {
-                            attrs: {
-                              src: _vm.imagenAutor,
-                              alt: "Imagen de perfil",
-                              id: "imagen-oferta-respuesta"
-                            }
-                          }),
+                          this.oferta.autor.perfil.imagen
+                            ? _c("img", {
+                                attrs: {
+                                  src: _vm.imagenAutor,
+                                  alt: "Imagen de perfil",
+                                  id: "imagen-oferta-respuesta"
+                                }
+                              })
+                            : _c("img", {
+                                staticClass: "foto-perfil-barra",
+                                attrs: {
+                                  src: "/storage/img/usuario.jpg",
+                                  alt: "Foto Perfil"
+                                }
+                              }),
                           _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "d-flex flex-column text-left" },
                             [
-                              _c("a", {
-                                attrs: {
-                                  id: "perfil-oferta-respuesta",
-                                  href: "#"
-                                }
-                              }),
+                              _c("p", { staticClass: "mb-0 nombre-texto" }, [
+                                _vm._v(_vm._s(_vm.nombreAutor))
+                              ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "estrellas" }, [
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("p", [_vm._v("5.0")])
+                              _c("p", { staticClass: "contenido-texto" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("strippedContent")(_vm.contenido)
+                                  )
+                                )
                               ])
                             ]
                           )
@@ -77727,7 +81953,7 @@ var render = function() {
                     _c("div", { staticClass: "modal-content" }, [
                       _c("div", { staticClass: "modal-header" }, [
                         _c("h4", { staticClass: "modal-title mx-auto" }, [
-                          _vm._v("Respuesta Oferta")
+                          _vm._v("Respuesta Pregunta")
                         ]),
                         _vm._v(" "),
                         _c(
@@ -77751,37 +81977,36 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "mb-2" }, [
-                          _c("img", {
-                            attrs: {
-                              src: _vm.imagenAutor,
-                              alt: "Imagen de perfil",
-                              id: "imagen-oferta-respuesta"
-                            }
-                          }),
+                          this.pregunta.autor.perfil.imagen
+                            ? _c("img", {
+                                attrs: {
+                                  src: _vm.imagenAutor,
+                                  alt: "Imagen de perfil",
+                                  id: "imagen-oferta-respuesta"
+                                }
+                              })
+                            : _c("img", {
+                                staticClass: "foto-perfil-barra",
+                                attrs: {
+                                  src: "/storage/img/usuario.jpg",
+                                  alt: "Foto Perfil"
+                                }
+                              }),
                           _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "d-flex flex-column text-left" },
                             [
-                              _c("a", {
-                                attrs: {
-                                  id: "perfil-oferta-respuesta",
-                                  href: "#"
-                                }
-                              }),
+                              _c("p", { staticClass: "mb-0 nombre-texto" }, [
+                                _vm._v(_vm._s(_vm.nombreAutor))
+                              ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "estrellas" }, [
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-star" }),
-                                _vm._v(" "),
-                                _c("p", [_vm._v("5.0")])
+                              _c("p", { staticClass: "contenido-texto" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("strippedContent")(_vm.contenido)
+                                  )
+                                )
                               ])
                             ]
                           )
@@ -90054,6 +94279,13840 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vue2-leaflet/dist/components/LCircle.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LCircle.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var CircleMixin = {
+  mixins: [Path],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    radius: {
+      type: Number,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.circleOptions = Object.assign({}, this.pathOptions,
+      {radius: this.radius});
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Draw a path in the shape of a circle around a center positioned at `latLng` coordinates
+ */
+var script = {
+  name: 'LCircle',
+  mixins: [CircleMixin, Options],
+  props: {
+    latLng: {
+      type: [Object, Array],
+      default: function () { return [0, 0]; },
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.circleOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["circle"])(this.latLng, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  methods: {},
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LCircleMarker.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LCircleMarker.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var CircleMixin = {
+  mixins: [Path],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    radius: {
+      type: Number,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.circleOptions = Object.assign({}, this.pathOptions,
+      {radius: this.radius});
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * A marker in the shape of a circle
+ */
+var script = {
+  name: 'LCircleMarker',
+  mixins: [CircleMixin, Options],
+  props: {
+    latLng: {
+      type: [Object, Array],
+      default: function () { return [0, 0]; },
+    },
+    pane: {
+      type: String,
+      default: 'markerPane',
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.circleOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["circleMarker"])(this.latLng, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControl.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControl.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Add any custom component as a leaflet control
+ */
+var script = {
+  name: 'LControl',
+  mixins: [ControlMixin, Options],
+  props: {
+    disableClickPropagation: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+    disableScrollPropagation: {
+      type: Boolean,
+      custom: true,
+      default: false,
+    }
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var LControl = leaflet__WEBPACK_IMPORTED_MODULE_0__["Control"].extend({
+      element: undefined,
+      onAdd: function onAdd() {
+        return this.element;
+      },
+      setElement: function setElement(el) {
+        this.element = el;
+      },
+    });
+    var options = optionsMerger(this.controlOptions, this);
+    this.mapObject = new LControl(options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.mapObject.setElement(this.$el);
+    if (this.disableClickPropagation) {
+      leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].disableClickPropagation(this.$el);
+    }
+    if (this.disableScrollPropagation) {
+      leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].disableScrollPropagation(this.$el);
+    }
+    this.mapObject.addTo(this.parentContainer.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._t("default")],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControlAttribution.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControlAttribution.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Add any custom component as a leaflet control-attribution
+ */
+var script = {
+  name: 'LControlAttribution',
+  mixins: [ControlMixin, Options],
+  props: {
+    prefix: {
+      type: [String, Boolean],
+      default: null,
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      Object.assign({}, this.controlOptions,
+        {prefix: this.prefix}),
+      this
+    );
+    this.mapObject = leaflet__WEBPACK_IMPORTED_MODULE_0__["control"].attribution(options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.addTo(this.$parent.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControlLayers.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControlLayers.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Add any custom component as a leaflet control-layers
+ */
+var script = {
+  name: 'LControlLayers',
+  mixins: [ControlMixin, Options],
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: true,
+    },
+    autoZIndex: {
+      type: Boolean,
+      default: true,
+    },
+    hideSingleBase: {
+      type: Boolean,
+      default: false,
+    },
+    sortLayers: {
+      type: Boolean,
+      default: false,
+    },
+    sortFunction: {
+      type: Function,
+      default: undefined,
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      Object.assign({}, this.controlOptions,
+        {collapsed: this.collapsed,
+        autoZIndex: this.autoZIndex,
+        hideSingleBase: this.hideSingleBase,
+        sortLayers: this.sortLayers,
+        sortFunction: this.sortFunction}),
+      this
+    );
+    this.mapObject = leaflet__WEBPACK_IMPORTED_MODULE_0__["control"].layers(null, null, options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.$parent.registerLayerControl(this);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  methods: {
+    addLayer: function addLayer(layer) {
+      if (layer.layerType === 'base') {
+        this.mapObject.addBaseLayer(layer.mapObject, layer.name);
+      } else if (layer.layerType === 'overlay') {
+        this.mapObject.addOverlay(layer.mapObject, layer.name);
+      }
+    },
+    removeLayer: function removeLayer(layer) {
+      this.mapObject.removeLayer(layer.mapObject);
+    },
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControlScale.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControlScale.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Add any custom component as a leaflet control-scale
+ */
+var script = {
+  name: 'LControlScale',
+  mixins: [ControlMixin, Options],
+  props: {
+    maxWidth: {
+      type: Number,
+      default: 100,
+    },
+    metric: {
+      type: Boolean,
+      default: true,
+    },
+    imperial: {
+      type: Boolean,
+      default: true,
+    },
+    updateWhenIdle: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      Object.assign({}, this.controlOptions,
+        {maxWidth: this.maxWidth,
+        metric: this.metric,
+        imperial: this.imperial,
+        updateWhenIdle: this.updateWhenIdle}),
+      this
+    );
+    this.mapObject = leaflet__WEBPACK_IMPORTED_MODULE_0__["control"].scale(options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.addTo(this.$parent.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControlZoom.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControlZoom.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Add any custom component as a leaflet control-zoom
+ */
+var script = {
+  name: 'LControlZoom',
+  mixins: [ControlMixin, Options],
+  props: {
+    zoomInText: {
+      type: String,
+      default: '+',
+    },
+    zoomInTitle: {
+      type: String,
+      default: 'Zoom in',
+    },
+    zoomOutText: {
+      type: String,
+      default: '-',
+    },
+    zoomOutTitle: {
+      type: String,
+      default: 'Zoom out',
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      Object.assign({}, this.controlOptions,
+        {zoomInText: this.zoomInText,
+        zoomInTitle: this.zoomInTitle,
+        zoomOutText: this.zoomOutText,
+        zoomOutTitle: this.zoomOutTitle}),
+      this
+    );
+    this.mapObject = leaflet__WEBPACK_IMPORTED_MODULE_0__["control"].zoom(options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.addTo(this.$parent.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LFeatureGroup.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LFeatureGroup.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var LayerGroupMixin = {
+  mixins: [Layer],
+  mounted: function mounted () {
+    this.layerGroupOptions = this.layerOptions;
+  },
+  methods: {
+    addLayer: function addLayer (layer, alreadyAdded) {
+      if (!alreadyAdded) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+      this.parentContainer.addLayer(layer, true);
+    },
+    removeLayer: function removeLayer (layer, alreadyRemoved) {
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+      this.parentContainer.removeLayer(layer, true);
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Group together elements of the maps  including: markers, geoJSON, polylines and polygon, tooltip and popup.
+ */
+var script = {
+  name: 'LFeatureGroup',
+  mixins: [LayerGroupMixin, Options],
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["featureGroup"])();
+    propsBinder(this, this.mapObject, this.$options.props);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    if (this.visible) {
+      this.parentContainer.addLayer(this);
+    }
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LGeoJson.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LGeoJson.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var LayerGroup = {
+  mixins: [Layer],
+  mounted: function mounted () {
+    this.layerGroupOptions = this.layerOptions;
+  },
+  methods: {
+    addLayer: function addLayer (layer, alreadyAdded) {
+      if (!alreadyAdded) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+      this.parentContainer.addLayer(layer, true);
+    },
+    removeLayer: function removeLayer (layer, alreadyRemoved) {
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+      this.parentContainer.removeLayer(layer, true);
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Easily display a geo-json on the map
+ */
+var script = {
+  name: 'LGeoJson',
+  mixins: [LayerGroup, Options],
+  props: {
+    geojson: {
+      type: [Object, Array],
+      custom: true,
+      default: function () { return ({}); },
+    },
+    options: {
+      type: Object,
+      custom: true,
+      default: function () { return ({}); },
+    },
+    optionsStyle: {
+      type: [Object, Function],
+      custom: true,
+      default: null,
+    },
+  },
+  computed: {
+    mergedOptions: function mergedOptions() {
+      return optionsMerger(
+        Object.assign({}, this.layerGroupOptions,
+          {style: this.optionsStyle}),
+        this
+      );
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["geoJSON"])(this.geojson, this.mergedOptions);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.parentContainer.mapObject.removeLayer(this.mapObject);
+  },
+  methods: {
+    setGeojson: function setGeojson(newVal) {
+      this.mapObject.clearLayers();
+      this.mapObject.addData(newVal);
+    },
+    getGeoJSONData: function getGeoJSONData() {
+      return this.mapObject.toGeoJSON();
+    },
+    getBounds: function getBounds() {
+      return this.mapObject.getBounds();
+    },
+    setOptions: function setOptions$1(newVal, oldVal) {
+      this.mapObject.clearLayers();
+      Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(this.mapObject, this.mergedOptions);
+      this.mapObject.addData(this.geojson);
+    },
+    setOptionsStyle: function setOptionsStyle(newVal, oldVal) {
+      this.mapObject.setStyle(newVal);
+    },
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LGridLayer.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LGridLayer.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayerMixin = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Creates a map layer where each tile is an instantiated Vue component.
+ * Each tile component is given `coords` props by `l-grid-layer` to indicate
+ * the zoom level and position of the tile
+ * (see https://leafletjs.com/examples/extending/extending-2-layers.html#lgridlayer-and-dom-elements).
+ */
+var script = {
+  name: 'LGridLayer',
+  mixins: [GridLayerMixin, Options],
+
+  props: {
+    tileComponent: {
+      type: Object,
+      custom: true,
+      required: true,
+    },
+  },
+
+  data: function data() {
+    return {
+      tileComponents: {},
+    };
+  },
+
+  computed: {
+    TileConstructor: function TileConstructor() {
+      return vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend(this.tileComponent);
+    },
+  },
+
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var GLayer = leaflet__WEBPACK_IMPORTED_MODULE_1__["GridLayer"].extend({});
+    var options = optionsMerger(this.gridLayerOptions, this);
+    this.mapObject = new GLayer(options);
+    leaflet__WEBPACK_IMPORTED_MODULE_1__["DomEvent"].on(this.mapObject, this.$listeners);
+    this.mapObject.on('tileunload', this.onUnload, this);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.createTile = this.createTile;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.parentContainer.removeLayer(this.mapObject);
+    this.mapObject.off('tileunload', this.onUnload);
+    this.mapObject = null;
+  },
+
+  methods: {
+    createTile: function createTile(coords) {
+      var div = leaflet__WEBPACK_IMPORTED_MODULE_1__["DomUtil"].create('div');
+      var dummy = leaflet__WEBPACK_IMPORTED_MODULE_1__["DomUtil"].create('div');
+      div.appendChild(dummy);
+
+      var tileInstance = new this.TileConstructor({
+        el: dummy,
+        parent: this,
+        propsData: {
+          coords: coords,
+        },
+      });
+
+      var key = this.mapObject._tileCoordsToKey(coords);
+      this.tileComponents[key] = tileInstance;
+
+      return div;
+    },
+
+    onUnload: function onUnload(e) {
+      var key = this.mapObject._tileCoordsToKey(e.coords);
+      if (typeof this.tileComponents[key] !== 'undefined') {
+        this.tileComponents[key].$destroy();
+        this.tileComponents[key].$el.remove();
+        delete this.tileComponents[key];
+      }
+    },
+
+    setTileComponent: function setTileComponent(newVal) {
+      this.mapObject.redraw();
+    },
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LIcon.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LIcon.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+//
+
+/**
+ * Easy and reactive way to configure the icon of a marker
+ */
+var script = {
+  name: 'LIcon',
+  props: {
+    iconUrl: {
+      type: String,
+      custom: true,
+      default: null,
+    },
+    iconRetinaUrl: {
+      type: String,
+      custom: true,
+      default: null,
+    },
+    iconSize: {
+      type: [Object, Array],
+      custom: true,
+      default: null,
+    },
+    iconAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: null,
+    },
+    popupAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: function () { return [0, 0]; },
+    },
+    tooltipAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: function () { return [0, 0]; },
+    },
+    shadowUrl: {
+      type: String,
+      custom: true,
+      default: null,
+    },
+    shadowRetinaUrl: {
+      type: String,
+      custom: true,
+      default: null,
+    },
+    shadowSize: {
+      type: [Object, Array],
+      custom: true,
+      default: null,
+    },
+    shadowAnchor: {
+      type: [Object, Array],
+      custom: true,
+      default: null,
+    },
+    bgPos: {
+      type: [Object, Array],
+      custom: true,
+      default: function () { return [0, 0]; },
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: '',
+    },
+    options: {
+      type: Object,
+      custom: true,
+      default: function () { return ({}); },
+    },
+  },
+
+  data: function data() {
+    return {
+      parentContainer: null,
+      observer: null,
+      recreationNeeded: false,
+      swapHtmlNeeded: false,
+    };
+  },
+
+  mounted: function mounted() {
+    var this$1 = this;
+
+    this.parentContainer = findRealParent(this.$parent);
+
+    propsBinder(this, this.$parent.mapObject, this.$options.props);
+
+    this.observer = new MutationObserver(function () {
+      this$1.scheduleHtmlSwap();
+    });
+    this.observer.observe(this.$el, {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
+    this.scheduleCreateIcon();
+  },
+
+  beforeDestroy: function beforeDestroy() {
+    if (this.parentContainer.mapObject) {
+      this.parentContainer.mapObject.setIcon(this.parentContainer.$props.icon);
+    }
+
+    this.observer.disconnect();
+  },
+
+  methods: {
+    scheduleCreateIcon: function scheduleCreateIcon() {
+      this.recreationNeeded = true;
+
+      this.$nextTick(this.createIcon);
+    },
+
+    scheduleHtmlSwap: function scheduleHtmlSwap() {
+      this.htmlSwapNeeded = true;
+
+      this.$nextTick(this.createIcon);
+    },
+
+    createIcon: function createIcon() {
+      // If only html of a divIcon changed, we can just replace the DOM without the need of recreating the whole icon
+      if (
+        this.htmlSwapNeeded &&
+        !this.recreationNeeded &&
+        this.iconObject &&
+        this.parentContainer.mapObject.getElement()
+      ) {
+        this.parentContainer.mapObject.getElement().innerHTML = this.$el.innerHTML;
+
+        this.htmlSwapNeeded = false;
+        return;
+      }
+
+      if (!this.recreationNeeded) {
+        return;
+      }
+
+      if (this.iconObject) {
+        leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].off(this.iconObject, this.$listeners);
+      }
+
+      var options = optionsMerger(
+        {
+          iconUrl: this.iconUrl,
+          iconRetinaUrl: this.iconRetinaUrl,
+          iconSize: this.iconSize,
+          iconAnchor: this.iconAnchor,
+          popupAnchor: this.popupAnchor,
+          tooltipAnchor: this.tooltipAnchor,
+          shadowUrl: this.shadowUrl,
+          shadowRetinaUrl: this.shadowRetinaUrl,
+          shadowSize: this.shadowSize,
+          shadowAnchor: this.shadowAnchor,
+          bgPos: this.bgPos,
+          className: this.className,
+          html: this.$el.innerHTML || this.html,
+        },
+        this
+      );
+
+      if (options.html) {
+        this.iconObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["divIcon"])(options);
+      } else {
+        this.iconObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["icon"])(options);
+      }
+
+      leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.iconObject, this.$listeners);
+
+      this.parentContainer.mapObject.setIcon(this.iconObject);
+
+      this.recreationNeeded = false;
+      this.htmlSwapNeeded = false;
+    },
+
+    setIconUrl: function setIconUrl() {
+      this.scheduleCreateIcon();
+    },
+    setIconRetinaUrl: function setIconRetinaUrl() {
+      this.scheduleCreateIcon();
+    },
+    setIconSize: function setIconSize() {
+      this.scheduleCreateIcon();
+    },
+    setIconAnchor: function setIconAnchor() {
+      this.scheduleCreateIcon();
+    },
+    setPopupAnchor: function setPopupAnchor() {
+      this.scheduleCreateIcon();
+    },
+    setTooltipAnchor: function setTooltipAnchor() {
+      this.scheduleCreateIcon();
+    },
+    setShadowUrl: function setShadowUrl() {
+      this.scheduleCreateIcon();
+    },
+    setShadowRetinaUrl: function setShadowRetinaUrl() {
+      this.scheduleCreateIcon();
+    },
+    setShadowAnchor: function setShadowAnchor() {
+      this.scheduleCreateIcon();
+    },
+    setBgPos: function setBgPos() {
+      this.scheduleCreateIcon();
+    },
+    setClassName: function setClassName() {
+      this.scheduleCreateIcon();
+    },
+    setHtml: function setHtml() {
+      this.scheduleCreateIcon();
+    },
+  },
+
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._t("default")],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LIconDefault.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LIconDefault.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+/**
+ * Set a default icon
+ * @deprecated since version 2.0
+ */
+var script = {
+  name: 'LIconDefault',
+  props: {
+    imagePath: {
+      type: String,
+      custom: true,
+      default: '',
+    },
+  },
+  mounted: function mounted() {
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["Icon"].Default.imagePath = this.imagePath;
+    propsBinder(this, {}, this.$options.props);
+  },
+  methods: {
+    setImagePath: function setImagePath(newVal) {
+      leaflet__WEBPACK_IMPORTED_MODULE_0__["Icon"].Default.imagePath = newVal;
+    },
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LImageOverlay.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LImageOverlay.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var ImageOverlayMixin = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    url: {
+      type: String,
+      custom: true
+    },
+    bounds: {
+      custom: true
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    alt: {
+      type: String,
+      default: ''
+    },
+    interactive: {
+      type: Boolean,
+      default: false
+    },
+    crossOrigin: {
+      type: Boolean,
+      default: false
+    },
+    errorOverlayUrl: {
+      type: String,
+      custom: true,
+      default: ''
+    },
+    zIndex: {
+      type: Number,
+      custom: true,
+      default: 1
+    },
+    className: {
+      type: String,
+      default: ''
+    }
+  },
+  mounted: function mounted () {
+    this.imageOverlayOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {opacity: this.opacity,
+      alt: this.alt,
+      interactive: this.interactive,
+      crossOrigin: this.crossOrigin,
+      errorOverlayUrl: this.errorOverlayUrl,
+      zIndex: this.zIndex,
+      className: this.className});
+  },
+  methods: {
+    setOpacity: function setOpacity (opacity) {
+      return this.mapObject.setOpacity(opacity);
+    },
+    setUrl: function setUrl (url) {
+      return this.mapObject.setUrl(url);
+    },
+    setBounds: function setBounds (bounds) {
+      return this.mapObject.setBounds(bounds);
+    },
+    getBounds: function getBounds () {
+      return this.mapObject.getBounds();
+    },
+    getElement: function getElement () {
+      return this.mapObject.getElement();
+    },
+    bringToFront: function bringToFront () {
+      return this.mapObject.bringToFront();
+    },
+    bringToBack: function bringToBack () {
+      return this.mapObject.bringToBack();
+    }
+  },
+  render: function render () {
+    return null;
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Easily display a image overlay.
+ */
+var script = {
+  name: 'LImageOverlay',
+  mixins: [ImageOverlayMixin, Options],
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.imageOverlayOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["imageOverlay"])(this.url, this.bounds, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LLayerGroup.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LLayerGroup.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var LayerGroupMixin = {
+  mixins: [Layer],
+  mounted: function mounted () {
+    this.layerGroupOptions = this.layerOptions;
+  },
+  methods: {
+    addLayer: function addLayer (layer, alreadyAdded) {
+      if (!alreadyAdded) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+      this.parentContainer.addLayer(layer, true);
+    },
+    removeLayer: function removeLayer (layer, alreadyRemoved) {
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+      this.parentContainer.removeLayer(layer, true);
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Group together elements of the maps  including: markers, geoJSON, polylines and polygon, tooltip and popup.
+ */
+var script = {
+  name: 'LLayerGroup',
+  mixins: [LayerGroupMixin, Options],
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["layerGroup"])();
+    propsBinder(this, this.mapObject, this.$options.props);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    if (this.visible) {
+      this.parentContainer.addLayer(this);
+    }
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LMap.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LMap.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var debounce = function (fn, time) {
+  var timeout;
+
+  var debouncedFunction = function() {
+    var args = [], len = arguments.length;
+    while ( len-- ) args[ len ] = arguments[ len ];
+
+    var context = this;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function () {
+      fn.apply(context, args);
+      timeout = null;
+    }, time);
+  };
+
+  debouncedFunction.cancel = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+  };
+
+  return debouncedFunction;
+};
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Base component, contains and wrap all the other components.
+ */
+var script = {
+  name: 'LMap',
+  mixins: [Options],
+  props: {
+    /**
+     * The center of the map, supports .sync modifier
+     */
+    center: {
+      type: [Object, Array],
+      custom: true,
+      default: function () { return [0, 0]; },
+    },
+    /**
+     * The bounds of the map, supports .sync modifier
+     */
+    bounds: {
+      type: [Array, Object],
+      custom: true,
+      default: null,
+    },
+    /**
+     * The max bounds of the map
+     */
+    maxBounds: {
+      type: [Array, Object],
+      default: null,
+    },
+    /**
+     * The zoom of the map, supports .sync modifier
+     */
+    zoom: {
+      type: Number,
+      custom: true,
+      default: 0,
+    },
+    /**
+     * The minZoom of the map
+     */
+    minZoom: {
+      type: Number,
+      default: null,
+    },
+    /**
+     * The maxZoom of the map
+     */
+    maxZoom: {
+      type: Number,
+      default: null,
+    },
+    /**
+     * The paddingBottomRight of the map
+     */
+    paddingBottomRight: {
+      type: Array,
+      custom: true,
+      default: null,
+    },
+    /**
+     * The paddingTopLeft of the map
+     */
+    paddingTopLeft: {
+      type: Array,
+      custom: true,
+      default: null,
+    },
+    /**
+     * The padding of the map
+     */
+    padding: {
+      type: Array,
+      custom: true,
+      default: null,
+    },
+    /**
+     * The worldCopyJump option for the map
+     */
+    worldCopyJump: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * The crs option for the map
+     * @values CRS.EPSG3857
+     */
+    crs: {
+      type: Object,
+      custom: true,
+      default: function () { return leaflet__WEBPACK_IMPORTED_MODULE_0__["CRS"].EPSG3857; },
+    },
+    maxBoundsViscosity: {
+      type: Number,
+      default: null,
+    },
+    inertia: {
+      type: Boolean,
+      default: null,
+    },
+    inertiaDeceleration: {
+      type: Number,
+      default: null,
+    },
+    inertiaMaxSpeed: {
+      type: Number,
+      default: null,
+    },
+    easeLinearity: {
+      type: Number,
+      default: null,
+    },
+    zoomAnimation: {
+      type: Boolean,
+      default: null,
+    },
+    zoomAnimationThreshold: {
+      type: Number,
+      default: null,
+    },
+    fadeAnimation: {
+      type: Boolean,
+      default: null,
+    },
+    markerZoomAnimation: {
+      type: Boolean,
+      default: null,
+    },
+    noBlockingAnimations: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+      lastSetCenter: this.center ? Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(this.center) : null,
+      lastSetBounds: this.bounds ? Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLngBounds"])(this.bounds) : null,
+      layerControl: undefined,
+      layersToAdd: [],
+      layersInControl: [],
+    };
+  },
+  computed: {
+    fitBoundsOptions: function fitBoundsOptions() {
+      var options = {
+        animate: this.noBlockingAnimations ? false : null,
+      };
+      if (this.padding) {
+        options.padding = this.padding;
+      } else {
+        if (this.paddingBottomRight) {
+          options.paddingBottomRight = this.paddingBottomRight;
+        }
+        if (this.paddingTopLeft) {
+          options.paddingTopLeft = this.paddingTopLeft;
+        }
+      }
+      return options;
+    },
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.debouncedMoveEndHandler) {
+      this.debouncedMoveEndHandler.cancel();
+    }
+
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      {
+        minZoom: this.minZoom,
+        maxZoom: this.maxZoom,
+        maxBounds: this.maxBounds,
+        maxBoundsViscosity: this.maxBoundsViscosity,
+        worldCopyJump: this.worldCopyJump,
+        crs: this.crs,
+        center: this.center,
+        zoom: this.zoom,
+        inertia: this.inertia,
+        inertiaDeceleration: this.inertiaDeceleration,
+        inertiaMaxSpeed: this.inertiaMaxSpeed,
+        easeLinearity: this.easeLinearity,
+        zoomAnimation: this.zoomAnimation,
+        zoomAnimationThreshold: this.zoomAnimationThreshold,
+        fadeAnimation: this.fadeAnimation,
+        markerZoomAnimation: this.markerZoomAnimation,
+      },
+      this
+    );
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["map"])(this.$el, options);
+    if (this.bounds) {
+      this.mapObject.fitBounds(this.bounds);
+    }
+    this.debouncedMoveEndHandler = debounce(this.moveEndHandler, 100);
+    this.mapObject.on('moveend', this.debouncedMoveEndHandler);
+    this.mapObject.on('overlayadd', this.overlayAddHandler);
+    this.mapObject.on('overlayremove', this.overlayRemoveHandler);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    /**
+     * DEPRECATED event
+     * @deprecated
+     */
+    this.$emit('leaflet:load');
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  methods: {
+    registerLayerControl: function registerLayerControl(lControlLayers) {
+      var this$1 = this;
+
+      this.layerControl = lControlLayers;
+      this.mapObject.addControl(lControlLayers.mapObject);
+      this.layersToAdd.forEach(function (layer) {
+        this$1.layerControl.addLayer(layer);
+      });
+      this.layersToAdd = [];
+    },
+    addLayer: function addLayer(layer, alreadyAdded) {
+      if (layer.layerType !== undefined) {
+        if (this.layerControl === undefined) {
+          this.layersToAdd.push(layer);
+        } else {
+          var exist = this.layersInControl.find(
+            function (l) { return l.mapObject._leaflet_id === layer.mapObject._leaflet_id; }
+          );
+          if (!exist) {
+            this.layerControl.addLayer(layer);
+            this.layersInControl.push(layer);
+          }
+        }
+      }
+      if (!alreadyAdded && layer.visible !== false) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+    },
+    hideLayer: function hideLayer(layer) {
+      this.mapObject.removeLayer(layer.mapObject);
+    },
+    removeLayer: function removeLayer(layer, alreadyRemoved) {
+      if (layer.layerType !== undefined) {
+        if (this.layerControl === undefined) {
+          this.layersToAdd = this.layersToAdd.filter(
+            function (l) { return l.name !== layer.name; }
+          );
+        } else {
+          this.layerControl.removeLayer(layer);
+          this.layersInControl = this.layersInControl.filter(
+            function (l) { return l.mapObject._leaflet_id !== layer.mapObject._leaflet_id; }
+          );
+        }
+      }
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+    },
+    setZoom: function setZoom(newVal, oldVal) {
+      if (newVal === undefined || newVal === null) { return; }
+      this.mapObject.setZoom(newVal, {
+        animate: this.noBlockingAnimations ? false : null,
+      });
+      this.cacheMapView();
+    },
+    setCenter: function setCenter(newVal, oldVal) {
+      if (newVal == null) {
+        return;
+      }
+      var newCenter = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(newVal);
+      var oldCenter = this.lastSetCenter || this.mapObject.getCenter();
+      if (oldCenter.lat !== newCenter.lat || oldCenter.lng !== newCenter.lng) {
+        this.lastSetCenter = newCenter;
+        this.mapObject.panTo(newCenter, {
+          animate: this.noBlockingAnimations ? false : null,
+        });
+        this.cacheMapView(undefined, newCenter);
+      }
+    },
+    setBounds: function setBounds(newVal, oldVal) {
+      if (!newVal) {
+        return;
+      }
+      var newBounds = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLngBounds"])(newVal);
+      if (!newBounds.isValid()) {
+        return;
+      }
+      var oldBounds = this.lastSetBounds || this.mapObject.getBounds();
+      var boundsChanged = !oldBounds.equals(newBounds, 0); // set maxMargin to 0 - check exact equals
+      if (boundsChanged) {
+        this.mapObject.fitBounds(newBounds, this.fitBoundsOptions);
+        this.cacheMapView(newBounds);
+      }
+    },
+    setPaddingBottomRight: function setPaddingBottomRight(newVal, oldVal) {
+      this.paddingBottomRight = newVal;
+    },
+    setPaddingTopLeft: function setPaddingTopLeft(newVal, oldVal) {
+      this.paddingTopLeft = newVal;
+    },
+    setPadding: function setPadding(newVal, oldVal) {
+      this.padding = newVal;
+    },
+    setCrs: function setCrs(newVal, oldVal) {
+      var mapObject = this.mapObject,
+        prevBounds = mapObject.getBounds();
+      mapObject.options.crs = newVal;
+      mapObject.fitBounds(prevBounds, { animate: false, padding: [0, 0] });
+    },
+    fitBounds: function fitBounds(bounds) {
+      this.mapObject.fitBounds(bounds, {
+        animate: this.noBlockingAnimations ? false : null,
+      });
+    },
+    moveEndHandler: function moveEndHandler() {
+      /**
+       * Triggers when zoom is updated
+       * @type {number,string}
+       */
+      this.$emit('update:zoom', this.mapObject.getZoom());
+      var center = this.mapObject.getCenter();
+      /**
+       * Triggers when center is updated
+       * @type {object,array}
+       */
+      this.$emit('update:center', center);
+      var bounds = this.mapObject.getBounds();
+      /**
+       * Triggers when bounds are updated
+       * @type {object}
+       */
+      this.$emit('update:bounds', bounds);
+    },
+    overlayAddHandler: function overlayAddHandler(e) {
+      var layer = this.layersInControl.find(function (l) { return l.name === e.name; });
+      if (layer) {
+        layer.updateVisibleProp(true);
+      }
+    },
+    overlayRemoveHandler: function overlayRemoveHandler(e) {
+      var layer = this.layersInControl.find(function (l) { return l.name === e.name; });
+      if (layer) {
+        layer.updateVisibleProp(false);
+      }
+    },
+    cacheMapView: function cacheMapView(bounds, center) {
+      // Cache the last values used to define the map view by mutating props.
+      this.lastSetBounds = bounds || this.mapObject.getBounds();
+      this.lastSetCenter = center || this.lastSetBounds.getCenter();
+    },
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+var isOldIE = typeof navigator !== 'undefined' &&
+    /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+    return function (id, style) { return addStyle(id, style); };
+}
+var HEAD;
+var styles = {};
+function addStyle(id, css) {
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+    if (!style.ids.has(id)) {
+        style.ids.add(id);
+        var code = css.source;
+        if (css.map) {
+            // https://developer.chrome.com/devtools/docs/javascript-debugging
+            // this makes source maps inside style tags work properly in Chrome
+            code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+            // http://stackoverflow.com/a/26603875
+            code +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                    ' */';
+        }
+        if (!style.element) {
+            style.element = document.createElement('style');
+            style.element.type = 'text/css';
+            if (css.media)
+                { style.element.setAttribute('media', css.media); }
+            if (HEAD === undefined) {
+                HEAD = document.head || document.getElementsByTagName('head')[0];
+            }
+            HEAD.appendChild(style.element);
+        }
+        if ('styleSheet' in style.element) {
+            style.styles.push(code);
+            style.element.styleSheet.cssText = style.styles
+                .filter(Boolean)
+                .join('\n');
+        }
+        else {
+            var index = style.ids.size - 1;
+            var textNode = document.createTextNode(code);
+            var nodes = style.element.childNodes;
+            if (nodes[index])
+                { style.element.removeChild(nodes[index]); }
+            if (nodes.length)
+                { style.element.insertBefore(textNode, nodes[index]); }
+            else
+                { style.element.appendChild(textNode); }
+        }
+    }
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue2leaflet-map"},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = function (inject) {
+    if (!inject) { return }
+    inject("data-v-64f90fd7_0", { source: ".vue2leaflet-map{height:100%;width:100%}", map: undefined, media: undefined });
+
+  };
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    createInjector,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LMarker.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LMarker.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var debounce = function (fn, time) {
+  var timeout;
+
+  var debouncedFunction = function() {
+    var args = [], len = arguments.length;
+    while ( len-- ) args[ len ] = arguments[ len ];
+
+    var context = this;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function () {
+      fn.apply(context, args);
+      timeout = null;
+    }, time);
+  };
+
+  debouncedFunction.cancel = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+  };
+
+  return debouncedFunction;
+};
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Marker component, lets you add and personalize markers on the map
+ */
+var script = {
+  name: 'LMarker',
+  mixins: [Layer, Options],
+  props: {
+    pane: {
+      type: String,
+      default: 'markerPane',
+    },
+    draggable: {
+      type: Boolean,
+      custom: true,
+      default: false,
+    },
+    latLng: {
+      type: [Object, Array],
+      custom: true,
+      default: null,
+    },
+    icon: {
+      type: [Object],
+      custom: false,
+      default: function () { return new leaflet__WEBPACK_IMPORTED_MODULE_0__["Icon"].Default(); },
+    },
+    zIndexOffset: {
+      type: Number,
+      custom: false,
+      default: null,
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.debouncedLatLngSync) {
+      this.debouncedLatLngSync.cancel();
+    }
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(
+      Object.assign({}, this.layerOptions,
+        {icon: this.icon,
+        zIndexOffset: this.zIndexOffset,
+        draggable: this.draggable}),
+      this
+    );
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["marker"])(this.latLng, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    this.debouncedLatLngSync = debounce(this.latLngSync, 100);
+    this.mapObject.on('move', this.debouncedLatLngSync);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.ready = true;
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  methods: {
+    setDraggable: function setDraggable(newVal, oldVal) {
+      if (this.mapObject.dragging) {
+        newVal
+          ? this.mapObject.dragging.enable()
+          : this.mapObject.dragging.disable();
+      }
+    },
+    setLatLng: function setLatLng(newVal) {
+      if (newVal == null) {
+        return;
+      }
+
+      if (this.mapObject) {
+        var oldLatLng = this.mapObject.getLatLng();
+        var newLatLng = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(newVal);
+        if (
+          newLatLng.lat !== oldLatLng.lat ||
+          newLatLng.lng !== oldLatLng.lng
+        ) {
+          this.mapObject.setLatLng(newLatLng);
+        }
+      }
+    },
+    latLngSync: function latLngSync(event) {
+      this.$emit('update:latLng', event.latlng);
+      this.$emit('update:lat-lng', event.latlng);
+    },
+  },
+  render: function(h) {
+    if (this.ready && this.$slots.default) {
+      return h('div', { style: { display: 'none' } }, this.$slots.default);
+    }
+    return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LPolygon.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LPolygon.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var Polyline = {
+  mixins: [Path],
+  props: {
+    smoothFactor: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    noClip: {
+      type: Boolean,
+      custom: true,
+      default: false
+    }
+  },
+  data: function data () {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted () {
+    this.polyLineOptions = Object.assign({}, this.pathOptions,
+      {smoothFactor: this.smoothFactor,
+      noClip: this.noClip});
+  },
+  methods: {
+    setSmoothFactor: function setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
+    },
+    setNoClip: function setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
+    },
+    addLatLng: function addLatLng (value) {
+      this.mapObject.addLatLng(value);
+    }
+  }
+};
+
+var PolygonMixin = {
+  mixins: [Polyline],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.polygonOptions = this.polyLineOptions;
+  },
+  methods: {
+    getGeoJSONData: function getGeoJSONData () {
+      return this.mapObject.toGeoJSON();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Easily draw a polygon on the map
+ */
+var script = {
+  name: 'LPolygon',
+  mixins: [PolygonMixin, Options],
+  props: {
+    latLngs: {
+      type: Array,
+      default: function () { return []; },
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.polygonOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["polygon"])(this.latLngs, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LPolyline.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LPolyline.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var PolylineMixin = {
+  mixins: [Path],
+  props: {
+    smoothFactor: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    noClip: {
+      type: Boolean,
+      custom: true,
+      default: false
+    }
+  },
+  data: function data () {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted () {
+    this.polyLineOptions = Object.assign({}, this.pathOptions,
+      {smoothFactor: this.smoothFactor,
+      noClip: this.noClip});
+  },
+  methods: {
+    setSmoothFactor: function setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
+    },
+    setNoClip: function setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
+    },
+    addLatLng: function addLatLng (value) {
+      this.mapObject.addLatLng(value);
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Easily draw a polyline on the map
+ */
+var script = {
+  name: 'LPolyline',
+  mixins: [PolylineMixin, Options],
+  props: {
+    latLngs: {
+      type: Array,
+      default: function () { return []; },
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.polyLineOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["polyline"])(this.latLngs, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LPopup.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LPopup.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Popper = {
+  props: {
+    content: {
+      type: String,
+      default: null,
+      custom: true
+    }
+  },
+  mounted: function mounted () {
+    this.popperOptions = {};
+  },
+  methods: {
+    setContent: function setContent (newVal) {
+      if (this.mapObject && newVal !== null && newVal !== undefined) {
+        this.mapObject.setContent(newVal);
+      }
+    }
+  },
+  render: function render (h) {
+    if (this.$slots.default) {
+      return h('div', this.$slots.default);
+    }
+    return null;
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Display a popup on the map
+ */
+var script = {
+  name: 'LPopup',
+  mixins: [Popper, Options],
+  props: {
+    latLng: {
+      type: [Object, Array],
+      default: function () { return []; },
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.popperOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["popup"])(options);
+    if (this.latLng !== undefined) {
+      this.mapObject.setLatLng(this.latLng);
+    }
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.setContent(this.content || this.$el);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.mapObject.bindPopup(this.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.parentContainer) {
+      if (this.parentContainer.unbindPopup) {
+        this.parentContainer.unbindPopup();
+      } else if (
+        this.parentContainer.mapObject &&
+        this.parentContainer.mapObject.unbindPopup
+      ) {
+        this.parentContainer.mapObject.unbindPopup();
+      }
+    }
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LRectangle.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LRectangle.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var Polyline = {
+  mixins: [Path],
+  props: {
+    smoothFactor: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    noClip: {
+      type: Boolean,
+      custom: true,
+      default: false
+    }
+  },
+  data: function data () {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted () {
+    this.polyLineOptions = Object.assign({}, this.pathOptions,
+      {smoothFactor: this.smoothFactor,
+      noClip: this.noClip});
+  },
+  methods: {
+    setSmoothFactor: function setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
+    },
+    setNoClip: function setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
+    },
+    addLatLng: function addLatLng (value) {
+      this.mapObject.addLatLng(value);
+    }
+  }
+};
+
+var Polygon = {
+  mixins: [Polyline],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.polygonOptions = this.polyLineOptions;
+  },
+  methods: {
+    getGeoJSONData: function getGeoJSONData () {
+      return this.mapObject.toGeoJSON();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Easily draw a rectangle on the map
+ */
+var script = {
+  name: 'LRectangle',
+  mixins: [Polygon, Options],
+  props: {
+    bounds: {
+      default: function () { return [[0,0],[0,0]]; },
+      validator: function (value) { return value && Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLngBounds"])(value).isValid(); },
+    },
+  },
+  data: function data() {
+    return {
+      ready: false,
+    };
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.polygonOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["rectangle"])(this.bounds, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.ready = true;
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"none"}},[(_vm.ready)?_vm._t("default"):_vm._e()],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LTileLayer.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LTileLayer.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayer = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+var TileLayerMixin = {
+  mixins: [GridLayer],
+  props: {
+    tms: {
+      type: Boolean,
+      default: false,
+    },
+    subdomains: {
+      type: [String, Array],
+      default: 'abc',
+      validator: function (prop) {
+        if (typeof prop === 'string') { return true; }
+        // Validates array that array only contains only strings
+        if (Array.isArray(prop)) {
+          return prop.every(function (subdomain) { return typeof subdomain === 'string'; });
+        }
+        return false;
+      },
+    },
+    detectRetina: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted: function mounted() {
+    this.tileLayerOptions = Object.assign({}, this.gridLayerOptions,
+      {tms: this.tms,
+      subdomains: this.subdomains,
+      detectRetina: this.detectRetina});
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Load tiles from a map server and display them accordingly to map zoom, center and size
+ */
+var script = {
+  name: 'LTileLayer',
+  mixins: [TileLayerMixin, Options],
+  props: {
+    url: {
+      type: String,
+      default: null,
+    },
+    tileLayerClass: {
+      type: Function,
+      default: leaflet__WEBPACK_IMPORTED_MODULE_0__["tileLayer"],
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.tileLayerOptions, this);
+    this.mapObject = this.tileLayerClass(this.url, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LTooltip.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LTooltip.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Popper = {
+  props: {
+    content: {
+      type: String,
+      default: null,
+      custom: true
+    }
+  },
+  mounted: function mounted () {
+    this.popperOptions = {};
+  },
+  methods: {
+    setContent: function setContent (newVal) {
+      if (this.mapObject && newVal !== null && newVal !== undefined) {
+        this.mapObject.setContent(newVal);
+      }
+    }
+  },
+  render: function render (h) {
+    if (this.$slots.default) {
+      return h('div', this.$slots.default);
+    }
+    return null;
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Display a tooltip on the map
+ */
+var script = {
+  name: 'LTooltip',
+  mixins: [Popper, Options],
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.popperOptions, this);
+    this.mapObject = Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["tooltip"])(options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.setContent(this.content || this.$el);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.mapObject.bindTooltip(this.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.parentContainer) {
+      if (this.parentContainer.unbindTooltip) {
+        this.parentContainer.unbindTooltip();
+      } else if (
+        this.parentContainer.mapObject &&
+        this.parentContainer.mapObject.unbindTooltip
+      ) {
+        this.parentContainer.mapObject.unbindTooltip();
+      }
+    }
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LWMSTileLayer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LWMSTileLayer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayer = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+var TileLayer = {
+  mixins: [GridLayer],
+  props: {
+    tms: {
+      type: Boolean,
+      default: false,
+    },
+    subdomains: {
+      type: [String, Array],
+      default: 'abc',
+      validator: function (prop) {
+        if (typeof prop === 'string') { return true; }
+        // Validates array that array only contains only strings
+        if (Array.isArray(prop)) {
+          return prop.every(function (subdomain) { return typeof subdomain === 'string'; });
+        }
+        return false;
+      },
+    },
+    detectRetina: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted: function mounted() {
+    this.tileLayerOptions = Object.assign({}, this.gridLayerOptions,
+      {tms: this.tms,
+      subdomains: this.subdomains,
+      detectRetina: this.detectRetina});
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+var TileLayerWMS = {
+  mixins: [TileLayer],
+  props: {
+    layers: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: String,
+      default: ''
+    },
+    format: {
+      type: String,
+      default: 'image/jpeg'
+    },
+    transparent: {
+      type: Boolean,
+      custom: false
+    },
+    version: {
+      type: String,
+      default: '1.1.1'
+    },
+    crs: {
+      default: null
+    },
+    upperCase: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.tileLayerWMSOptions = Object.assign({}, this.tileLayerOptions,
+      {layers: this.layers,
+      styles: this.styles,
+      format: this.format,
+      transparent: this.transparent,
+      version: this.version,
+      crs: this.crs,
+      upperCase: this.upperCase});
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Display WMS services as tile layers on the map
+ */
+var script = {
+  name: 'LWMSTileLayer',
+  mixins: [TileLayerWMS, Options],
+  props: {
+    baseUrl: {
+      type: String,
+      default: null,
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.tileLayerWMSOptions, this);
+    this.mapObject = leaflet__WEBPACK_IMPORTED_MODULE_0__["tileLayer"].wms(this.baseUrl, options);
+    leaflet__WEBPACK_IMPORTED_MODULE_0__["DomEvent"].on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.addLayer(this, !this.visible);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Circle.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Circle.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var Circle = {
+  mixins: [Path],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    radius: {
+      type: Number,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.circleOptions = Object.assign({}, this.pathOptions,
+      {radius: this.radius});
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Circle);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Control.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Control.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Control = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Control);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/GridLayer.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/GridLayer.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayer = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GridLayer);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/ImageOverlay.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/ImageOverlay.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var ImageOverlay = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    url: {
+      type: String,
+      custom: true
+    },
+    bounds: {
+      custom: true
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    alt: {
+      type: String,
+      default: ''
+    },
+    interactive: {
+      type: Boolean,
+      default: false
+    },
+    crossOrigin: {
+      type: Boolean,
+      default: false
+    },
+    errorOverlayUrl: {
+      type: String,
+      custom: true,
+      default: ''
+    },
+    zIndex: {
+      type: Number,
+      custom: true,
+      default: 1
+    },
+    className: {
+      type: String,
+      default: ''
+    }
+  },
+  mounted: function mounted () {
+    this.imageOverlayOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {opacity: this.opacity,
+      alt: this.alt,
+      interactive: this.interactive,
+      crossOrigin: this.crossOrigin,
+      errorOverlayUrl: this.errorOverlayUrl,
+      zIndex: this.zIndex,
+      className: this.className});
+  },
+  methods: {
+    setOpacity: function setOpacity (opacity) {
+      return this.mapObject.setOpacity(opacity);
+    },
+    setUrl: function setUrl (url) {
+      return this.mapObject.setUrl(url);
+    },
+    setBounds: function setBounds (bounds) {
+      return this.mapObject.setBounds(bounds);
+    },
+    getBounds: function getBounds () {
+      return this.mapObject.getBounds();
+    },
+    getElement: function getElement () {
+      return this.mapObject.getElement();
+    },
+    bringToFront: function bringToFront () {
+      return this.mapObject.bringToFront();
+    },
+    bringToBack: function bringToBack () {
+      return this.mapObject.bringToBack();
+    }
+  },
+  render: function render () {
+    return null;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ImageOverlay);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/InteractiveLayer.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/InteractiveLayer.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (InteractiveLayer);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Layer.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Layer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Layer);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/LayerGroup.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/LayerGroup.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var LayerGroup = {
+  mixins: [Layer],
+  mounted: function mounted () {
+    this.layerGroupOptions = this.layerOptions;
+  },
+  methods: {
+    addLayer: function addLayer (layer, alreadyAdded) {
+      if (!alreadyAdded) {
+        this.mapObject.addLayer(layer.mapObject);
+      }
+      this.parentContainer.addLayer(layer, true);
+    },
+    removeLayer: function removeLayer (layer, alreadyRemoved) {
+      if (!alreadyRemoved) {
+        this.mapObject.removeLayer(layer.mapObject);
+      }
+      this.parentContainer.removeLayer(layer, true);
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (LayerGroup);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Options.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Options.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Options);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Path.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Path.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Path);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Polygon.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Polygon.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var Polyline = {
+  mixins: [Path],
+  props: {
+    smoothFactor: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    noClip: {
+      type: Boolean,
+      custom: true,
+      default: false
+    }
+  },
+  data: function data () {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted () {
+    this.polyLineOptions = Object.assign({}, this.pathOptions,
+      {smoothFactor: this.smoothFactor,
+      noClip: this.noClip});
+  },
+  methods: {
+    setSmoothFactor: function setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
+    },
+    setNoClip: function setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
+    },
+    addLatLng: function addLatLng (value) {
+      this.mapObject.addLatLng(value);
+    }
+  }
+};
+
+var Polygon = {
+  mixins: [Polyline],
+  props: {
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.polygonOptions = this.polyLineOptions;
+  },
+  methods: {
+    getGeoJSONData: function getGeoJSONData () {
+      return this.mapObject.toGeoJSON();
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Polygon);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Polyline.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Polyline.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var InteractiveLayer = {
+  props: {
+    interactive: {
+      type: Boolean,
+      default: true
+    },
+    bubblingMouseEvents: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted () {
+    this.interactiveLayerOptions = {
+      interactive: this.interactive,
+      bubblingMouseEvents: this.bubblingMouseEvents
+    };
+  }
+};
+
+var Path = {
+  mixins: [Layer, InteractiveLayer],
+  props: {
+    lStyle: {
+      type: Object,
+      custom: true,
+      default: null
+    },
+    stroke: {
+      type: Boolean,
+      custom: true,
+      default: true
+    },
+    color: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    weight: {
+      type: Number,
+      custom: true,
+      default: 3
+    },
+    opacity: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    lineCap: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    lineJoin: {
+      type: String,
+      custom: true,
+      default: 'round'
+    },
+    dashArray: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    dashOffset: {
+      type: String,
+      custom: true,
+      default: null
+    },
+    fill: {
+      type: Boolean,
+      custom: true,
+      default: false
+    },
+    fillColor: {
+      type: String,
+      custom: true,
+      default: '#3388ff'
+    },
+    fillOpacity: {
+      type: Number,
+      custom: true,
+      default: 0.2
+    },
+    fillRule: {
+      type: String,
+      custom: true,
+      default: 'evenodd'
+    },
+    className: {
+      type: String,
+      custom: true,
+      default: null
+    }
+  },
+  mounted: function mounted () {
+    this.pathOptions = Object.assign({}, this.layerOptions,
+      this.interactiveLayerOptions,
+      {stroke: this.stroke,
+      color: this.color,
+      weight: this.weight,
+      opacity: this.opacity,
+      lineCap: this.lineCap,
+      lineJoin: this.lineJoin,
+      dashArray: this.dashArray,
+      dashOffset: this.dashOffset,
+      fill: this.fill,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      fillRule: this.fillRule,
+      className: this.className});
+
+    if (this.lStyle) {
+      console.warn('lStyle is deprecated and is going to be removed in the next major version');
+      for (var style in this.lStyle) {
+        this.pathOptions[style] = this.lStyle[style];
+      }
+    }
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.parentContainer) {
+      this.parentContainer.removeLayer(this);
+    } else {
+      console.error('Missing parent container');
+    }
+  },
+  methods: {
+    setLStyle: function setLStyle (newVal) {
+      this.mapObject.setStyle(newVal);
+    },
+    setStroke: function setStroke (newVal) {
+      this.mapObject.setStyle({ stroke: newVal });
+    },
+    setColor: function setColor (newVal) {
+      this.mapObject.setStyle({ color: newVal });
+    },
+    setWeight: function setWeight (newVal) {
+      this.mapObject.setStyle({ weight: newVal });
+    },
+    setOpacity: function setOpacity (newVal) {
+      this.mapObject.setStyle({ opacity: newVal });
+    },
+    setLineCap: function setLineCap (newVal) {
+      this.mapObject.setStyle({ lineCap: newVal });
+    },
+    setLineJoin: function setLineJoin (newVal) {
+      this.mapObject.setStyle({ lineJoin: newVal });
+    },
+    setDashArray: function setDashArray (newVal) {
+      this.mapObject.setStyle({ dashArray: newVal });
+    },
+    setDashOffset: function setDashOffset (newVal) {
+      this.mapObject.setStyle({ dashOffset: newVal });
+    },
+    setFill: function setFill (newVal) {
+      this.mapObject.setStyle({ fill: newVal });
+    },
+    setFillColor: function setFillColor (newVal) {
+      this.mapObject.setStyle({ fillColor: newVal });
+    },
+    setFillOpacity: function setFillOpacity (newVal) {
+      this.mapObject.setStyle({ fillOpacity: newVal });
+    },
+    setFillRule: function setFillRule (newVal) {
+      this.mapObject.setStyle({ fillRule: newVal });
+    },
+    setClassName: function setClassName (newVal) {
+      this.mapObject.setStyle({ className: newVal });
+    }
+  }
+};
+
+var Polyline = {
+  mixins: [Path],
+  props: {
+    smoothFactor: {
+      type: Number,
+      custom: true,
+      default: 1.0
+    },
+    noClip: {
+      type: Boolean,
+      custom: true,
+      default: false
+    }
+  },
+  data: function data () {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted () {
+    this.polyLineOptions = Object.assign({}, this.pathOptions,
+      {smoothFactor: this.smoothFactor,
+      noClip: this.noClip});
+  },
+  methods: {
+    setSmoothFactor: function setSmoothFactor (newVal) {
+      this.mapObject.setStyle({ smoothFactor: newVal });
+    },
+    setNoClip: function setNoClip (newVal) {
+      this.mapObject.setStyle({ noClip: newVal });
+    },
+    addLatLng: function addLatLng (value) {
+      this.mapObject.addLatLng(value);
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Polyline);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/Popper.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/Popper.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Popper = {
+  props: {
+    content: {
+      type: String,
+      default: null,
+      custom: true
+    }
+  },
+  mounted: function mounted () {
+    this.popperOptions = {};
+  },
+  methods: {
+    setContent: function setContent (newVal) {
+      if (this.mapObject && newVal !== null && newVal !== undefined) {
+        this.mapObject.setContent(newVal);
+      }
+    }
+  },
+  render: function render (h) {
+    if (this.$slots.default) {
+      return h('div', this.$slots.default);
+    }
+    return null;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Popper);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/TileLayer.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/TileLayer.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayer = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+var TileLayer = {
+  mixins: [GridLayer],
+  props: {
+    tms: {
+      type: Boolean,
+      default: false,
+    },
+    subdomains: {
+      type: [String, Array],
+      default: 'abc',
+      validator: function (prop) {
+        if (typeof prop === 'string') { return true; }
+        // Validates array that array only contains only strings
+        if (Array.isArray(prop)) {
+          return prop.every(function (subdomain) { return typeof subdomain === 'string'; });
+        }
+        return false;
+      },
+    },
+    detectRetina: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted: function mounted() {
+    this.tileLayerOptions = Object.assign({}, this.gridLayerOptions,
+      {tms: this.tms,
+      subdomains: this.subdomains,
+      detectRetina: this.detectRetina});
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TileLayer);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/mixins/TileLayerWMS.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/mixins/TileLayerWMS.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Layer = {
+  props: {
+    pane: {
+      type: String,
+      default: 'overlayPane',
+    },
+    attribution: {
+      type: String,
+      default: null,
+      custom: true,
+    },
+    name: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    layerType: {
+      type: String,
+      custom: true,
+      default: undefined,
+    },
+    visible: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+  },
+  mounted: function mounted() {
+    this.layerOptions = {
+      attribution: this.attribution,
+      pane: this.pane,
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unbindPopup();
+    this.unbindTooltip();
+    this.parentContainer.removeLayer(this);
+  },
+  methods: {
+    setAttribution: function setAttribution(val, old) {
+      var attributionControl = this.$parent.mapObject.attributionControl;
+      attributionControl.removeAttribution(old).addAttribution(val);
+    },
+    setName: function setName() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setLayerType: function setLayerType() {
+      this.parentContainer.removeLayer(this);
+      if (this.visible) {
+        this.parentContainer.addLayer(this);
+      }
+    },
+    setVisible: function setVisible(isVisible) {
+      if (this.mapObject) {
+        if (isVisible) {
+          this.parentContainer.addLayer(this);
+        } else {
+          if (this.parentContainer.hideLayer) {
+            this.parentContainer.hideLayer(this);
+          } else {
+            this.parentContainer.removeLayer(this);
+          }
+        }
+      }
+    },
+    unbindTooltip: function unbindTooltip() {
+      var tooltip = this.mapObject ? this.mapObject.getTooltip() : null;
+      if (tooltip) {
+        tooltip.unbindTooltip();
+      }
+    },
+    unbindPopup: function unbindPopup() {
+      var popup = this.mapObject ? this.mapObject.getPopup() : null;
+      if (popup) {
+        popup.unbindPopup();
+      }
+    },
+    updateVisibleProp: function updateVisibleProp(value) {
+      /**
+       * Triggers when the visible prop needs to be updated
+       * @type {boolean}
+       * @property {boolean} value - value of the visible property
+       */
+      this.$emit('update:visible', value);
+    },
+  },
+};
+
+var GridLayer = {
+  mixins: [Layer],
+  props: {
+    pane: {
+      type: String,
+      default: 'tilePane'
+    },
+    opacity: {
+      type: Number,
+      custom: false,
+      default: 1.0
+    },
+    zIndex: {
+      type: Number,
+      default: 1
+    },
+    tileSize: {
+      type: Number,
+      default: 256
+    },
+    noWrap: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.gridLayerOptions = Object.assign({}, this.layerOptions,
+      {pane: this.pane,
+      opacity: this.opacity,
+      zIndex: this.zIndex,
+      tileSize: this.tileSize,
+      noWrap: this.noWrap});
+  }
+};
+
+var TileLayer = {
+  mixins: [GridLayer],
+  props: {
+    tms: {
+      type: Boolean,
+      default: false,
+    },
+    subdomains: {
+      type: [String, Array],
+      default: 'abc',
+      validator: function (prop) {
+        if (typeof prop === 'string') { return true; }
+        // Validates array that array only contains only strings
+        if (Array.isArray(prop)) {
+          return prop.every(function (subdomain) { return typeof subdomain === 'string'; });
+        }
+        return false;
+      },
+    },
+    detectRetina: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted: function mounted() {
+    this.tileLayerOptions = Object.assign({}, this.gridLayerOptions,
+      {tms: this.tms,
+      subdomains: this.subdomains,
+      detectRetina: this.detectRetina});
+  },
+  render: function render() {
+    return null;
+  },
+};
+
+var TileLayerWMS = {
+  mixins: [TileLayer],
+  props: {
+    layers: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: String,
+      default: ''
+    },
+    format: {
+      type: String,
+      default: 'image/jpeg'
+    },
+    transparent: {
+      type: Boolean,
+      custom: false
+    },
+    version: {
+      type: String,
+      default: '1.1.1'
+    },
+    crs: {
+      default: null
+    },
+    upperCase: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted () {
+    this.tileLayerWMSOptions = Object.assign({}, this.tileLayerOptions,
+      {layers: this.layers,
+      styles: this.styles,
+      format: this.format,
+      transparent: this.transparent,
+      version: this.version,
+      crs: this.crs,
+      upperCase: this.upperCase});
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TileLayerWMS);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/utils/utils.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/utils/utils.js ***!
+  \*******************************************************/
+/*! exports provided: capitalizeFirstLetter, collectionCleaner, debounce, findRealParent, optionsMerger, propsBinder */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capitalizeFirstLetter", function() { return capitalizeFirstLetter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "collectionCleaner", function() { return collectionCleaner; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findRealParent", function() { return findRealParent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsMerger", function() { return optionsMerger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "propsBinder", function() { return propsBinder; });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var debounce = function (fn, time) {
+  var timeout;
+
+  var debouncedFunction = function() {
+    var args = [], len = arguments.length;
+    while ( len-- ) args[ len ] = arguments[ len ];
+
+    var context = this;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function () {
+      fn.apply(context, args);
+      timeout = null;
+    }, time);
+  };
+
+  debouncedFunction.cancel = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+  };
+
+  return debouncedFunction;
+};
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["setOptions"])(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js ***!
+  \***********************************************************/
+/*! exports provided: capitalizeFirstLetter, collectionCleaner, debounce, findRealParent, optionsMerger, propsBinder, CircleMixin, ControlMixin, GridLayerMixin, ImageOverlayMixin, InteractiveLayerMixin, LayerMixin, LayerGroupMixin, OptionsMixin, PathMixin, PolygonMixin, PolylineMixin, PopperMixin, TileLayerMixin, TileLayerWMSMixin, LCircle, LCircleMarker, LControl, LControlAttribution, LControlLayers, LControlScale, LControlZoom, LFeatureGroup, LGeoJson, LGridLayer, LIcon, LIconDefault, LImageOverlay, LLayerGroup, LMap, LMarker, LPolygon, LPolyline, LPopup, LRectangle, LTileLayer, LTooltip, LWMSTileLayer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/utils */ "./node_modules/vue2-leaflet/dist/utils/utils.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "capitalizeFirstLetter", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["capitalizeFirstLetter"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "collectionCleaner", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["collectionCleaner"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["debounce"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "findRealParent", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["findRealParent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "optionsMerger", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["optionsMerger"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "propsBinder", function() { return _utils_utils__WEBPACK_IMPORTED_MODULE_0__["propsBinder"]; });
+
+/* harmony import */ var _mixins_Circle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins/Circle */ "./node_modules/vue2-leaflet/dist/mixins/Circle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CircleMixin", function() { return _mixins_Circle__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _mixins_Control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mixins/Control */ "./node_modules/vue2-leaflet/dist/mixins/Control.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ControlMixin", function() { return _mixins_Control__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _mixins_GridLayer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mixins/GridLayer */ "./node_modules/vue2-leaflet/dist/mixins/GridLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GridLayerMixin", function() { return _mixins_GridLayer__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _mixins_ImageOverlay__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mixins/ImageOverlay */ "./node_modules/vue2-leaflet/dist/mixins/ImageOverlay.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageOverlayMixin", function() { return _mixins_ImageOverlay__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _mixins_InteractiveLayer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mixins/InteractiveLayer */ "./node_modules/vue2-leaflet/dist/mixins/InteractiveLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InteractiveLayerMixin", function() { return _mixins_InteractiveLayer__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _mixins_Layer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mixins/Layer */ "./node_modules/vue2-leaflet/dist/mixins/Layer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayerMixin", function() { return _mixins_Layer__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _mixins_LayerGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mixins/LayerGroup */ "./node_modules/vue2-leaflet/dist/mixins/LayerGroup.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayerGroupMixin", function() { return _mixins_LayerGroup__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _mixins_Options__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mixins/Options */ "./node_modules/vue2-leaflet/dist/mixins/Options.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OptionsMixin", function() { return _mixins_Options__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _mixins_Path__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./mixins/Path */ "./node_modules/vue2-leaflet/dist/mixins/Path.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PathMixin", function() { return _mixins_Path__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _mixins_Polygon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./mixins/Polygon */ "./node_modules/vue2-leaflet/dist/mixins/Polygon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PolygonMixin", function() { return _mixins_Polygon__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _mixins_Polyline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./mixins/Polyline */ "./node_modules/vue2-leaflet/dist/mixins/Polyline.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PolylineMixin", function() { return _mixins_Polyline__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _mixins_Popper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./mixins/Popper */ "./node_modules/vue2-leaflet/dist/mixins/Popper.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopperMixin", function() { return _mixins_Popper__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _mixins_TileLayer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./mixins/TileLayer */ "./node_modules/vue2-leaflet/dist/mixins/TileLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileLayerMixin", function() { return _mixins_TileLayer__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _mixins_TileLayerWMS__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./mixins/TileLayerWMS */ "./node_modules/vue2-leaflet/dist/mixins/TileLayerWMS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileLayerWMSMixin", function() { return _mixins_TileLayerWMS__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _components_LCircle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/LCircle */ "./node_modules/vue2-leaflet/dist/components/LCircle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LCircle", function() { return _components_LCircle__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/* harmony import */ var _components_LCircleMarker__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/LCircleMarker */ "./node_modules/vue2-leaflet/dist/components/LCircleMarker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LCircleMarker", function() { return _components_LCircleMarker__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+
+/* harmony import */ var _components_LControl__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/LControl */ "./node_modules/vue2-leaflet/dist/components/LControl.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LControl", function() { return _components_LControl__WEBPACK_IMPORTED_MODULE_17__["default"]; });
+
+/* harmony import */ var _components_LControlAttribution__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/LControlAttribution */ "./node_modules/vue2-leaflet/dist/components/LControlAttribution.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LControlAttribution", function() { return _components_LControlAttribution__WEBPACK_IMPORTED_MODULE_18__["default"]; });
+
+/* harmony import */ var _components_LControlLayers__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/LControlLayers */ "./node_modules/vue2-leaflet/dist/components/LControlLayers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LControlLayers", function() { return _components_LControlLayers__WEBPACK_IMPORTED_MODULE_19__["default"]; });
+
+/* harmony import */ var _components_LControlScale__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/LControlScale */ "./node_modules/vue2-leaflet/dist/components/LControlScale.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LControlScale", function() { return _components_LControlScale__WEBPACK_IMPORTED_MODULE_20__["default"]; });
+
+/* harmony import */ var _components_LControlZoom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/LControlZoom */ "./node_modules/vue2-leaflet/dist/components/LControlZoom.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LControlZoom", function() { return _components_LControlZoom__WEBPACK_IMPORTED_MODULE_21__["default"]; });
+
+/* harmony import */ var _components_LFeatureGroup__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/LFeatureGroup */ "./node_modules/vue2-leaflet/dist/components/LFeatureGroup.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LFeatureGroup", function() { return _components_LFeatureGroup__WEBPACK_IMPORTED_MODULE_22__["default"]; });
+
+/* harmony import */ var _components_LGeoJson__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/LGeoJson */ "./node_modules/vue2-leaflet/dist/components/LGeoJson.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LGeoJson", function() { return _components_LGeoJson__WEBPACK_IMPORTED_MODULE_23__["default"]; });
+
+/* harmony import */ var _components_LGridLayer__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/LGridLayer */ "./node_modules/vue2-leaflet/dist/components/LGridLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LGridLayer", function() { return _components_LGridLayer__WEBPACK_IMPORTED_MODULE_24__["default"]; });
+
+/* harmony import */ var _components_LIcon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/LIcon */ "./node_modules/vue2-leaflet/dist/components/LIcon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LIcon", function() { return _components_LIcon__WEBPACK_IMPORTED_MODULE_25__["default"]; });
+
+/* harmony import */ var _components_LIconDefault__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/LIconDefault */ "./node_modules/vue2-leaflet/dist/components/LIconDefault.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LIconDefault", function() { return _components_LIconDefault__WEBPACK_IMPORTED_MODULE_26__["default"]; });
+
+/* harmony import */ var _components_LImageOverlay__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/LImageOverlay */ "./node_modules/vue2-leaflet/dist/components/LImageOverlay.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LImageOverlay", function() { return _components_LImageOverlay__WEBPACK_IMPORTED_MODULE_27__["default"]; });
+
+/* harmony import */ var _components_LLayerGroup__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/LLayerGroup */ "./node_modules/vue2-leaflet/dist/components/LLayerGroup.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LLayerGroup", function() { return _components_LLayerGroup__WEBPACK_IMPORTED_MODULE_28__["default"]; });
+
+/* harmony import */ var _components_LMap__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/LMap */ "./node_modules/vue2-leaflet/dist/components/LMap.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LMap", function() { return _components_LMap__WEBPACK_IMPORTED_MODULE_29__["default"]; });
+
+/* harmony import */ var _components_LMarker__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/LMarker */ "./node_modules/vue2-leaflet/dist/components/LMarker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LMarker", function() { return _components_LMarker__WEBPACK_IMPORTED_MODULE_30__["default"]; });
+
+/* harmony import */ var _components_LPolygon__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/LPolygon */ "./node_modules/vue2-leaflet/dist/components/LPolygon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LPolygon", function() { return _components_LPolygon__WEBPACK_IMPORTED_MODULE_31__["default"]; });
+
+/* harmony import */ var _components_LPolyline__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/LPolyline */ "./node_modules/vue2-leaflet/dist/components/LPolyline.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LPolyline", function() { return _components_LPolyline__WEBPACK_IMPORTED_MODULE_32__["default"]; });
+
+/* harmony import */ var _components_LPopup__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/LPopup */ "./node_modules/vue2-leaflet/dist/components/LPopup.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LPopup", function() { return _components_LPopup__WEBPACK_IMPORTED_MODULE_33__["default"]; });
+
+/* harmony import */ var _components_LRectangle__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/LRectangle */ "./node_modules/vue2-leaflet/dist/components/LRectangle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LRectangle", function() { return _components_LRectangle__WEBPACK_IMPORTED_MODULE_34__["default"]; });
+
+/* harmony import */ var _components_LTileLayer__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/LTileLayer */ "./node_modules/vue2-leaflet/dist/components/LTileLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LTileLayer", function() { return _components_LTileLayer__WEBPACK_IMPORTED_MODULE_35__["default"]; });
+
+/* harmony import */ var _components_LTooltip__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/LTooltip */ "./node_modules/vue2-leaflet/dist/components/LTooltip.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LTooltip", function() { return _components_LTooltip__WEBPACK_IMPORTED_MODULE_36__["default"]; });
+
+/* harmony import */ var _components_LWMSTileLayer__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/LWMSTileLayer */ "./node_modules/vue2-leaflet/dist/components/LWMSTileLayer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LWMSTileLayer", function() { return _components_LWMSTileLayer__WEBPACK_IMPORTED_MODULE_37__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, createLogger, createNamespacedHelpers, install, mapActions, mapGetters, mapMutations, mapState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLogger", function() { return createLogger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/*!
+ * vuex v3.5.1
+ * (c) 2020 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  }, { prepend: true });
+
+  store.subscribeAction(function (action, state) {
+    devtoolHook.emit('vuex:action', action, state);
+  }, { prepend: true });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+function find (list, f) {
+  return list.filter(f)[0]
+}
+
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+function deepCopy (obj, cache) {
+  if ( cache === void 0 ) cache = [];
+
+  // just return if obj is immutable value
+  if (obj === null || typeof obj !== 'object') {
+    return obj
+  }
+
+  // if obj is hit, it is in circular structure
+  var hit = find(cache, function (c) { return c.original === obj; });
+  if (hit) {
+    return hit.copy
+  }
+
+  var copy = Array.isArray(obj) ? [] : {};
+  // put the copy into cache at first
+  // because we want to refer it in recursive deepCopy
+  cache.push({
+    original: obj,
+    copy: copy
+  });
+
+  Object.keys(obj).forEach(function (key) {
+    copy[key] = deepCopy(obj[key], cache);
+  });
+
+  return copy
+}
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.hasChild = function hasChild (key) {
+  return key in this._children
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if ((true)) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  var child = parent.getChild(key);
+
+  if (!child) {
+    if ((true)) {
+      console.warn(
+        "[vuex] trying to unregister module '" + key + "', which is " +
+        "not registered"
+      );
+    }
+    return
+  }
+
+  if (!child.runtime) {
+    return
+  }
+
+  parent.removeChild(key);
+};
+
+ModuleCollection.prototype.isRegistered = function isRegistered (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+
+  return parent.hasChild(key)
+};
+
+function update (path, targetModule, newModule) {
+  if ((true)) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if ((true)) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if ((true)) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+  this._makeLocalGettersCache = Object.create(null);
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if ((true)) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if ((true)) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+
+  this._subscribers
+    .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+    .forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+    ( true) &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if ((true)) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if ((true)) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return new Promise(function (resolve, reject) {
+    result.then(function (res) {
+      try {
+        this$1._actionSubscribers
+          .filter(function (sub) { return sub.after; })
+          .forEach(function (sub) { return sub.after(action, this$1.state); });
+      } catch (e) {
+        if ((true)) {
+          console.warn("[vuex] error in after action subscribers: ");
+          console.error(e);
+        }
+      }
+      resolve(res);
+    }, function (error) {
+      try {
+        this$1._actionSubscribers
+          .filter(function (sub) { return sub.error; })
+          .forEach(function (sub) { return sub.error(action, this$1.state, error); });
+      } catch (e) {
+        if ((true)) {
+          console.warn("[vuex] error in error action subscribers: ");
+          console.error(e);
+        }
+      }
+      reject(error);
+    });
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn, options) {
+  return genericSubscribe(fn, this._subscribers, options)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn, options) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers, options)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if ((true)) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hasModule = function hasModule (path) {
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  return this._modules.isRegistered(path)
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs, options) {
+  if (subs.indexOf(fn) < 0) {
+    options && options.prepend
+      ? subs.unshift(fn)
+      : subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  // reset local getters cache
+  store._makeLocalGettersCache = Object.create(null);
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure environment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    if (store._modulesNamespaceMap[namespace] && ("development" !== 'production')) {
+      console.error(("[vuex] duplicate namespace " + namespace + " for the namespaced module " + (path.join('/'))));
+    }
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      if ((true)) {
+        if (moduleName in parentState) {
+          console.warn(
+            ("[vuex] state field \"" + moduleName + "\" was overridden by a module with the same name at \"" + (path.join('.')) + "\"")
+          );
+        }
+      }
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (( true) && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (( true) && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  if (!store._makeLocalGettersCache[namespace]) {
+    var gettersProxy = {};
+    var splitPos = namespace.length;
+    Object.keys(store.getters).forEach(function (type) {
+      // skip if the target getter is not match this namespace
+      if (type.slice(0, splitPos) !== namespace) { return }
+
+      // extract local getter type
+      var localType = type.slice(splitPos);
+
+      // Add a port to the getters proxy.
+      // Define as getter property because
+      // we do not want to evaluate the getters in this time.
+      Object.defineProperty(gettersProxy, localType, {
+        get: function () { return store.getters[type]; },
+        enumerable: true
+      });
+    });
+    store._makeLocalGettersCache[namespace] = gettersProxy;
+  }
+
+  return store._makeLocalGettersCache[namespace]
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if ((true)) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if ((true)) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.reduce(function (state, key) { return state[key]; }, state)
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if ((true)) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if ((true)) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  if (( true) && !isValidMap(states)) {
+    console.error('[vuex] mapState: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  if (( true) && !isValidMap(mutations)) {
+    console.error('[vuex] mapMutations: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  if (( true) && !isValidMap(getters)) {
+    console.error('[vuex] mapGetters: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if (( true) && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  if (( true) && !isValidMap(actions)) {
+    console.error('[vuex] mapActions: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  if (!isValidMap(map)) {
+    return []
+  }
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Validate whether given map is valid or not
+ * @param {*} map
+ * @return {Boolean}
+ */
+function isValidMap (map) {
+  return Array.isArray(map) || isObject(map)
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if (( true) && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+// Credits: borrowed code from fcomb/redux-logger
+
+function createLogger (ref) {
+  if ( ref === void 0 ) ref = {};
+  var collapsed = ref.collapsed; if ( collapsed === void 0 ) collapsed = true;
+  var filter = ref.filter; if ( filter === void 0 ) filter = function (mutation, stateBefore, stateAfter) { return true; };
+  var transformer = ref.transformer; if ( transformer === void 0 ) transformer = function (state) { return state; };
+  var mutationTransformer = ref.mutationTransformer; if ( mutationTransformer === void 0 ) mutationTransformer = function (mut) { return mut; };
+  var actionFilter = ref.actionFilter; if ( actionFilter === void 0 ) actionFilter = function (action, state) { return true; };
+  var actionTransformer = ref.actionTransformer; if ( actionTransformer === void 0 ) actionTransformer = function (act) { return act; };
+  var logMutations = ref.logMutations; if ( logMutations === void 0 ) logMutations = true;
+  var logActions = ref.logActions; if ( logActions === void 0 ) logActions = true;
+  var logger = ref.logger; if ( logger === void 0 ) logger = console;
+
+  return function (store) {
+    var prevState = deepCopy(store.state);
+
+    if (typeof logger === 'undefined') {
+      return
+    }
+
+    if (logMutations) {
+      store.subscribe(function (mutation, state) {
+        var nextState = deepCopy(state);
+
+        if (filter(mutation, prevState, nextState)) {
+          var formattedTime = getFormattedTime();
+          var formattedMutation = mutationTransformer(mutation);
+          var message = "mutation " + (mutation.type) + formattedTime;
+
+          startMessage(logger, message, collapsed);
+          logger.log('%c prev state', 'color: #9E9E9E; font-weight: bold', transformer(prevState));
+          logger.log('%c mutation', 'color: #03A9F4; font-weight: bold', formattedMutation);
+          logger.log('%c next state', 'color: #4CAF50; font-weight: bold', transformer(nextState));
+          endMessage(logger);
+        }
+
+        prevState = nextState;
+      });
+    }
+
+    if (logActions) {
+      store.subscribeAction(function (action, state) {
+        if (actionFilter(action, state)) {
+          var formattedTime = getFormattedTime();
+          var formattedAction = actionTransformer(action);
+          var message = "action " + (action.type) + formattedTime;
+
+          startMessage(logger, message, collapsed);
+          logger.log('%c action', 'color: #03A9F4; font-weight: bold', formattedAction);
+          endMessage(logger);
+        }
+      });
+    }
+  }
+}
+
+function startMessage (logger, message, collapsed) {
+  var startMessage = collapsed
+    ? logger.groupCollapsed
+    : logger.group;
+
+  // render
+  try {
+    startMessage.call(logger, message);
+  } catch (e) {
+    logger.log(message);
+  }
+}
+
+function endMessage (logger) {
+  try {
+    logger.groupEnd();
+  } catch (e) {
+    logger.log('—— log end ——');
+  }
+}
+
+function getFormattedTime () {
+  var time = new Date();
+  return (" @ " + (pad(time.getHours(), 2)) + ":" + (pad(time.getMinutes(), 2)) + ":" + (pad(time.getSeconds(), 2)) + "." + (pad(time.getMilliseconds(), 3)))
+}
+
+function repeat (str, times) {
+  return (new Array(times + 1)).join(str)
+}
+
+function pad (num, maxLength) {
+  return repeat('0', maxLength - num.toString().length) + num
+}
+
+var index = {
+  Store: Store,
+  install: install,
+  version: '3.5.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers,
+  createLogger: createLogger
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -90155,28 +108214,54 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /* Fechas */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('mostrar-fecha', __webpack_require__(/*! ./components/MostrarFecha.vue */ "./resources/js/components/MostrarFecha.vue")["default"]);
 /* Eliminar Tarea */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('eliminar-tarea', __webpack_require__(/*! ./components/EliminarTarea.vue */ "./resources/js/components/EliminarTarea.vue")["default"]);
+/* Principal Tareas */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('principal-tareas', __webpack_require__(/*! ./components/PrincipalTareas.vue */ "./resources/js/components/PrincipalTareas.vue")["default"]);
+/* Principal Tarea */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('principal-tarea', __webpack_require__(/*! ./components/PrincipalTarea.vue */ "./resources/js/components/PrincipalTarea.vue")["default"]);
+/* Principal Mapa */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('principal-mapa', __webpack_require__(/*! ./components/PrincipalMapa.vue */ "./resources/js/components/PrincipalMapa.vue")["default"]);
+/* Mostrar Tarea */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('mostrar-tarea', __webpack_require__(/*! ./components/MostrarTarea.vue */ "./resources/js/components/MostrarTarea.vue")["default"]);
+/* Hacer Oferta */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('hacer-oferta', __webpack_require__(/*! ./components/HacerOferta.vue */ "./resources/js/components/HacerOferta.vue")["default"]);
 /* Respuesta Oferta */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('respuesta-oferta', __webpack_require__(/*! ./components/RespuestaOferta.vue */ "./resources/js/components/RespuestaOferta.vue")["default"]);
+/* Eliminar Oferta */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('eliminar-oferta', __webpack_require__(/*! ./components/EliminarOferta.vue */ "./resources/js/components/EliminarOferta.vue")["default"]);
 /* Eliminar Respuesta Oferta */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('eliminar-respuesta-oferta', __webpack_require__(/*! ./components/EliminarRespuestaOferta.vue */ "./resources/js/components/EliminarRespuestaOferta.vue")["default"]);
+/* Hacer Pregunta */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('hacer-pregunta', __webpack_require__(/*! ./components/HacerPregunta.vue */ "./resources/js/components/HacerPregunta.vue")["default"]);
 /* Respuesta Pregunta */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('respuesta-pregunta', __webpack_require__(/*! ./components/RespuestaPregunta.vue */ "./resources/js/components/RespuestaPregunta.vue")["default"]);
+/* Eliminar Pregunta */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('eliminar-pregunta', __webpack_require__(/*! ./components/EliminarPregunta.vue */ "./resources/js/components/EliminarPregunta.vue")["default"]);
 /* Eliminar Respuesta Pregunta */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('eliminar-respuesta-pregunta', __webpack_require__(/*! ./components/EliminarRespuestaPregunta.vue */ "./resources/js/components/EliminarRespuestaPregunta.vue")["default"]);
 /* Notificacion */
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('notificacion-sweet', __webpack_require__(/*! ./components/NotificacionSweet.vue */ "./resources/js/components/NotificacionSweet.vue")["default"]);
+/* Filtro Tareas */
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('filtro-tareas', __webpack_require__(/*! ./components/FiltroTareas.vue */ "./resources/js/components/FiltroTareas.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -90241,6 +108326,144 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /* Moment JS */
 
 window.moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarOferta.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/EliminarOferta.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarOferta.vue?vue&type=template&id=b17edb46& */ "./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46&");
+/* harmony import */ var _EliminarOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarOferta.vue?vue&type=script&lang=js& */ "./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EliminarOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EliminarOferta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarOferta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarOferta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarOferta.vue?vue&type=template&id=b17edb46& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarOferta.vue?vue&type=template&id=b17edb46&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarOferta_vue_vue_type_template_id_b17edb46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarPregunta.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/EliminarPregunta.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarPregunta.vue?vue&type=template&id=0a9c3596& */ "./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596&");
+/* harmony import */ var _EliminarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarPregunta.vue?vue&type=script&lang=js& */ "./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EliminarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EliminarPregunta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPregunta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarPregunta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPregunta.vue?vue&type=template&id=0a9c3596& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarPregunta.vue?vue&type=template&id=0a9c3596&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPregunta_vue_vue_type_template_id_0a9c3596___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -90451,17 +108674,191 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
+/***/ "./resources/js/components/FiltroTareas.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/FiltroTareas.vue ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true& */ "./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true&");
+/* harmony import */ var _FiltroTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FiltroTareas.vue?vue&type=script&lang=js& */ "./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& */ "./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _FiltroTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "bb7a78b6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/FiltroTareas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./FiltroTareas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=style&index=0&id=bb7a78b6&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_style_index_0_id_bb7a78b6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FiltroTareas.vue?vue&type=template&id=bb7a78b6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FiltroTareas_vue_vue_type_template_id_bb7a78b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HacerOferta.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/HacerOferta.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true& */ "./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true&");
+/* harmony import */ var _HacerOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HacerOferta.vue?vue&type=script&lang=js& */ "./resources/js/components/HacerOferta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& */ "./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _HacerOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "601d30ad",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/HacerOferta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/HacerOferta.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/HacerOferta.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerOferta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=style&index=0&id=601d30ad&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_style_index_0_id_601d30ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerOferta.vue?vue&type=template&id=601d30ad&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerOferta_vue_vue_type_template_id_601d30ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HacerPregunta.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/HacerPregunta.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true& */ "./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true&");
+/* harmony import */ var _HacerPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HacerPregunta.vue?vue&type=script&lang=js& */ "./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -90471,50 +108868,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _HacerPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "026b0034",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
+component.options.__file = "resources/js/components/HacerPregunta.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerPregunta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerPregunta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true& ***!
+  \**********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HacerPregunta.vue?vue&type=template&id=026b0034&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HacerPregunta_vue_vue_type_template_id_026b0034_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -90589,6 +108986,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MostrarTarea.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/MostrarTarea.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MostrarTarea.vue?vue&type=template&id=4cb11ee8& */ "./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8&");
+/* harmony import */ var _MostrarTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MostrarTarea.vue?vue&type=script&lang=js& */ "./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MostrarTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MostrarTarea.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MostrarTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MostrarTarea.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MostrarTarea.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MostrarTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MostrarTarea.vue?vue&type=template&id=4cb11ee8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MostrarTarea.vue?vue&type=template&id=4cb11ee8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MostrarTarea_vue_vue_type_template_id_4cb11ee8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/NotificacionSweet.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/NotificacionSweet.vue ***!
@@ -90653,6 +109119,267 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotificacionSweet_vue_vue_type_template_id_63b004d9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotificacionSweet_vue_vue_type_template_id_63b004d9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalMapa.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/PrincipalMapa.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true& */ "./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true&");
+/* harmony import */ var _PrincipalMapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrincipalMapa.vue?vue&type=script&lang=js& */ "./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& */ "./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PrincipalMapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4a191df8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrincipalMapa.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalMapa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=style&index=0&id=4a191df8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_style_index_0_id_4a191df8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalMapa.vue?vue&type=template&id=4a191df8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalMapa_vue_vue_type_template_id_4a191df8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTarea.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PrincipalTarea.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true& */ "./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true&");
+/* harmony import */ var _PrincipalTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrincipalTarea.vue?vue&type=script&lang=js& */ "./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& */ "./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PrincipalTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7a377d1e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrincipalTarea.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTarea.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=style&index=0&id=7a377d1e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_style_index_0_id_7a377d1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTarea.vue?vue&type=template&id=7a377d1e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTarea_vue_vue_type_template_id_7a377d1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTareas.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/PrincipalTareas.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true& */ "./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true&");
+/* harmony import */ var _PrincipalTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrincipalTareas.vue?vue&type=script&lang=js& */ "./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& */ "./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PrincipalTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5f387076",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrincipalTareas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTareas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=style&index=0&id=5f387076&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_style_index_0_id_5f387076_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrincipalTareas.vue?vue&type=template&id=5f387076&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrincipalTareas_vue_vue_type_template_id_5f387076_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -91056,6 +109783,145 @@ if (document.querySelector('#mapa')) {
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/js/store/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
+  state: {
+    tareas: [],
+    tareasFiltradas: [],
+    tarea: {},
+    mapa: true,
+    ofertas: {},
+    cantidadOfertas: Number,
+    cantidadPreguntas: Number,
+    preguntas: {},
+    user_id: Number,
+    estados: {},
+    usuarioLogeado: {}
+  },
+  mutations: {
+    CARGAR_TAREAS: function CARGAR_TAREAS(state, tareas) {
+      state.tareas = tareas;
+    },
+    CARGAR_TAREAS_FILTRADAS: function CARGAR_TAREAS_FILTRADAS(state, tareasFiltradas) {
+      state.tareasFiltradas = tareasFiltradas;
+    },
+    CARGAR_TAREA: function CARGAR_TAREA(state, tarea) {
+      state.tarea = tarea;
+    },
+    CAMBIAR_MAPA: function CAMBIAR_MAPA(state, mapa) {
+      state.mapa = mapa;
+    },
+    CARGAR_OFERTAS: function CARGAR_OFERTAS(state, ofertas) {
+      state.ofertas = ofertas;
+    },
+    CARGAR_CANTIDAD_OFERTAS: function CARGAR_CANTIDAD_OFERTAS(state, cantidadOfertas) {
+      state.cantidadOfertas = cantidadOfertas;
+    },
+    CARGAR_PREGUNTAS: function CARGAR_PREGUNTAS(state, preguntas) {
+      state.preguntas = preguntas;
+    },
+    CARGAR_CANTIDAD_PREGUNTAS: function CARGAR_CANTIDAD_PREGUNTAS(state, cantidadPreguntas) {
+      state.cantidadPreguntas = cantidadPreguntas;
+    },
+    CARGAR_USER_ID: function CARGAR_USER_ID(state, user_id) {
+      state.user_id = user_id;
+    },
+    CARGAR_USUSARIOLOGEADO: function CARGAR_USUSARIOLOGEADO(state, usuarioLogeado) {
+      state.usuarioLogeado = usuarioLogeado;
+    },
+    CARGAR_ESTADOS: function CARGAR_ESTADOS(state, estados) {
+      state.estados = estados;
+    }
+  },
+  actions: {
+    ofertas: function ofertas(_ref, id) {
+      var commit = _ref.commit,
+          state = _ref.state;
+
+      try {
+        axios.get('/api/ofertas/' + id).then(function (respuesta) {
+          /* console.log(respuesta); */
+          commit("CARGAR_OFERTAS", respuesta.data);
+          commit("CARGAR_CANTIDAD_OFERTAS", respuesta.data.length);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    preguntas: function preguntas(_ref2, id) {
+      var commit = _ref2.commit,
+          state = _ref2.state;
+
+      try {
+        axios.get('/api/preguntas/' + id).then(function (respuesta) {
+          /* console.log(respuesta); */
+          commit("CARGAR_PREGUNTAS", respuesta.data);
+          commit("CARGAR_CANTIDAD_PREGUNTAS", respuesta.data.length);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    usuario: function usuario(_ref3, id) {
+      var commit = _ref3.commit,
+          state = _ref3.state;
+
+      try {
+        axios.get('/api/usuario/' + id).then(function (respuesta) {
+          /* console.log(respuesta); */
+          commit("CARGAR_USUSARIOLOGEADO", respuesta.data[0]);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    filtrarTareas: function filtrarTareas(_ref4, filtro) {
+      var commit = _ref4.commit,
+          state = _ref4.state;
+      commit("CARGAR_TAREAS", state.tareas);
+      /* for(var key in filtro){
+          console.log(key)
+      } */
+
+      var search = state.tareas.filter(function (tarea) {
+        if (tarea.nombre.match(filtro.search) || tarea.direccion.match(filtro.search) || tarea.colonia.match(filtro.search) || tarea.descripcion.match(filtro.search) && filtro.search != null) return true;else return false;
+      });
+      console.log("Search: ", search);
+      var tipo = state.tareas.filter(function (tarea) {
+        if (tarea.tipo === filtro.tipo && filtro.tipo != null) return true;else return false;
+      });
+      console.log("Tipo: ", tipo);
+      var estado = state.tareas.filter(function (tarea) {
+        if (tarea.estado_id === filtro.estado && filtro.estado != null) return true;else return false;
+      });
+      console.log("Estado: ", estado);
+      var presupuesto = state.tareas.filter(function (tarea) {
+        if (tarea.presupuesto >= filtro.presupuesto && filtro.presupuesto != null) return true;else return false;
+      });
+      console.log("Presupuesto: ", presupuesto);
+    }
+  }
+}));
 
 /***/ }),
 

@@ -64,7 +64,7 @@ class EstadoSeeder extends Seeder
         DB::table('estados')->insert([
             'nombre' => 'Chiapas',
             'lat' => '16.7459946',
-            'lng' => ',-93.1645893',
+            'lng' => '-93.1645893',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

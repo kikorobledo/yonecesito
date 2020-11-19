@@ -3,12 +3,22 @@
 namespace App;
 
 use App\Oferta;
+use App\Perfil;
 use App\Pregunta;
+use App\Categoria;
 use Illuminate\Database\Eloquent\Model;
 
 class Tarea extends Model
 {
     protected $fillable = ['nombre','direccion','colonia','estado_id','lat','lng','descripcion','fecha_de_vencimiento','presupuesto','estatus', 'tipo', 'user_id', 'trabajador'];
+
+    protected $dates = ['created_at'];
+
+    protected $appends = ['createdAtHumanReadable'];
+
+    public function getCreatedAtHumanReadableAttribute(){
+        return $this->created_at->diffForHumans();
+    }
 
     /* Relacion 1:n 1 Tarea muchas preguntas */
     public function preguntas()
@@ -35,5 +45,15 @@ class Tarea extends Model
     /* Obtiene el estado al que pertenece */
     public function estado(){
         return $this->belongsTo(Estado::class);
+    }
+
+    /* Obtiene el estado al que pertenece */
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
+    }
+
+    /* Obtiene el perfil del autor */
+    public function perfil(){
+        return $this->hasOneThrough(Perfil::class, Tarea::class, 'user_id', 'user_id');
     }
 }

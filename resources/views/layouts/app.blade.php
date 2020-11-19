@@ -56,11 +56,11 @@
 
                         @if(Auth::user())
 
-                            <a href="{{ route('tarea.mistareas') }}" class="nav-item nav-link">Mis Ofertas</a>
+                            <a href="{{ route('tarea.mistareas') }}" class="nav-item nav-link">Mis Tareas</a>
 
                         @endif
 
-                        <a href="#" class="nav-item nav-link">Ver Tareas</a>
+                        <a href="{{ route('tarea.tareas') }}" class="nav-item nav-link">Ver Tareas</a>
 
                     </ul>
 

@@ -28,22 +28,15 @@
 
                                     <div class="mb-2">
 
-                                        <img :src="imagenAutor" alt="Imagen de perfil" id="imagen-oferta-respuesta">
+                                        <img v-if="this.oferta.autor.perfil.imagen" :src="imagenAutor" alt="Imagen de perfil" id="imagen-oferta-respuesta">
+
+                                        <img v-else src="/storage/img/usuario.jpg"  alt="Foto Perfil" class="foto-perfil-barra">
 
                                         <div class="d-flex flex-column text-left">
 
-                                            <a id="perfil-oferta-respuesta" href="#"></a>
+                                            <p class="mb-0 nombre-texto">{{ nombreAutor }}</p>
 
-                                            <div class="estrellas">
-
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <p>5.0</p>
-
-                                            </div>
+                                            <p class="contenido-texto">{{ contenido | strippedContent}}</p>
 
                                         </div>
 
@@ -103,6 +96,7 @@
         data(){
             return{
                 imagenAutor:'/storage/perfiles/imagenes/' + this.oferta.autor.perfil.imagen,
+                nombreAutor: this.oferta.autor.name,
                 contenido: this.oferta.contenido,
                 imagenSubida:null,
                 contenidoSubida:'',
@@ -122,7 +116,6 @@
                     let output = document.querySelector('.labela');
                     output.innerHTML = '<i class="far fa-images text-white"></i>';
                 }, 1000);
-
 
             },
             cargarImagen(e){
@@ -148,63 +141,69 @@
                 if(this.imagenSubida != null)
                     formData.append('imagen-respuesta-oferta', this.imagenSubida);
 
-                axios.post('http://127.0.0.1:8000/respuesta_oferta/store',formData)
+                axios.post('/respuesta_oferta/store',formData)
                     .then((response =>{
 
-                        console.log(response)
+                        /* console.log(response) */
 
-                        $("#idmodal" ).modal('hide');
+                        let foto = '';
 
-                            if(response.data.imagen){
+                        if(response.data.foto == null)
+                            foto = "/storage/img/usuario.jpg"
+                        else
+                            foto = "/storage/perfiles/imagenes/" + response.data.foto
 
-                                $('div[oferta_principal='+ response.data.oferta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
-                                        "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
-                                        "<div> "+
+                        if(response.data.imagen){
 
-                                            "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>"+
+                            $('div[oferta_principal='+ response.data.oferta_id +']').append(
+                                "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
+                                    "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
-                                        "</div>"+
+                                    "<div> "+
 
-                                            "<p class='m-0'>" + response.data.user + "</p>"+
-                                            "<p class='parrafo'>" + response.data.contenido  + "</p>" +
-                                            "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
-                                                "<img src='/storage/" + response.data.imagen + "'</img>"+
-                                            "</a>"+
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
-                                    "</div>"
-                                );
+                                        "<img src='" + foto + "'</img>"+
 
-                            }
-                            else{
+                                    "</div>"+
 
-                                $('div[oferta_principal='+ response.data.oferta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
-                                        "' class='oferta-descripcion w-75 float-left nueva-respuesta'>"+
+                                        "<p class='m-0'>" + response.data.user + "</p>"+
+                                        "<p class='parrafo'>" + response.data.contenido  + "</p>" +
+                                        "<a class='mt-2' href='/storage/ofertas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
+                                            "<img src='/storage/" + response.data.imagen + "'</img>"+
+                                        "</a>"+
+                                        "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                "</div>"
+                            );
 
-                                        "<div> "+
+                        }
+                        else{
 
-                                            "<img src='/storage/perfiles/imagenes/" + response.data.foto + "'</img>"+
+                            $('div[oferta_principal='+ response.data.oferta_id +']').append(
+                                "<div nueva-respuesta-id='" + response.data.respuesta_oferta_id +
+                                    "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
-                                        "</div>"+
+                                    "<div> "+
 
-                                            "<p class='m-0'>" + response.data.user + "</p>"+
-                                            "<p class='parrafo'>" + response.data.contenido  + "</p>" +
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
-                                    "</div>"
-                                );
+                                        "<img src='" + foto + "'</img>"+
 
-                            }
+                                    "</div>"+
 
-                            const res = document.querySelector('div[nueva-respuesta-id="'+ response.data.respuesta_oferta_id + '"]');
-                            res.focus();
+                                        "<p class='m-0'>" + response.data.user + "</p>"+
+                                        "<p class='parrafo'>" + response.data.contenido  + "</p>" +
+                                        "<button class='btn btn-sm btn-eliminar-respuesta-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_oferta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                "</div>"
+                            );
 
-                            this.myModel = false;
+                        }
+
+                        var res = $('div[nueva-respuesta-id="' + response.data.respuesta_oferta_id + '"]')
+                        res[0].scrollIntoView({behavior:'smooth'})
+
+                        this.myModel = false;
 
                     })).catch(response => {
 
-                        console.log(response)
+                        /* console.log(response) */
 
                         if(response.status === 422) {
                             alert()
@@ -215,8 +214,20 @@
                             });
                         }
 
+                        this.$swal({
+
+                            title:"Hubo un error al hacer la respuesta.",
+                            icon:'error'
+
+                        })
+
                     });
             }
+        },
+        filters: {
+            strippedContent: function(string) {
+                return string.replace(/<\/?[^>]+>/ig, " ");
+            },
         }
     }
 
@@ -264,4 +275,13 @@
         justify-content: center;
         align-items: center;
     }
+    .nombre-texto{
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .contenido-texto{
+        font-size: 16px;
+    }
+
 </style>
