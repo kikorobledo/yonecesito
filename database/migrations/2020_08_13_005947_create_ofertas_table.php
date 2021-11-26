@@ -17,6 +17,7 @@ class CreateOfertasTable extends Migration
             $table->id();
             $table->text('contenido');
             $table->string('imagen')->nullable();
+            $table->integer('presupuesto')->nullable();
             $table->foreignId('tarea_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

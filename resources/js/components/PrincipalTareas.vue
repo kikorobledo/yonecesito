@@ -63,15 +63,36 @@
 
     export default {
         store,
+        props:['tarea_id'],
         components: {
             MostrarFecha,
         },
         mounted(){
-            axios.get('/api/tareas')
-            .then(respuesta => {
-                /* console.log(respuesta) */
-                this.$store.commit("CARGAR_TAREAS", respuesta.data);
-            });
+
+            if(!this.tarea_id){
+
+                axios.get('/api/tareas')
+                .then(respuesta => {
+                    /* console.log(respuesta) */
+                    this.$store.commit("CARGAR_TAREAS", respuesta.data);
+                });
+
+            }else{
+                const params = {
+                    id: this.tarea_id
+                };
+
+                axios.get(`/api/tarea/${this.tarea_id}`, {params})
+                .then(respuesta => {
+                    console.log(respuesta)
+                    let array = [respuesta.data]
+                    this.$store.commit("CARGAR_TAREAS", array);
+                    this.$store.commit("CARGAR_TAREA", respuesta.data);
+                    this.$store.commit("CAMBIAR_MAPA", false);
+                    this.ofertas(respuesta.data.id);
+                    this.preguntas(respuesta.data.id);
+                });
+            }
         },
         computed:{
             tareas(){
@@ -99,7 +120,7 @@
 
                 this.tareaActiva()
 
-                e.path.forEach(element => {
+                e.composedPath().forEach(element => {
                     if(element.className === 'tarea border-activa')
                         element.classList.add('borde-activa-completo')
                 });

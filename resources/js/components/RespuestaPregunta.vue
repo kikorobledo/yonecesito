@@ -145,63 +145,63 @@
                 axios.post('/respuesta_pregunta/store',formData)
                     .then((response =>{
 
-                        /* console.log(response) */
+                        console.log(response)
 
                         let foto = '';
 
-                        if(response.data.foto == null)
-                            foto = "/storage/img/usuario.jpg"
+                        if(response.data.foto === null)
+                            foto = "/storage/img/usuario.jpg";
                         else
-                            foto = "/storage/perfiles/imagenes/" + response.data.foto
+                            foto = "/storage/perfiles/imagenes/" + response.data.foto;
 
                         $("#idmodal" ).modal('hide');
 
-                            if(response.data.imagen){
+                        if(response.data.imagen){
 
-                                $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
-                                        "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
+                            $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
+                                "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
+                                    "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
-                                        "<div> "+
+                                    "<div> "+
 
-                                            "<img src='" + foto + "'</img>"+
+                                        "<img src='" + foto + "'</img>"+
 
-                                        "</div>"+
+                                    "</div>"+
 
-                                            "<p class='m-0'>" + response.data.user + "</p>"+
-                                            "<p class='parrafo'>" + response.data.contenido  + "</p>" +
-                                            "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
-                                                "<img src='/storage/" + response.data.imagen + "'</img>"+
-                                            "</a>"+
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
-                                    "</div>"
-                                );
+                                        "<p class='m-0'>" + response.data.user + "</p>"+
+                                        "<p class='parrafo'>" + response.data.contenido  + "</p>" +
+                                        "<a class='mt-2' href='/storage/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
+                                            "<img src='/storage/" + response.data.imagen + "'</img>"+
+                                        "</a>"+
+                                        "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                "</div>"
+                            );
 
-                            }
-                            else{
+                        }
+                        else{
 
-                                $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
-                                    "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
-                                        "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
+                            $('div[pregunta_principal='+ response.data.pregunta_id +']').append(
+                                "<div nueva-respuesta-id='" + response.data.respuesta_pregunta_id +
+                                    "' class='temporal oferta-descripcion w-75 float-left nueva-respuesta'>"+
 
-                                        "<div> "+
+                                    "<div> "+
 
-                                            "<img src='" + foto + "'</img>"+
+                                        "<img src='" + foto + "'</img>"+
 
-                                        "</div>"+
+                                    "</div>"+
 
-                                            "<p class='m-0'>" + response.data.user + "</p>"+
-                                            "<p class='parrafo'>" + response.data.contenido  + "</p>" +
-                                            "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
-                                    "</div>"
-                                );
+                                        "<p class='m-0'>" + response.data.user + "</p>"+
+                                        "<p class='parrafo'>" + response.data.contenido  + "</p>" +
+                                        "<button class='btn btn-sm btn-eliminar-respuesta-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.respuesta_pregunta_id +"'><i class='fas fa-trash-alt'></i></button>"+
+                                "</div>"
+                            );
 
-                            }
+                        }
 
-                            const res = $('div[nueva-respuesta-id="'+ response.data.respuesta_pregunta_id + '"]');
-                            res[0].scrollIntoView({behavior:'smooth'})
+                        const res = $('div[nueva-respuesta-id="'+ response.data.respuesta_pregunta_id + '"]');
+                        res[0].scrollIntoView({behavior:'smooth'})
 
-                            this.myModel = false;
+                        this.myModel = false;
 
                     })).catch(response => {
 

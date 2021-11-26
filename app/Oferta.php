@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oferta extends Model
 {
-    protected $fillable = ['contenido','imagen','tarea_id','user_id'];
+    protected $fillable = ['contenido','imagen','tarea_id','user_id','presupuesto'];
 
     protected $dates = ['created_at'];
 

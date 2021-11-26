@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\RespuestaPregunta;
 use Illuminate\Http\Request;
+use App\Notifications\NuevaRespuestaPregunta;
 
 class RespuestaPreguntaController extends Controller
 {
@@ -34,6 +35,11 @@ class RespuestaPreguntaController extends Controller
 
             $usuario = User::where('id', $data['user_id'])->first();
 
+            $usuario_notificacion = User::where('id', $respuesta_pregunta->pregunta->autor->id)->first();
+
+            $usuario_notificacion->notify(new NuevaRespuestaPregunta($respuesta_pregunta, $respuesta_pregunta->pregunta));
+
+
             $foto = $usuario->perfil->imagen;
 
             $nombre = $usuario->name;
@@ -61,6 +67,10 @@ class RespuestaPreguntaController extends Controller
             ]);
 
             $respuesta_pregunta->save();
+
+            $usuario_notificacion = User::where('id', $respuesta_pregunta->pregunta->autor->id)->first();
+
+            $usuario_notificacion->notify(new NuevaRespuestaPregunta($respuesta_pregunta, $respuesta_pregunta->pregunta));
 
             $nombre = $usuario->name;
 

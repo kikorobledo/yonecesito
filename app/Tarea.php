@@ -56,4 +56,14 @@ class Tarea extends Model
     public function perfil(){
         return $this->hasOneThrough(Perfil::class, Tarea::class, 'user_id', 'user_id');
     }
+
+    /* Obtiene el trabajador al que se le asigno la tarea */
+    public function trabajadorAsignado(){
+        return $this->belongsTo(User::class, 'trabajador');
+    }
+
+    /* Obtiene los mensajes de la tarea */
+    public function mensajes(){
+        return $this->hasMany(Mensaje::class);
+    }
 }

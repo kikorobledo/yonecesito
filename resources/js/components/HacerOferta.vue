@@ -40,7 +40,7 @@
 
                                         </div>
 
-                                        <div class="grupo mb-3" @click="datosBancarios">
+                                        <!-- <div class="grupo mb-3" @click="datosBancarios">
 
                                             <i :class="tieneDatosBancarios()" class="fas fa-check-circle ml-2" ></i>
 
@@ -48,7 +48,7 @@
 
                                             <i class="fas fa-chevron-right mr-2 flecha"></i>
 
-                                        </div>
+                                        </div> -->
 
                                         <div class="grupo mb-3" @click="fechaDeNacimiento_">
 
@@ -100,7 +100,7 @@
 
                                     </div>
 
-                                    <div v-if="actualizarDatosBancarios">
+                                    <!-- <div v-if="actualizarDatosBancarios">
 
                                          <form  @submit.prevent="actualizarDatosBancariosPOST">
 
@@ -168,7 +168,7 @@
 
                                         <button type="button" class="btn btn-block btn-siguiente" @click="regresar">Regresar</button>
 
-                                    </div>
+                                    </div> -->
 
                                     <div v-if="actualizarFechaDeNacimiento">
 
@@ -214,11 +214,21 @@
 
                                         <form @submit.prevent="crearOferta">
 
-                                            <input type="hidden" id="contenido_oferta" name="descripcion" v-model="oferta">
+                                            <div class="input-group w-50 mb-3">
 
-                                            <trix-editor class="" input="contenido_oferta" style="min-height:200px;"></trix-editor>
+                                                <div class="input-group-prepend">
 
+                                                    <button class="btn btn-secondary text-white" type="button"><i class="fas fa-dollar-sign"></i></button>
 
+                                                </div>
+
+                                                <input class="form-control" type="number"  v-model="presupuesto" :placeholder="tarea.presupuesto" aria-describedby="basic-addon1">
+
+                                            </div>
+
+                                            <input type="hidden" id="contenido_oferta" name="descripcion" v-model="oferta" >
+
+                                            <trix-editor class="" input="contenido_oferta" style="min-height:200px;" @blur="asignarContenidoOferta()"></trix-editor>
 
                                             <div class="d-flex justify-content-between w-100 mt-3">
 
@@ -276,20 +286,21 @@
                 actualizarFoto:false,
                 actualizarTelefono:false,
                 actualizarFechaDeNacimiento:false,
-                actualizarDatosBancarios:false,
+                /* actualizarDatosBancarios:false, */
                 oferta_ventana:false,
                 oferta:null,
                 imagen:false,
                 imagenSubida:null,
                 imagenOferta:null,
-                propietario_tarjeta:null,
+                /* propietario_tarjeta:null,
                 numero_tarjeta:null,
                 direccion:null,
                 colonia:null,
                 codigo_postal:null,
-                estado_:null,
+                estado_:null, */
                 tel:null,
                 fechaDeNacimiento:null,
+                presupuesto:null
             }
         },
         mounted(){
@@ -304,12 +315,23 @@
         methods:{
             ...mapActions(['usuario']),
             abrir(){
+                if(this.tarea.user_id === this.usuarioLogeado.id){
+                    this.$swal({
+
+                        title:"No puedes ofertar.",
+                        icon:'error'
+
+                    })
+
+                    return;
+                }
+
                 this.actualizarFoto = false;
 
                 this.actualizarTelefono = false;
 
                 this.actualizarFechaDeNacimiento = false;
-                this.actualizarDatosBancarios = false;
+                /* this.actualizarDatosBancarios = false; */
 
                 if(!this.user_id){
                     $("#loginModal").modal('show');
@@ -326,7 +348,7 @@
 
                 this.actualizarFoto = false;
 
-                this.actualizarDatosBancarios = false;
+                /* this.actualizarDatosBancarios = false; */
 
                 this.oferta_ventana = false;
             },
@@ -340,7 +362,7 @@
 
                 this.actualizarFechaDeNacimiento = false;
 
-                this.actualizarDatosBancarios = false;
+                /* this.actualizarDatosBancarios = false; */
 
                 this.oferta_ventana = false;
             },
@@ -351,7 +373,7 @@
                 this.actualizarFoto = true;
 
             },
-            datosBancarios(){
+           /*  datosBancarios(){
 
                 this.principal = false;
 
@@ -370,7 +392,7 @@
 
                 this.actualizarDatosBancarios = true;
 
-            },
+            }, */
             telefono(){
 
                 this.principal = false;
@@ -401,7 +423,7 @@
 
                 return this.usuarioLogeado.perfil.telefono != null ? "verde" : "flecha";
             },
-            tieneDatosBancarios(){
+            /* tieneDatosBancarios(){
 
                 if(this.usuarioLogeado.datos_bancarios.direccion == null){
                     return "flecha";
@@ -419,7 +441,7 @@
                     return "verde";
                 }
 
-            },
+            }, */
             actualizarFotoPerfil(){
                 const formData = new FormData();
 
@@ -440,7 +462,7 @@
                         })
                     })
             },
-            actualizarDatosBancariosPOST(){
+            /* actualizarDatosBancariosPOST(){
 
                 const formData = new FormData();
 
@@ -456,7 +478,7 @@
                 axios.post('/dato_bancario/update', formData)
                     .then(response =>{
 
-                        /* console.log(response); */
+                        console.log(response);
 
                         this.usuarioLogeado.datos_bancarios.direccion = response.data.direccion
 
@@ -484,7 +506,7 @@
                         })
                         console.log(error)
                     })
-            },
+            }, */
             actualizarTelefonoPerfil(){
                 const formData = new FormData();
 
@@ -584,18 +606,23 @@
                     return;
                 }
             },
-            crearOferta(){
-
+            asignarContenidoOferta(){
                 this.oferta = $('#contenido_oferta')[0].value;
+            },
+            crearOferta(){
 
                 const formData = new FormData();
 
                 if(this.imagenOferta != null)
                     formData.append('imagen', this.imagenOferta);
 
+                if(this.presupuesto != null)
+                    formData.append('presupuesto', this.presupuesto);
+
                 formData.append('contenido', this.oferta);
                 formData.append('tarea_id', this.tarea_id);
                 formData.append('usuario_id', this.usuarioLogeado.id);
+
 
                 axios.post('/api/oferta', formData)
                     .then(response => {
@@ -603,6 +630,7 @@
 
                         this.oferta = null;
                         this.imagenOferta = null;
+                        this.presupuesto = null;
 
                         if(this.cantidadOfertas === 0)
                             this.$store.commit("CARGAR_CANTIDAD_OFERTAS", 1);
@@ -625,8 +653,8 @@
                                         "</div>" +
                                     "</div>" +
                                     "<div class='oferta-descripcion'>" +
-                                        "<p class='parrafo'>" + response.data.contenido + "</p><br>" +
-                                        "<a class='mt-2' href='/storage/ofertas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
+                                        "<div class='parrafo'>" + response.data.contenido + "</div><br>" +
+                                        "<a class='mt-2 float-left' href='/storage/ofertas/" + response.data.imagen + "' data-lightbox='" + response.data.imagen + "' data-title='Imagen descriptiva'>"+
                                             "<img src='/storage/ofertas/" + response.data.imagen + "'</img>"+
                                         "</a>"+
                                         "<div class='oferta-footer d-flex justify-content-between w-100'>" +
@@ -654,7 +682,7 @@
                                         "</div>" +
                                     "</div>" +
                                     "<div class='oferta-descripcion'>" +
-                                        "<p class='parrafo'>" + response.data.contenido + "</p>" +
+                                        "<div class='parrafo'>" + response.data.contenido + "</div>" +
                                         "<div class='oferta-footer d-flex justify-content-between w-100'>" +
                                             "<p>" + response.data.createdAtHumanReadable + "</p>" +
                                             "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.id +"'><i class='fas fa-trash-alt'></i></button>" +
@@ -682,12 +710,12 @@
             siguiente(){
 
                 if(
-                    this.usuarioLogeado.datos_bancarios.direccion == null ||
+                    /* this.usuarioLogeado.datos_bancarios.direccion == null ||
                     this.usuarioLogeado.datos_bancarios.colonia == null ||
                     this.usuarioLogeado.datos_bancarios.codigo_postal == null ||
                     this.usuarioLogeado.datos_bancarios.estado_id == null ||
                     this.usuarioLogeado.datos_bancarios.propietario_tarjeta == null ||
-                    this.usuarioLogeado.datos_bancarios.numero_tarjeta == null ||
+                    this.usuarioLogeado.datos_bancarios.numero_tarjeta == null || */
                     this.usuarioLogeado.perfil.imagen == null ||
                     this.usuarioLogeado.perfil.fecha_de_nacimiento == null ||
                     this.usuarioLogeado.perfil.telefono == null

@@ -34,9 +34,11 @@ class CreatePerfilsTable extends Migration
         Schema::create('resenas', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
+            $table->integer('rate');
             $table->text('contenido');
-            $table->foreignId('autor')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
-            $table->foreignId('receptor')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
+            $table->foreignId('tarea_id')->constrained()->onDelete('cascade')->references('id')->on('tareas');
+            $table->foreignId('calificado')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
+            $table->foreignId('calificador')->nullable()->constrained()->onDelete('cascade')->references('id')->on('users');
             $table->timestamps();
         });
 

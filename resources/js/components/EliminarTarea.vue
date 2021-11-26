@@ -30,7 +30,7 @@
                             };
                             axios.post(`/tarea/${this.tareaId}`, {params, _method:'delete'})
                                 .then(respuesta => {
-
+                                    console.log(respuesta)
                                     this.$swal({
                                             title:"Tarea eliminada",
                                             icon:'success'

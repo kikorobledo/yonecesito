@@ -103,7 +103,27 @@
 
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        {{ Auth::user()->name }}
+
+                                        @if(
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaOferta')->count() +
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaPregunta')->count() +
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaOferta')->count() +
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaPregunta')->count() +
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevoMensaje')->count() +
+                                            Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaAsignacion')->count() > 0)
+                                            <span class="btn btn-sm circular">
+                                                {{
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaOferta')->count() +
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaPregunta')->count() +
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaOferta')->count() +
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaPregunta')->count() +
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaAsignacion')->count() +
+                                                    Auth::user()->unreadNotifications->where('type','App\Notifications\NuevoMensaje')->count()
+                                                }}
+                                            </span>
+                                        @endif
+                                        <span class="caret"></span>
 
                                     </a>
 
@@ -112,6 +132,37 @@
                                         <a class="dropdown-item" href="{{ route('perfil.edit', ['perfil' => Auth::user()->perfil->id]) }}">
 
                                             Perfil
+
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('notificaciones.ofertas') }}">
+
+                                            Ofertas <span class="btn btn-sm circular float-right">{{ Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaOferta')->count() }}</span>
+
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('notificaciones.preguntas') }}">
+
+                                            Preguntas <span class="btn btn-sm circular float-right">{{ Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaPregunta')->count() }}</span>
+
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('notificaciones.respuestas') }}">
+
+                                            Respuestas <span class="btn btn-sm circular float-right">{{ Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaOferta')->count() +
+                                                Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaRespuestaPregunta')->count() }}</span>
+
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('notificaciones.asignaciones') }}">
+
+                                            Asignaciones <span class="btn btn-sm circular float-right">{{ Auth::user()->unreadNotifications->where('type','App\Notifications\NuevaAsignacion')->count() }}</span>
+
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('mensajes.mis_mensajes') }}">
+
+                                            Mensajes <span class="btn btn-sm circular float-right">{{ Auth::user()->unreadNotifications->where('type','App\Notifications\NuevoMensaje')->count() }}</span>
 
                                         </a>
 

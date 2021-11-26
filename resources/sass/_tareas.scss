@@ -24,6 +24,14 @@
     background-color: #fff;
 }
 
+.mensaje-completo{
+    border: 1px solid #afc8ce;
+}
+
+.mensaje{
+    border-left: 3px solid #afc8ce;
+}
+
 .borde-activa-completo{
     border: 1px solid #7db343;
 }
@@ -459,4 +467,17 @@ trix-toolbar [data-trix-button-group="file-tools"] {
 .btn-filtro:hover{
     background-color:#c7cecf;
     color:#fff;
+}
+
+.btn-asignar{
+    color: white;
+    background-color:#38c172;
+    border-radius: 160px;
+    padding: 2px 12px;
+    font-size: 12px;
+
+}
+
+.btn-asignar:hover{
+    color:white;
 }

@@ -8,12 +8,14 @@
 
                 <div class="estado-trato">
 
-                    <span class="badge badge-pill badge-success">Disponible</span>
+                    <span v-if="tarea.estatus == 'activa'"  class="badge badge-pill" :class="estadoTarea(tarea)">Disponible</span>
+                    <span v-else  class="badge badge-pill badge-secondary">Disponible</span>
 
-                    <span class="badge badge-pill badge-secondary">Asignado</span>
+                    <span v-if="tarea.estatus == 'asignada'" class="badge badge-pill" :class="estadoTarea(tarea)">Asignada</span>
+                    <span v-else  class="badge badge-pill badge-secondary">Asignada</span>
 
-                    <span class="badge badge-pill badge-secondary">Concluido</span>
-
+                    <span v-if="tarea.estatus == 'concluida'" class="badge badge-pill" :class="estadoTarea(tarea)">Concluida</span>
+                    <span v-else  class="badge badge-pill badge-secondary">Concluida</span>
                 </div>
 
                 <h3 class="tarea-titulo">
@@ -101,7 +103,7 @@
 
                     <p class="presupuesto-precio">${{ tarea.presupuesto }}</p>
 
-                    <hacer-oferta :tarea_id="tarea.id"></hacer-oferta>
+                    <hacer-oferta :tarea_id="tarea.id" v-if="tarea.estatus === 'activa'"></hacer-oferta>
 
                 </div>
 
@@ -137,7 +139,7 @@
 
                 <div class="detalles-contenido">
 
-                    <p class="parrafo" v-html="tarea.descripcion"></p>
+                    <div class="parrafo" v-html="tarea.descripcion"></div>
 
                     <ul class="row list-unstyled mt-4">
 
@@ -181,28 +183,52 @@
 
                             <div class="d-flex flex-column text-left">
 
-                                <a href="#">{{ oferta.autor.name }}</a>
+                                <a :href="`/perfil/${oferta.autor.id}`">{{ oferta.autor.name }}</a>
 
-                                <div class="estrellas">
 
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    5.0
+                                    <div v-if="oferta.autor.Ratingtrabajador" class="d-flex justify-content-center rating-stars">
 
-                                </div>
+                                        <p class="align-self-center m-0 mr-2">{{ oferta.autor.Ratingtrabajador }}</p>
+
+                                        <div v-for="index in 5" :key="index" class=" align-self-center">
+
+                                            <i v-if="index <= oferta.autor.Ratingtrabajador" class="fas fa-star"></i>
+
+                                            <i v-else class="far fa-star align-self-center"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div v-else class="d-flex justify-content-center rating-stars">
+
+                                        <p class="align-self-center m-0 mr-2">0</p>
+
+                                        <div v-for="index in 5" :key="index" class=" align-self-center">
+
+                                            <i class="far fa-star"></i>
+
+                                        </div>
+
+                                    </div>
 
                             </div>
 
                         </div>
 
-                        <div class="oferta-descripcion" >
+                        <div class="oferta-descripcion d-flex flex-column">
 
-                            <p class="parrafo">{{ oferta.contenido | strippedContent}}</p>
+                            <div class="parrafo text-left" v-html="oferta.contenido"></div>
 
-                            <img v-if="oferta.imagen != null" :src="`/storage/ofertas/${ oferta.imagen }`" alt="Imagen de perfil">
+                            <div v-if="oferta.imagen != null">
+
+                                <a :href="`/storage/ofertas/${ oferta.imagen }`" :data-lightbox="oferta.imagen" data-title="Imagen descriptiva">
+
+                                    <img :src="`/storage/ofertas/${ oferta.imagen }`" alt="" class="img-fluid">
+
+                                </a>
+
+                            </div>
 
                             <div class="oferta-footer d-flex justify-content-between w-100">
 
@@ -234,9 +260,7 @@
 
                                 <a class="" :href="`/perfil/${respuesta.autor.id}`">{{ respuesta.autor.name }}</a>
 
-                                <p v-if="respuesta.contenido" class="parrafo">{{respuesta.contenido | strippedContent}}</p>
-
-
+                                <p v-if="respuesta.contenido" class="parrafo">{{respuesta.contenido}}</p>
 
                                 <div v-if="respuesta.imagen != null">
 
@@ -305,22 +329,37 @@
 
                             <div class="">
 
-                                <img v-if="pregunta.autor.perfil.imagen != null" :src="`/storage/perfiles/imagenes/${ pregunta.autor.perfil.imagen }`" alt="Imagen de perfil">
+                                <img v-if="pregunta.autor.perfil.imagen" :src="`/storage/perfiles/imagenes/${ pregunta.autor.perfil.imagen }`" alt="Imagen de perfil">
 
                                 <img v-else src="/storage/img/usuario.jpg"  alt="Foto Perfil" class="foto-perfil-barra">
 
                                 <div class="d-flex flex-column text-left">
 
-                                    <a href="#">{{ pregunta.autor.name }}</a>
+                                    <a :href="`/perfil/${pregunta.autor.id}`">{{ pregunta.autor.name }}</a>
 
-                                    <div class="estrellas">
+                                    <div v-if="pregunta.autor.Ratingtrabajador" class="d-flex justify-content-center rating-stars">
 
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        5.0
+                                        <p class="align-self-center m-0 mr-2">{{ pregunta.autor.Ratingtrabajador }}</p>
+
+                                        <div v-for="index in 5" :key="index" class=" align-self-center">
+
+                                            <i v-if="index <= pregunta.autor.Ratingtrabajador" class="fas fa-star"></i>
+
+                                            <i v-else class="far fa-star align-self-center"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div v-else class="d-flex justify-content-center rating-stars">
+
+                                        <p class="align-self-center m-0 mr-2">0</p>
+
+                                        <div v-for="index in 5" :key="index" class=" align-self-center">
+
+                                            <i class="far fa-star"></i>
+
+                                        </div>
 
                                     </div>
 
@@ -417,9 +456,17 @@
             MostrarFecha, RespuestaOferta, EliminarOferta, HacerOferta
         },
         computed:{
-            ...mapState(['tarea', 'ofertas','user_id', 'preguntas','cantidadOfertas', 'cantidadPreguntas'])
+            ...mapState(['tarea', 'ofertas','user_id', 'preguntas','cantidadOfertas', 'cantidadPreguntas', 'usuarioLogeado'])
         },
         methods:{
+            estadoTarea(tarea){
+                if(tarea.estatus == 'activa')
+                    return 'badge-success';
+                if(tarea.estatus == 'asignada')
+                    return 'badge-warning';
+                if(tarea.estatus == 'concluida')
+                    return 'badge-danger';
+            }
         },
         filters: {
             strippedContent: function(string) {

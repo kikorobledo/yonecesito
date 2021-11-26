@@ -10,10 +10,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Resena::class, function (Faker $faker) {
     return [
-        'tipo' => $faker->randomElement(['Trabajador', 'Ofertante']),
+        'tipo' => $faker->randomElement(['ofertante', 'trabajador']),
+        'rate' => rand(0,5),
         'contenido' => $faker->paragraph,
-        'receptor' => rand(1,11),
-        'autor' => rand(1,11),
+        'tarea_id' => rand(1,100),
+        'calificado' => rand(1,11),
+        'calificador' => rand(1,11),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
     ];

@@ -26,12 +26,6 @@
 
                         </label>
 
-                        <label class="btn btn-secondary radio" @change="estadoActiva($event)">
-
-                            <input type="radio" id="radio3" autocomplete="off" value="todas" v-model="tipo"> Todas
-
-                        </label>
-
                     </div>
 
                 </div>

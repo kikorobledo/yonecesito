@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Perfil;
+use App\Resena;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -48,7 +49,15 @@ class PerfilController extends Controller
      */
     public function show(Perfil $perfil)
     {
-        return view('perfiles.show')->with('perfil', $perfil);
+        $resenas_ofertante = Resena::where('calificado', $perfil->usuario->id)->where('tipo', 'ofertante')->get();
+
+        $resenas_trabajador = Resena::where('calificador', $perfil->usuario->id)->where('tipo', 'trabajador')->get();
+
+        $rating_ofertante = $resenas_ofertante->avg('rate');
+
+        $rating_trabajador = $resenas_trabajador->avg('rate');
+
+        return view('perfiles.show')->with('perfil', $perfil)->with('rating_ofertante', $rating_ofertante)->with('rating_trabajador', $rating_trabajador)->with('resenas_ofertante', $resenas_ofertante)->with('resenas_trabajador',$resenas_trabajador);
     }
 
     /**
@@ -59,7 +68,16 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        return view('perfiles.edit');
+
+        $resenas_ofertante = Resena::where('calificado', auth()->user()->id)->where('tipo', 'ofertante')->get();
+
+        $resenas_trabajador = Resena::where('calificador', auth()->user()->id)->where('tipo', 'trabajador')->get();
+
+        $rating_ofertante = $resenas_ofertante->avg('rate');
+
+        $rating_trabajador = $resenas_trabajador->avg('rate');
+
+        return view('perfiles.edit')->with('rating_ofertante', $rating_ofertante)->with('rating_trabajador', $rating_trabajador)->with('resenas_ofertante', $resenas_ofertante)->with('resenas_trabajador', $resenas_trabajador);
     }
 
     /**

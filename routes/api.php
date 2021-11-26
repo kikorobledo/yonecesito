@@ -22,6 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /* Listado de tareas */
 Route::get('/tareas', 'APIController@tareas')->name('tareas');
 
+/* Listado de tareas */
+Route::get('/tarea/{id}', 'APIController@tarea')->name('tarea');
+
 /* Listado de tareas  filtradas*/
 Route::post('/tareas_filtradas', 'APIController@filtrarTareas')->name('tareas_filtradas');
 
@@ -54,3 +57,12 @@ Route::post('/pregunta', 'APIController@crearPregunta')->name('crearPregunta');
 
 /* Eliminar Pregunta */
 Route::delete('/pregunta/{pregunta}', 'APIController@eliminarPregunta')->name('eliminarPregunta');
+
+/* Asignar Tarea */
+Route::post('/asignar_tarea', 'APIController@asignar_tarea')->name('asignar_tarea');
+
+/* Enviar Mensaje */
+Route::post('/enviar_mensaje', 'APIController@enviar_mensaje')->name('enviar_mensaje');
+
+/* Concluir Tarea */
+Route::post('/concluir_tarea', 'APIController@concluir_tarea')->name('concluir_tarea');

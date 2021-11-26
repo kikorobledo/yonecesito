@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="row-principal ">
+        <div class="row-principal row-height-fix">
 
             <div class="col-8 mx-auto">
 

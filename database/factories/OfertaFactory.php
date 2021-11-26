@@ -13,6 +13,7 @@ $factory->define(Oferta::class, function (Faker $faker) {
         'tarea_id' => Tarea::inRandomOrder()->value('id') ?: factory(Tarea::class),
         'user_id' => User::inRandomOrder()->value('id') ?: factory(User::class),
         'contenido' => $faker->paragraph,
+        'presupuesto' => rand(100, 100000),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
     ];

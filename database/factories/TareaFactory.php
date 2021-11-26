@@ -25,6 +25,7 @@ $factory->define(Tarea::class, function (Faker $faker) {
         'fecha_de_vencimiento' => Carbon::now(),
         'created_at' => Carbon::now(),
         'user_id' => rand(1,11),
+        'trabajador' => rand(1,11),
         'updated_at' => Carbon::now()
     ];
 });

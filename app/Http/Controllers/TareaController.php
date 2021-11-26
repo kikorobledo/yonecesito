@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Tarea;
 use App\Estado;
-use Carbon\Carbon;
+use App\Resena;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TareaController extends Controller
 {
@@ -153,6 +154,11 @@ class TareaController extends Controller
     public function destroy(Tarea $tarea)
     {
         $tarea->delete();
+
+        $notificaciones = DB::table('notifications')->where('data->tarea_id', $tarea->id )->get();
+
+        foreach($notificaciones as $notificacion)
+            DB::table('notifications')->where('id', $notificacion->id)->delete();
     }
 
     /* Mis tareas */
@@ -169,6 +175,24 @@ class TareaController extends Controller
         $tareas = Tarea::whereNotNull('colonia')->get();
 
         return view('tareas.tareas')->with('tareas', $tareas);
+
+    }
+
+    /* Tarea Concluida */
+    public function rating(Request $request){
+
+        $tarea = Tarea::where('id', $request['tarea_id'])->first();
+
+        if(auth()->user()->id != $tarea->trabajador)
+            abort(404);
+
+        $rating = Resena::where('calificado', $tarea->usuario->id)->where('tipo','ofertante')->get();
+
+        $rating = $rating->avg('rate');
+
+        $check = Resena::where('tarea_id', $request['tarea_id'])->where('calificado', $tarea->usuario->id)->where('calificador', auth()->user()->id)->first();
+
+        return view('tareas.rating')->with('tarea', $tarea)->with('rating', $rating)->with('check', $check);
 
     }
 }

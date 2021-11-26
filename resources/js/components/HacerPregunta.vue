@@ -50,6 +50,16 @@
         methods:{
             hacerPregunta(){
 
+                if(this.tarea.user_id === this.usuarioLogeado.id){
+                    this.$swal({
+
+                        title:"No puedes preguntar.",
+                        icon:'error'
+
+                    })
+                    return;
+                }
+
                 if(this.user_id){
                     const formData = new FormData();
 
@@ -93,7 +103,7 @@
                                             "</a>"+
                                             "<div class='oferta-footer d-flex justify-content-between w-100'>" +
                                                 "<p>" + response.data.createdAtHumanReadable + "</p>" +
-                                                "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.id +"'><i class='fas fa-trash-alt'></i></button>" +
+                                                "<button class='btn btn-sm btn-eliminar-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.id +"'><i class='fas fa-trash-alt'></i></button>" +
                                             "</div>" +
                                         "</div>" +
                                     "</div>"
@@ -119,7 +129,7 @@
                                             "<p class='parrafo'>" + response.data.contenido + "</p>" +
                                             "<div class='oferta-footer d-flex justify-content-between w-100'>" +
                                                 "<p>" + response.data.createdAtHumanReadable + "</p>" +
-                                                "<button class='btn btn-sm btn-eliminar-oferta float-right' style='color: #aaaaaa;' id='"+ response.data.id +"'><i class='fas fa-trash-alt'></i></button>" +
+                                                "<button class='btn btn-sm btn-eliminar-pregunta float-right' style='color: #aaaaaa;' id='"+ response.data.id +"'><i class='fas fa-trash-alt'></i></button>" +
                                             "</div>" +
                                         "</div>" +
                                     "</div>"

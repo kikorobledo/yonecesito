@@ -160,35 +160,35 @@
 
                                     <span class="badge badge-pill badge-success">Disponible</span>
 
-                                    <span class="badge badge-pill badge-secondary">Asignado</span>
+                                    <span class="badge badge-pill badge-secondary">Asignada</span>
 
-                                    <span class="badge badge-pill badge-secondary">Concluido</span>
+                                    <span class="badge badge-pill badge-secondary">Concluida</span>
 
                                 @elseif($tarea_actual->estatus === 'asignada')
 
                                     <span class="badge badge-pill badge-secondary">Disponible</span>
 
-                                    <span class="badge badge-pill badge-warning">Asignado</span>
+                                    <span class="badge badge-pill badge-warning">Asignada</span>
 
-                                    <span class="badge badge-pill badge-secondary">Concluido</span>
+                                    <span class="badge badge-pill badge-secondary">Concluida</span>
 
                                 @elseif($tarea_actual->estatus === 'concluida')
 
                                     <span class="badge badge-pill badge-secondary">Disponible</span>
 
-                                    <span class="badge badge-pill badge-secondary">Asignado</span>
+                                    <span class="badge badge-pill badge-secondary">Asignada</span>
 
-                                    <span class="badge badge-pill badge-danger">Concluido</span>
+                                    <span class="badge badge-pill badge-danger">Concluida</span>
 
                                 @elseif($tarea_actual->estatus === 'expirada')
 
                                     <span class="badge badge-pill badge-secondary">Disponible</span>
 
-                                    <span class="badge badge-pill badge-secondary">Asignado</span>
+                                    <span class="badge badge-pill badge-secondary">Asignada</span>
 
-                                    <span class="badge badge-pill badge-secondary">Concluido</span>
+                                    <span class="badge badge-pill badge-secondary">Concluida</span>
 
-                                    <span class="badge badge-pill badge-danger">Expirado</span>
+                                    <span class="badge badge-pill badge-danger">Expirada</span>
 
                                 @endif
 
@@ -267,6 +267,11 @@
 
                             <notificacion-sweet colonia={{ $tarea_actual->colonia }} lat={{ $tarea_actual->lat }} lng={{ $tarea_actual->lng }}></notificacion-sweet>
 
+                            @if($tarea_actual->estatus == 'asignada')
+                            {{ $tarea_actual->trabador}}
+                                <concluir-tarea  fecha-vencimiento={{ $tarea_actual->fecha_de_vencimiento}} tarea-id={{ $tarea_actual->id}} usuario-id={{ Auth::user()->id}} trabajador-id={{ $tarea_actual->trabajador}} ></concluir-tarea>
+
+                            @endif
 
                             <hr>
 
@@ -341,8 +346,8 @@
 
                         </div>
 
-
                         <div class="col-12 detalles">
+
 
                             <div class="d-flex justify-content-between">
 
@@ -358,7 +363,7 @@
 
                             <div class="detalles-contenido">
 
-                                <p class="parrafo">{!! $tarea_actual->descripcion !!}</p>
+                                <div class="parrafo">{!! $tarea_actual->descripcion !!}</div>
 
                                 @if(count($tarea_actual->imagenes) > 0)
 
@@ -436,6 +441,16 @@
 
                         </div>
 
+                        @if($tarea_actual->trabajador)
+
+                            <div class="col-12">
+
+                                <span class="oferta-presupuesto mb-1">Asignada a: {{ $tarea_actual->trabajadorAsignado->name }}</span>
+
+                            </div>
+
+                        @endif
+
                         <div class="col-12 ofertas-trato mt-5">
 
                             <p class="detalles-trato">ofertas</p>
@@ -463,15 +478,43 @@
 
                                                 <a href="{{ route('perfil.show', ['perfil' => $oferta->user_id]) }}">{{ $oferta->autor->name }}</a>
 
-                                                <div class="estrellas">
+                                                <div class="d-flex justify-content-center rating-stars">
 
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    5.0
+                                                    @if($oferta->autor->Ratingtrabajador)
+
+                                                        <p class="align-self-center m-0 mr-2">{{ $oferta->autor->Ratingtrabajador }}</p>
+
+                                                    @else
+
+                                                        <p class="align-self-center m-0 mr-2">0</p>
+
+                                                    @endif
+
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        @if($i <= $oferta->autor->Ratingtrabajador)
+                                                            <i class="fas fa-star align-self-center "></i>
+                                                        @else
+                                                            <i class="far fa-star align-self-center"></i>
+                                                        @endif
+                                                    @endfor
+
                                                 </div>
+
+                                            </div>
+
+                                            <div class="float-right d-flex flex-column">
+
+                                                @if($oferta->presupuesto)
+
+                                                    <span class="oferta-presupuesto mb-1">Oferto: ${{ $oferta->presupuesto }}</span>
+
+                                                @endif
+
+                                                @if($tarea_actual->estatus == 'activa')
+
+                                                    <button class="btn btn-sm btn-asignar" trabajador={{ $oferta->autor->id }} tarea={{ $tarea_actual->id }}>Asignar</button>
+
+                                                @endif
 
                                             </div>
 
@@ -479,7 +522,21 @@
 
                                         <div class="oferta-descripcion" >
 
-                                            <p class="parrafo">{{ strip_tags($oferta->contenido) }}</p>
+                                            <div class="parrafo text-left">{!! $oferta->contenido !!}</div>
+                                            <br>
+                                            <div>
+
+                                                @if($oferta->imagen)
+
+                                                    <a href="/storage/ofertas/{{ $oferta->imagen }}" data-lightbox="imagenes" data-title="Imagen descriptiva">
+
+                                                        <img src="/storage/ofertas/{{ $oferta->imagen }}" alt="" class="img-fluid">
+
+                                                    </a>
+
+                                                @endif
+
+                                            </div>
 
                                             <div class="oferta-footer d-flex justify-content-between w-100">
 
@@ -597,14 +654,26 @@
 
                                             <a href="{{ route('perfil.show', ['perfil' => $pregunta->user_id]) }}">{{ $pregunta->autor->name }}</a>
 
-                                            <div class="estrellas">
+                                            <div class="d-flex justify-content-center rating-stars">
 
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                5.0
+                                                @if($pregunta->autor->Ratingtrabajador)
+
+                                                    <p class="align-self-center m-0 mr-2">{{ $pregunta->autor->Ratingtrabajador }}</p>
+
+                                                @else
+
+                                                    <p class="align-self-center m-0 mr-2">0</p>
+
+                                                @endif
+
+                                                @for($i = 1; $i <= 5; $i++)
+                                                    @if($i <= $pregunta->autor->Ratingtrabajador)
+                                                        <i class="fas fa-star align-self-center "></i>
+                                                    @else
+                                                        <i class="far fa-star align-self-center"></i>
+                                                    @endif
+                                                @endfor
+
                                             </div>
 
                                         </div>
@@ -1061,6 +1130,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
+
             var myParam = location.search.split('tarea_id=')[1]
 
             if(myParam)
@@ -1176,6 +1246,52 @@
                                 });
                         }
                     });
+            });
+
+            /* Asignar tarea */
+            $('body').on('click','.btn-asignar',function(){
+
+                const params = {
+                    tarea: this.getAttribute('tarea'),
+                    trabajador: this.getAttribute('trabajador')
+                };
+
+                Swal.fire({
+                    title: '¿Esta seguro que desea asignar esta tarea?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si',
+                    cancelButtonText: 'No'
+                    }).then((result) => {
+
+                        if (result.isConfirmed){
+
+                            axios.post(`/api/asignar_tarea`, params)
+                                .then(respuesta => {
+                                    console.log(respuesta);
+                                    Swal.fire({
+
+                                        title:"Tarea Asignada",
+                                        icon:'success'
+
+                                        }).then((result) => {
+
+                                            document.querySelectorAll(".btn-asignar").forEach(element => {
+                                                element.remove();
+                                            });
+
+                                        })
+
+                                }).catch(error => {
+
+                                    console.log(error);
+
+                                });
+                        }
+                    });
+
             });
 
         });

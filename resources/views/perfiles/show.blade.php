@@ -11,7 +11,7 @@
 
     <div class="container">
 
-        <div class="row row-principal">
+        <div class="row row-principal row-height-fix">
 
             <div class="col-12 datos">
 
@@ -79,13 +79,57 @@
 
                                 <div class="tab-pane fade show active tab-div" id="primera" role="tabpanel" aria-labelledby="home-tab">
 
-                                    <p>Este usuario aún no tiene reseñas como ofertante.</p>
+                                    @if($rating_ofertante)
+
+                                        <p class="text-center reseñas-subtitulo">Con {{ count($resenas_ofertante) }} reseñas.</p>
+
+                                        <div class="d-flex justify-content-center rating-stars">
+
+                                            <p class="align-self-center m-0 mr-2">{{ round($rating_ofertante,1) }}</p>
+
+                                            @for($i = 1; $i <= 5; $i++)
+                                                @if($i <= $rating_ofertante)
+                                                    <i class="fas fa-star align-self-center "></i>
+                                                @else
+                                                    <i class="far fa-star align-self-center"></i>
+                                                @endif
+                                            @endfor
+
+                                        </div>
+
+                                    @else
+
+                                        <p>Este usuario aún no tiene reseñas como ofertante.</p>
+
+                                    @endif
 
                                 </div>
 
                                 <div class="tab-pane fade tab-div" id="segunda" role="tabpanel" aria-labelledby="profile-tab">
 
-                                    <p>Este usuario aún no tiene reseñas como trabajador.</p>
+                                    @if($rating_trabajador)
+
+                                        <p class="text-center reseñas-subtitulo">Con {{ count($resenas_trabajador) }} reseñas.</p>
+
+                                        <div class="d-flex justify-content-center rating-stars">
+
+                                            <p class="align-self-center m-0 mr-2">{{ round($rating_trabajador,1) }}</p>
+
+                                            @for($i = 1; $i <= 5; $i++)
+                                                @if($i <= $rating_trabajador)
+                                                    <i class="fas fa-star align-self-center "></i>
+                                                @else
+                                                    <i class="far fa-star align-self-center"></i>
+                                                @endif
+                                            @endfor
+
+                                        </div>
+
+                                    @else
+
+                                        <p>Este usuario aún no tiene reseñas como trabajador.</p>
+
+                                    @endif
 
                                 </div>
 
@@ -274,13 +318,117 @@
 
                             <div class="tab-pane fade show active tab-div" id="primera2" role="tabpanel" aria-labelledby="home-tab">
 
-                                <p>Este usuario aún no tiene reseñas como ofertante.</p>
+                                @if(count($resenas_ofertante) != 0)
+
+                                    <p class="text-left reseñas-subtitulo"> {{ count($resenas_ofertante) }} reseñas.</p>
+
+                                    <div class="row">
+
+                                        @foreach($resenas_ofertante as $resena)
+
+                                            <div class="col-3 resena-container d-flex p-2 mr-2 mb-2">
+
+                                                @if($resena->UsuarioCalificador->perfil->imagen != null)
+
+                                                    <img src="/storage/perfiles/imagenes/{{$resena->UsuarioCalificador->perfil->imagen }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                @else
+
+                                                    <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                @endif
+
+                                                <div>
+
+                                                    <div class="d-flex justify-content-center rating-stars">
+
+                                                        @for($i = 1; $i <= 5; $i++)
+                                                            @if($i <= $resena->rate)
+                                                                <i class="fas fa-star align-self-center "></i>
+                                                            @else
+                                                                <i class="far fa-star align-self-center"></i>
+                                                            @endif
+                                                        @endfor
+
+                                                        <p class="align-self-center m-0 ml-2">{{ $resena->rate }}</p>
+
+                                                    </div>
+
+                                                    <p>"{{ $resena->contenido}}"</p>
+
+                                                    <p class="m-0">{{ $resena->created_at->diffForHumans() }}</p>
+
+                                                </div>
+
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
+
+                                @else
+
+                                    <p>Este usuario aún no tiene reseñas como ofertante.</p>
+
+                                @endif
 
                             </div>
 
                             <div class="tab-pane fade tab-div" id="segunda2" role="tabpanel" aria-labelledby="profile-tab">
 
-                                <p>Este usuario aún no tiene reseñas como trabajador.</p>
+                                @if(count($resenas_trabajador) != 0)
+
+                                    <p class="text-left reseñas-subtitulo"> {{ count($resenas_trabajador) }} reseñas.</p>
+
+                                    <div class="row">
+
+                                        @foreach($resenas_trabajador as $resena)
+
+                                            <div class="col-3 resena-container d-flex p-2 mr-2 mb-2">
+
+                                                @if($resena->UsuarioCalificador->perfil->imagen != null)
+
+                                                    <img src="/storage/perfiles/imagenes/{{ $resena->UsuarioCalificador->perfil->imagen }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                @else
+
+                                                    <img src="{{ asset('storage/img/usuario.jpg') }}" alt="Foto Perfil" class="foto-perfil-barra">
+
+                                                @endif
+
+                                                <div>
+
+                                                    <div class="d-flex justify-content-center rating-stars">
+
+                                                        @for($i = 1; $i <= 5; $i++)
+                                                            @if($i <= $resena->rate)
+                                                                <i class="fas fa-star align-self-center "></i>
+                                                            @else
+                                                                <i class="far fa-star align-self-center"></i>
+                                                            @endif
+                                                        @endfor
+
+                                                        <p class="align-self-center m-0 ml-2">{{ $resena->rate }}</p>
+
+                                                    </div>
+
+                                                    <p>"{{ $resena->contenido}}"</p>
+
+                                                    <p class="m-0">{{ $resena->created_at->diffForHumans() }}</p>
+
+                                                </div>
+
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
+
+                                @else
+
+                                    <p>Este usuario aún no tiene reseñas como trabajador.</p>
+
+                                @endif
 
                             </div>
 

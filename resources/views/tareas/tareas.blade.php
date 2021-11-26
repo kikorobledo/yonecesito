@@ -22,20 +22,43 @@
 
             <div class="col-12 col-md-4 pr-0 mr-0 pl-0 mb-xs-3 mb-lg-0">
 
-                <principal-tareas></principal-tareas>
+                @if(Request::input('tarea_id'))
+
+                    <principal-tareas tarea_id={{Request::input('tarea_id')}}></principal-tareas>
+
+                @else
+
+                    <principal-tareas tarea_id={{ null }}></principal-tareas>
+
+                @endif
 
             </div>
 
             <div class="col-12 col-md-8 ml-0 pr-0 pl-0 descripcion-tarea">
 
+                @if(Request::input('tarea_id'))
 
-                @if(Auth::user())
+                    @if(Auth::user())
 
-                    <principal-tarea user_id={{Auth::user()->id}} :estados="{{ json_encode($estados) }}"></principal-tarea>
+                        <principal-tarea user_id={{Auth::user()->id}} :estados="{{ json_encode($estados) }}" tarea_id={{Request::input('tarea_id')}}></principal-tarea>
+
+                    @else
+
+                        <principal-tarea user_id="" :estados="{{ json_encode($estados) }}" tarea_id={{Request::input('tarea_id')}}></principal-tarea>
+
+                    @endif
 
                 @else
 
-                    <principal-tarea user_id="" :estados="{{ json_encode($estados) }}"></principal-tarea>
+                    @if(Auth::user())
+
+                        <principal-tarea user_id={{Auth::user()->id}} :estados="{{ json_encode($estados) }}"></principal-tarea>
+
+                    @else
+
+                        <principal-tarea user_id="" :estados="{{ json_encode($estados) }}"></principal-tarea>
+
+                    @endif
 
                 @endif
 
@@ -62,47 +85,138 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
+        /* Borrar Oferta */
+        $('body').on('click', '.btn-eliminar-oferta', function(){
+
+            const params = {
+                id: this.getAttribute('id')
+            };
+
+            Swal.fire({
+                title: '¿Deseas eliminar esta oferta?',
+                text: "Una vez eliminada no se podra recuperar.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No'
+                }).then((result) => {
+
+                    if (result.isConfirmed){
+
+                        axios.post(`/api/oferta/${this.getAttribute('id')}`, {params, _method:'delete'})
+                            .then(respuesta => {
+                                console.log(respuesta)
+
+                                Swal.fire({
+
+                                    title:"Oferta eliminada",
+                                    icon:'success'
+
+                                    }).then((result) => {
+
+                                        $(this).parent().parent().parent().remove();
+
+                                    })
+
+                            }).catch(error => {
+
+                                console.log(error);
+
+                            });
+                    }
+                });
+
+        });
+
         /* Borrar Respuesta Oferta */
         $('body').on('click','.btn-eliminar-respuesta-oferta',function(){
 
-        const params = {
-            id: this.getAttribute('id')
-        };
+            const params = {
+                id: this.getAttribute('id')
+            };
 
-        Swal.fire({
-            title: '¿Deseas eliminar esta respuesta?',
-            text: "Una vez eliminada no se podra recuperar.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si',
-            cancelButtonText: 'No'
-            }).then((result) => {
+            Swal.fire({
+                title: '¿Deseas eliminar esta respuesta?',
+                text: "Una vez eliminada no se podra recuperar.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No'
+                }).then((result) => {
 
-                if (result.isConfirmed){
+                    if (result.isConfirmed){
 
-                    axios.post(`/respuesta_oferta/${this.getAttribute('id')}`, {params, _method:'delete'})
-                        .then(respuesta => {
+                        axios.post(`/respuesta_oferta/${this.getAttribute('id')}`, {params, _method:'delete'})
+                            .then(respuesta => {
 
-                            Swal.fire({
+                                Swal.fire({
 
-                                title:"Respuesta eliminada",
-                                icon:'success'
+                                    title:"Respuesta eliminada",
+                                    icon:'success'
 
-                                }).then((result) => {
+                                    }).then((result) => {
 
-                                    $(this).parent().remove();
+                                        $(this).parent().remove();
 
-                                })
+                                    })
 
-                        }).catch(error => {
+                            }).catch(error => {
 
-                            console.log(error);
+                                console.log(error);
 
-                        });
-                }
-            });
+                            });
+                    }
+                });
+
+        });
+
+        /* Borrar Pregunta */
+        $('body').on('click', '.btn-eliminar-pregunta', function(){
+
+            const params = {
+                id: this.getAttribute('id')
+            };
+
+            Swal.fire({
+                title: '¿Deseas eliminar esta pregunta?',
+                text: "Una vez eliminada no se podra recuperar.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No'
+                }).then((result) => {
+
+                    if (result.isConfirmed){
+
+                        axios.post(`/api/pregunta/${this.getAttribute('id')}`, {params, _method:'delete'})
+                            .then(respuesta => {
+                                console.log(respuesta)
+
+                                Swal.fire({
+
+                                    title:"Pregunta eliminada",
+                                    icon:'success'
+
+                                    }).then((result) => {
+
+                                        $(this).parent().parent().parent().remove();
+
+                                    })
+
+                            }).catch(error => {
+
+                                console.log(error);
+
+                            });
+                    }
+                });
+
         });
 
         /* Borrar Respuesta Pregunta */

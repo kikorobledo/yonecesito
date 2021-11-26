@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\RespuestaOferta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Notifications\NuevaRespuestaOferta;
 
 class RespuestaOfertaController extends Controller
 {
@@ -59,6 +61,10 @@ class RespuestaOfertaController extends Controller
 
             $usuario = User::where('id', $data['user_id'])->first();
 
+            $usuario_notificacion = User::where('id', $respuesta_oferta->oferta->autor->id)->first();
+
+            $usuario_notificacion->notify(new NuevaRespuestaOferta($respuesta_oferta, $respuesta_oferta->oferta));
+
             $foto = $usuario->perfil->imagen;
 
             $nombre = $usuario->name;
@@ -86,6 +92,10 @@ class RespuestaOfertaController extends Controller
             ]);
 
             $respuesta_oferta->save();
+
+            $usuario_notificacion = User::where('id', $respuesta_oferta->oferta->autor->id)->first();
+
+            $usuario_notificacion->notify(new NuevaRespuestaOferta($respuesta_oferta, $respuesta_oferta->oferta));
 
             $nombre = $usuario->name;
 
@@ -144,6 +154,12 @@ class RespuestaOfertaController extends Controller
      */
     public function destroy(RespuestaOferta $respuestaOferta)
     {
+
+        $notificaciones = DB::table('notifications')->where('data->respuesta_oferta_id', $respuestaOferta->id )->get();
+
+        foreach($notificaciones as $notificacion)
+            DB::table('notifications')->where('id', $notificacion->id)->delete();
+
         $respuestaOferta->delete();
     }
 }

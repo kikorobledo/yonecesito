@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Perfil;
 use Carbon\Carbon;
+use App\DatoBancario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -82,6 +83,14 @@ class RegisterController extends Controller
         ]);
 
         $perfil->save();
+
+        $datosBancarios = DatoBancario::create([
+            'user_id' => $user->id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $datosBancarios->save();
 
         return $user;
     }

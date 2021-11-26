@@ -75,6 +75,12 @@ Vue.component('notificacion-sweet', require('./components/NotificacionSweet.vue'
 /* Filtro Tareas */
 Vue.component('filtro-tareas', require('./components/FiltroTareas.vue').default);
 
+/* Enviar Mensaje */
+Vue.component('enviar-mensaje', require('./components/EnviarMensaje.vue').default);
+
+/* Concluir Tarea */
+Vue.component('concluir-tarea', require('./components/ConcluirTarea.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
